@@ -5,4 +5,3 @@
 git clone [url of your fork]
 npm install
 npm start 
-
