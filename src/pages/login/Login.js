@@ -5,13 +5,11 @@ import PRAM from '../../assets/images/PRAM.png';
 import './Login.css';
 
 const Login = () => {
-  const navigate = useNavigate();
+  const navigate = useNavigate(); 
 
-  const handleLogin = (role) => {
-    navigate(`/${role}`);
+  const handleLogin = (dashboardType) => {
+    navigate(`/dashboard/${dashboardType}`);
   };
-
-  //TODO: Add Authentication for role-based access
 
   return (
     <div className="login-container">

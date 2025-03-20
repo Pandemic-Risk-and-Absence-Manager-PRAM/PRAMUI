@@ -1,0 +1,20 @@
+{
+    "employee": {
+      "name": "Alex Johnson",
+      "email": "alex.johnson@example.com",
+      "department": "Technology",
+      "role": "Software Engineer"
+    },
+    "manager": {
+      "name": "Michael Lee",
+      "email": "michael.lee@example.com",
+      "department": "Technology",
+      "role": "Team Lead"
+    },
+    "hr": {
+      "name": "Sarah Patel",
+      "email": "sarah.patel@example.com",
+      "department": "HR",
+      "role": "HR Manager"
+    }
+  }

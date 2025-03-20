@@ -1,18 +1,13 @@
-import React from 'react';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Login from './pages/login/Login';
-import AbsencePortal from './pages/dashboard/AbsencePortal/AbsencePortal';
-import ManagerPortal from './pages/dashboard/ManagerPortal/ManagerPortal';
-import HRPortal from './pages/dashboard/HRPortal/HRPortal';
+import Dashboard from './pages/dashboard/Dashboard';
 
 function App() {
   return (
     <Router>
       <Routes>
         <Route path="/" element={<Login />} />
-        <Route path="/employee" element={<AbsencePortal />} />
-        <Route path="/manager" element={<ManagerPortal />} />
-        <Route path="/hr" element={<HRPortal />} />
+        <Route path="/dashboard/:dashboardType" element={<Dashboard />} />
       </Routes>
     </Router>
   );
