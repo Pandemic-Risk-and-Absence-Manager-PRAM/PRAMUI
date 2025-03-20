@@ -1,9 +1,9 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import Login from './Pages/Login/Login';
-import AbsencePortal from './Pages/AbsencePortal/AbsencePortal';
-import ManagerPortal from './Pages/ManagerPortal/ManagerPortal';
-import HRPortal from './Pages/HRPortal/HRPortal';
+import Login from './pages/login/Login';
+import AbsencePortal from './pages/dashboard/AbsencePortal/AbsencePortal';
+import ManagerPortal from './pages/dashboard/ManagerPortal/ManagerPortal';
+import HRPortal from './pages/dashboard/HRPortal/HRPortal';
 
 function App() {
   return (
