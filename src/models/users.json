@@ -3,7 +3,10 @@
       "name": "Alex Johnson",
       "email": "alex.johnson@example.com",
       "department": "Technology",
-      "role": "Software Engineer"
+      "role": "Software Engineer",
+      "totalDays": 24,
+      "usedDays": 16,
+      "sickDays": 1
     },
     "manager": {
       "name": "Michael Lee",
