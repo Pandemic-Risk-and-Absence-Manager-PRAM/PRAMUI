@@ -28,7 +28,7 @@ const AbsencePortal = () => {
       <div className="flex flex-1">
         <NavigationBar isOpen={isOpen} toggleNavigationBar={toggleNavigationBar} />
 
-        <div className="flex flex-col flex-1 p-4">
+        <div className="flex flex-col flex-1 p-10">
           {/* Welcome Back message */}
           <div className="flex justify-center items-center mt-8 p-5">
             <div className="text-4xl text-black" style={{ fontFamily: 'Kanit, sans-serif' }}>
@@ -37,8 +37,11 @@ const AbsencePortal = () => {
           </div>
 
           {/* Time Balances */}
-          <div className="bg-blue-100 p-6 rounded-lg mb-8">
-            <div className="grid grid-cols-3 gap-4">
+          <div className="bg-blue-100 p-8 rounded-lg mb-8">
+            <div className="text-xl text-black" style={{ fontFamily: 'Kanit, sans-serif' }}>
+                  Time Balances
+            </div>
+            <div className="grid grid-cols-3 gap-4 p-5">
               {/* Days Remaining */}
               <div className="flex flex-col items-center">
                 <div className="w-20 h-20">
@@ -47,7 +50,7 @@ const AbsencePortal = () => {
                     text={remainingDays} 
                     styles={buildStyles({
                       textSize: '20px',
-                      pathColor: '#4CAF50',
+                      pathColor: '#123352',
                       textColor: '#333',
                       trailColor: '#ddd'
                     })} 
@@ -64,7 +67,7 @@ const AbsencePortal = () => {
                     text={user.usedDays} 
                     styles={buildStyles({
                       textSize: '20px',
-                      pathColor: '#FF9800',
+                      pathColor: '#123352',
                       textColor: '#333',
                       trailColor: '#ddd'
                     })} 
@@ -81,7 +84,7 @@ const AbsencePortal = () => {
                     text={user.sickDays} 
                     styles={buildStyles({
                       textSize: '20px',
-                      pathColor: '#E91E63',
+                      pathColor: '#123352',
                       textColor: '#333',
                       trailColor: '#ddd'
                     })} 
@@ -93,28 +96,28 @@ const AbsencePortal = () => {
           </div>
 
           {/* Dashboard Icons */}
-          <div className="grid grid-cols-3 gap-4">
-            <Link to="/profile" className="bg-custom-green-27 p-4 rounded-lg flex flex-col items-center">
+          <div className="grid grid-cols-3 gap-8 flex-grow">
+            <Link to="/profile" className="bg-[#cce3c7] p-4 rounded-lg flex flex-col items-center">
               <span className="text-3xl mb-2"><FaUser /></span>
               <span style={{ fontFamily: 'Kanit, sans-serif' }}>PROFILE</span>
             </Link>
-            <Link to="/requests" className="bg-custom-green-27 p-4 rounded-lg flex flex-col items-center">
+            <Link to="/requests" className="bg-[#cce3c7] p-4 rounded-lg flex flex-col items-center">
               <span className="text-3xl mb-2"><BsFillFileEarmarkPlusFill /></span>
               <span style={{ fontFamily: 'Kanit, sans-serif' }}>MY REQUESTS</span>
             </Link>
-            <Link to="/calendar" className="bg-custom-green-27 p-4 rounded-lg flex flex-col items-center">
+            <Link to="/calendar" className="bg-[#cce3c7] p-4 rounded-lg flex flex-col items-center">
               <span className="text-3xl mb-2"><FaCalendarAlt /></span>
               <span style={{ fontFamily: 'Kanit, sans-serif' }}>CALENDAR</span>
             </Link>
-            <Link to="/report-absence" className="bg-custom-green-27 p-4 rounded-lg flex flex-col items-center">
+            <Link to="/report-absence" className="bg-[#cce3c7] p-4 rounded-lg flex flex-col items-center">
               <span className="text-3xl mb-2"><MdOutlineReport /></span>
               <span style={{ fontFamily: 'Kanit, sans-serif' }}>REPORT ABSENCE</span>
             </Link>
-            <Link to="/upload-documents" className="bg-custom-green-27 p-4 rounded-lg flex flex-col items-center">
+            <Link to="/upload-documents" className="bg-[#cce3c7] p-4 rounded-lg flex flex-col items-center">
               <span className="text-3xl mb-2"><FaUpload /></span>
               <span style={{ fontFamily: 'Kanit, sans-serif' }}>UPLOAD DOCUMENTS</span>
             </Link>
-            <Link to="/resources" className="bg-custom-green-27 p-4 rounded-lg flex flex-col items-center">
+            <Link to="/resources" className="bg-[#cce3c7] p-4 rounded-lg flex flex-col items-center">
               <span className="text-3xl mb-2"><IoBook /></span>
               <span style={{ fontFamily: 'Kanit, sans-serif' }}>RESOURCES</span>
             </Link>
