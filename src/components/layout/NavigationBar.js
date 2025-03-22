@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";  // Import Link from react-router-dom
+import { Link } from "react-router-dom";
 import { FaUser, FaCalendarAlt, FaUpload, FaQuestionCircle, FaCog, FaChartBar, FaSearch, FaTimes } from "react-icons/fa";
 import { BsFillFileEarmarkPlusFill } from "react-icons/bs";
 import { MdOutlineReport } from "react-icons/md";
@@ -26,8 +26,8 @@ const NavigationBar = ({ isOpen, toggleNavigationBar }) => {
   );
 
   return (
-    <div className="flex h-screen"> 
-      <div className={`bg-[#1F3557] h-screen p-5 pt-8 ${isOpen ? "w-[280px]" : "w-15"} duration-300 flex flex-col overflow-hidden`}>
+    <div className="flex"> 
+      <div className={`bg-[#1F3557] p-5 pt-8 ${isOpen ? "w-[280px]" : "w-15"} duration-300 flex flex-col overflow-hidden`}>
         
         {/* Search Bar (Conditional Rendering) */}
         {isOpen && (

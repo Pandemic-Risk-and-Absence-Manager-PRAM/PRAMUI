@@ -8,7 +8,6 @@ import { IoBook } from "react-icons/io5";
 import users from '../../../models/users.json';
 import { useParams, Link } from 'react-router-dom';
 import { CircularProgressbar, buildStyles } from 'react-circular-progressbar';
-import 'react-circular-progressbar/dist/styles.css';
 
 const AbsencePortal = () => {
   const { dashboardType } = useParams();
@@ -22,13 +21,13 @@ const AbsencePortal = () => {
   const remainingDays = user.totalDays - user.usedDays;
 
   return (
-    <div className="flex h-screen flex-col">
+    <div className="flex flex-col h-screen">
       <Header toggleNavigationBar={toggleNavigationBar} isOpen={isOpen} />
 
       <div className="flex flex-1">
-        <NavigationBar isOpen={isOpen} toggleNavigationBar={toggleNavigationBar} />
+        <NavigationBar isOpen={isOpen} toggleNavigationBar={toggleNavigationBar} className="h-full"/>
 
-        <div className="flex flex-col flex-1 p-10">
+        <div className="flex flex-col flex-1 overflow-y-auto p-10">
           {/* Welcome Back message */}
           <div className="flex justify-center items-center mt-8 p-5">
             <div className="text-4xl text-black" style={{ fontFamily: 'Kanit, sans-serif' }}>
@@ -97,7 +96,7 @@ const AbsencePortal = () => {
 
           {/* Dashboard Icons */}
           <div className="grid grid-cols-3 gap-8 flex-grow">
-            <Link to="/profile" className="bg-[#cce3c7] p-4 rounded-lg flex flex-col items-center">
+            <Link to={`/dashboard/${dashboardType}/profile`} className="bg-[#cce3c7] p-4 rounded-lg flex flex-col items-center">
               <span className="text-3xl mb-2"><FaUser /></span>
               <span style={{ fontFamily: 'Kanit, sans-serif' }}>PROFILE</span>
             </Link>

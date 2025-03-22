@@ -1,9 +1,19 @@
 {
     "employee": {
       "name": "Alex Johnson",
+      "id": 1234,
       "email": "alex.johnson@example.com",
+      "location": "London-HQ",
       "department": "Technology",
       "role": "Software Engineer",
+      "teams": "Development",
+      "lineManager": "Michael Lee",
+      "directReports": ["Michael Lee", "N/A"],
+      "status": "Available",
+      "mobile": "+441234567",
+      "emergencyContact": "+4472345678",
+      "startDate": "09/03/2025",
+      "bio": "Alex Johnson is a Senior Software Engineer in the Technology & Innovation department at Company X. With over six years of experience in full-stack development, Alex specializes in building scalable web applications, optimizing system performance, and leading cross-functional teams.\n\nSince joining the company in 2020, Alex has played a key role in enhancing platform security, streamlining development workflows, and mentoring junior developers. \n\nOutside of work, Alex enjoys contributing to open-source projects, hiking, and experimenting with new programming frameworks.",
       "totalDays": 24,
       "usedDays": 16,
       "sickDays": 1
