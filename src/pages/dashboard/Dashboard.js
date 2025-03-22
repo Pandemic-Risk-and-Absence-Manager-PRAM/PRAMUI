@@ -20,7 +20,11 @@ const Dashboard = () => {
     }
   };
 
-  return <div>{renderDashboard()}</div>;
+  return (
+    <div>
+      {renderDashboard()}
+    </div>
+  );
 };
 
 export default Dashboard;
