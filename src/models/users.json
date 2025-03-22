@@ -21,8 +21,13 @@
     "manager": {
       "name": "Michael Lee",
       "email": "michael.lee@example.com",
+      "location": "London-HQ",
       "department": "Technology",
-      "role": "Team Lead"
+      "role": "Team Lead",
+      "teams": "Development",
+      "lineManager": "Sandra Cooper",
+      "directReports": ["Sandra Cooper", "Alex Johnson"],
+      "status": "Available"
     },
     "hr": {
       "name": "Sarah Patel",

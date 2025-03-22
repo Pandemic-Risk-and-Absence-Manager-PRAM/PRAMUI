@@ -10,6 +10,11 @@ function App() {
         <Route path="/" element={<Login />} />
         <Route path="/dashboard/:dashboardType/*" element={<Dashboard />} />
         <Route path="/dashboard/:dashboardType/profile" element={<Profile />} />
+        <Route path="/dashboard/:dashboardType/requests" element={<Profile />} />
+        <Route path="/dashboard/:dashboardType/calendar" element={<Profile />} />
+        <Route path="/dashboard/:dashboardType/report-absence" element={<Profile />} />
+        <Route path="/dashboard/:dashboardType/upload-documents" element={<Profile />} />
+        <Route path="/dashboard/:dashboardType/resources" element={<Profile />} />
       </Routes>
     </Router>
   );

@@ -43,51 +43,61 @@ const AbsencePortal = () => {
             <div className="grid grid-cols-3 gap-4 p-5">
               {/* Days Remaining */}
               <div className="flex flex-col items-center">
-                <div className="w-20 h-20">
+                <div className="w-20 h-20 relative flex items-center justify-center">
                   <CircularProgressbar 
                     value={(remainingDays / user.totalDays) * 100} 
-                    text={remainingDays} 
                     styles={buildStyles({
-                      textSize: '20px',
-                      pathColor: '#123352',
-                      textColor: '#333',
-                      trailColor: '#ddd'
+                      textSize: "24px",
+                      pathColor: "#123352",
+                      textColor: "transparent",
+                      trailColor: "#ddd"
                     })} 
                   />
+                <div className="absolute text-black font-bold text-lg">
+                  {remainingDays}
                 </div>
+              </div>
                 <span className="mt-2" style={{ fontFamily: 'Kanit, sans-serif' }}>Days Remaining</span>
               </div>
 
               {/* Days Used */}
               <div className="flex flex-col items-center">
-                <div className="w-20 h-20">
+                <div className="w-20 h-20 relative flex items-center justify-center">
                   <CircularProgressbar 
                     value={(user.usedDays / user.totalDays) * 100} 
                     text={user.usedDays} 
                     styles={buildStyles({
-                      textSize: '20px',
+                      textSize: '24px',
                       pathColor: '#123352',
-                      textColor: '#333',
-                      trailColor: '#ddd'
+                      textColor: "transparent",
+                      trailColor: '#ddd',
+                      textAnchor: 'middle',
                     })} 
                   />
-                </div>
+                  <div className="absolute text-black font-bold text-lg">
+                  {user.usedDays}
+                  </div>
+              </div>
                 <span className="mt-2" style={{ fontFamily: 'Kanit, sans-serif' }}>Days Used</span>
               </div>
 
               {/* Sick Days */}
               <div className="flex flex-col items-center">
-                <div className="w-20 h-20">
+                <div className="w-20 h-20 relative flex items-center justify-center">
                   <CircularProgressbar 
                     value={(user.sickDays / user.totalDays) * 100} 
                     text={user.sickDays} 
                     styles={buildStyles({
-                      textSize: '20px',
+                      textSize: '24px',
                       pathColor: '#123352',
-                      textColor: '#333',
-                      trailColor: '#ddd'
+                      textColor: "transparent",
+                      trailColor: '#ddd',
+                      textAnchor: 'middle',
                     })} 
                   />
+                  <div className="absolute text-black font-bold text-lg">
+                  {user.sickDays}
+                  </div>
                 </div>
                 <span className="mt-2" style={{ fontFamily: 'Kanit, sans-serif' }}>Sick Days</span>
               </div>
@@ -100,23 +110,23 @@ const AbsencePortal = () => {
               <span className="text-3xl mb-2"><FaUser /></span>
               <span style={{ fontFamily: 'Kanit, sans-serif' }}>PROFILE</span>
             </Link>
-            <Link to="/requests" className="bg-[#cce3c7] p-4 rounded-lg flex flex-col items-center">
+            <Link to={`/dashboard/${dashboardType}/requests`} className="bg-[#cce3c7] p-4 rounded-lg flex flex-col items-center">
               <span className="text-3xl mb-2"><BsFillFileEarmarkPlusFill /></span>
               <span style={{ fontFamily: 'Kanit, sans-serif' }}>MY REQUESTS</span>
             </Link>
-            <Link to="/calendar" className="bg-[#cce3c7] p-4 rounded-lg flex flex-col items-center">
+            <Link to={`/dashboard/${dashboardType}/calendar`} className="bg-[#cce3c7] p-4 rounded-lg flex flex-col items-center">
               <span className="text-3xl mb-2"><FaCalendarAlt /></span>
               <span style={{ fontFamily: 'Kanit, sans-serif' }}>CALENDAR</span>
             </Link>
-            <Link to="/report-absence" className="bg-[#cce3c7] p-4 rounded-lg flex flex-col items-center">
+            <Link to={`/dashboard/${dashboardType}/report-absence`} className="bg-[#cce3c7] p-4 rounded-lg flex flex-col items-center">
               <span className="text-3xl mb-2"><MdOutlineReport /></span>
               <span style={{ fontFamily: 'Kanit, sans-serif' }}>REPORT ABSENCE</span>
             </Link>
-            <Link to="/upload-documents" className="bg-[#cce3c7] p-4 rounded-lg flex flex-col items-center">
+            <Link to={`/dashboard/${dashboardType}/upload-documents`} className="bg-[#cce3c7] p-4 rounded-lg flex flex-col items-center">
               <span className="text-3xl mb-2"><FaUpload /></span>
               <span style={{ fontFamily: 'Kanit, sans-serif' }}>UPLOAD DOCUMENTS</span>
             </Link>
-            <Link to="/resources" className="bg-[#cce3c7] p-4 rounded-lg flex flex-col items-center">
+            <Link to={`/dashboard/${dashboardType}/resources`} className="bg-[#cce3c7] p-4 rounded-lg flex flex-col items-center">
               <span className="text-3xl mb-2"><IoBook /></span>
               <span style={{ fontFamily: 'Kanit, sans-serif' }}>RESOURCES</span>
             </Link>

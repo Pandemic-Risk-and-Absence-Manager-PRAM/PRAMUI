@@ -5,7 +5,7 @@ import { useParams } from 'react-router-dom';
 const DirectReports = () => {
   const { dashboardType } = useParams();
   const user = users[dashboardType];
-  const managerName = users.manager.name;
+  const managerName = user.lineManager;
   const image = require(`../../../assets/images/users/${user.name.replace(/\s+/g, '')}.png`);
   const managerImage = require(`../../../assets/images/users/${managerName.replace(/\s+/g, '')}.png`);
 
