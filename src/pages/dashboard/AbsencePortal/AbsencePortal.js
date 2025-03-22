@@ -1,12 +1,12 @@
 import React from 'react';
 import NavigationBar from '../../../components/layout/NavigationBar';
 import Header from '../../../components/layout/Header';
-import users from '../../../models/users.json';
-import { useParams, Link } from 'react-router-dom';
 import { FaUser, FaCalendarAlt, FaUpload } from "react-icons/fa";
 import { BsFillFileEarmarkPlusFill } from "react-icons/bs";
 import { MdOutlineReport } from "react-icons/md";
 import { IoBook } from "react-icons/io5";
+import users from '../../../models/users.json';
+import { useParams, Link } from 'react-router-dom';
 import { CircularProgressbar, buildStyles } from 'react-circular-progressbar';
 
 const AbsencePortal = () => {
@@ -18,7 +18,6 @@ const AbsencePortal = () => {
     setIsOpen(!isOpen);
   };
 
-  console.log("ABsence", dashboardType);
   const remainingDays = user.totalDays - user.usedDays;
 
   return (
@@ -30,7 +29,7 @@ const AbsencePortal = () => {
 
         <div className="flex flex-col flex-1 overflow-y-auto p-10">
           {/* Welcome Back message */}
-          <div className="flex justify-center items-center mt-8">
+          <div className="flex justify-center items-center mt-8 p-5">
             <div className="text-4xl text-black" style={{ fontFamily: 'Kanit, sans-serif' }}>
               Welcome Back {user.name}!
             </div>
