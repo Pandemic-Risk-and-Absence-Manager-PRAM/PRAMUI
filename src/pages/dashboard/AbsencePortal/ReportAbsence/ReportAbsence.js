@@ -45,23 +45,23 @@ const ReportAbsence = () => {
   }, [absencePeriod]);
 
   return (
-    <div className="flex flex-col h-screen">
+    <div className="flex flex-col h-screen bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-white transition-all">
       <Header toggleNavigationBar={toggleNavigationBar} isOpen={isOpen} />
       <div className="flex flex-1">
         <NavigationBar isOpen={isOpen} toggleNavigationBar={toggleNavigationBar} />
         <div className="flex-1 min-h-screen">
-          <div className="p-6 h-screen bg-gray-100" style={{ marginLeft: isOpen ? "280px" : "0px", transition: "margin-left 0.3s ease" }}>
-            <div className="max-w-5xl mx-auto bg-white rounded-lg shadow-md">
+          <div className="p-6 h-screen bg-gray-100 dark:bg-gray-900" style={{ marginLeft: isOpen ? "280px" : "0px", transition: "margin-left 0.3s ease" }}>
+            <div className="max-w-5xl mx-auto bg-white dark:bg-gray-800 rounded-lg shadow-md transition-all">
               <div className="p-6 w-full overflow-x-auto">
-                <h1 className="text-3xl font-bold mb-6" style={{ fontFamily: 'Kanit, sans-serif' }}>REPORT ABSENCE</h1>
+                <h1 className="text-3xl font-bold mb-6 text-black dark:text-white" style={{ fontFamily: 'Kanit, sans-serif' }}>REPORT ABSENCE</h1>
 
-                <div className="max-w-4xl mx-auto bg-white p-6 rounded-lg shadow-md">
+                <div className="max-w-4xl mx-auto bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md">
                   <div className="flex flex-wrap -mx-4">
                     {/* Absence Reason */}
                     <div className="w-full md:w-1/2 px-4 mb-4">
-                      <label className="block text-gray-700 font-bold mb-2">Absence Reason</label>
+                      <label className="block text-gray-700 dark:text-gray-300 font-bold mb-2">Absence Reason</label>
                       <select
-                        className="w-full p-2 border rounded-lg"
+                        className="w-full p-2 border rounded-lg bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-white"
                         value={absenceReason}
                         onChange={(e) => setAbsenceReason(e.target.value)}
                       >
@@ -74,8 +74,8 @@ const ReportAbsence = () => {
 
                     {/* Absence Period (Calendar) */}
                     <div className="w-full md:w-1/2 px-4 mb-4">
-                      <label className="block text-gray-700 font-bold mb-2">Expected Absence Period</label>
-                      <div className="mb-2 p-2 border rounded-lg text-gray-700 font-semibold text-center">
+                      <label className="block text-gray-700 dark:text-gray-300 font-bold mb-2">Expected Absence Period</label>
+                      <div className="mb-2 p-2 border rounded-lg text-gray-900 dark:text-white bg-gray-100 dark:bg-gray-700 font-semibold text-center">
                         {formattedDateRange}
                       </div>
                       <DatePicker
@@ -88,7 +88,7 @@ const ReportAbsence = () => {
                         endDate={absencePeriod.end}
                         selectsRange
                         inline
-                        className="w-full p-2 border rounded-lg"
+                        className="w-full p-2 border rounded-lg dark:bg-gray-800 dark:text-white"
                         calendarClassName="modern-calendar"
                       />
                     </div>
@@ -96,9 +96,9 @@ const ReportAbsence = () => {
 
                   {/* Additional Comments */}
                   <div className="mb-4">
-                    <label className="block text-gray-700 font-bold mb-2">Additional Comments</label>
+                    <label className="block text-gray-700 dark:text-gray-300 font-bold mb-2">Additional Comments</label>
                     <textarea
-                      className="w-full p-2 border rounded-lg"
+                      className="w-full p-2 border rounded-lg bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-white"
                       placeholder="Type here"
                       value={comments}
                       onChange={(e) => setComments(e.target.value)}
@@ -108,9 +108,9 @@ const ReportAbsence = () => {
                   {/* Buttons */}
                   <div className="flex justify-between">
                     <Link to="/dashboard">
-                      <button className="bg-gray-300 text-black px-4 py-2 rounded">Cancel</button>
+                      <button className="bg-gray-300 dark:bg-gray-700 dark:text-white text-black px-4 py-2 rounded transition-all">Cancel</button>
                     </Link>
-                    <button onClick={handleSubmit} className="bg-green-600 text-white px-4 py-2 rounded">Submit</button>
+                    <button onClick={handleSubmit} className="bg-green-600 dark:bg-green-700 text-white px-4 py-2 rounded transition-all">Submit</button>
                   </div>
                 </div>
               </div>
@@ -122,14 +122,22 @@ const ReportAbsence = () => {
       {/* Custom CSS to Style DatePicker */}
       <style>
         {`
+        .modern-calendar .react-datepicker {
+          width: 100%;
+          background-color: #ffffff;
+        }
+        .dark .modern-calendar .react-datepicker {
+          background-color: #1f2937;
+          color: white;
+        }
         .modern-calendar .react-datepicker__month-container {
           width: 100%;
           border: 1px solid #e2e8f0;
           border-radius: 0.375rem;
           padding: 1rem;
         }
-        .modern-calendar .react-datepicker { /* Add this line to target the main DatePicker container */
-          width: 100%;
+        .dark .modern-calendar .react-datepicker__month-container {
+          border: 1px solid #374151;
         }
         .modern-calendar .react-datepicker__day--selected,
         .modern-calendar .react-datepicker__day--keyboard-selected {
@@ -137,8 +145,15 @@ const ReportAbsence = () => {
           color: white;
           border-radius: 50%;
         }
+        .dark .modern-calendar .react-datepicker__day--selected,
+        .dark .modern-calendar .react-datepicker__day--keyboard-selected {
+          background-color: #38a169;
+        }
         .modern-calendar .react-datepicker__day:hover {
           background-color: #edf2f7;
+        }
+        .dark .modern-calendar .react-datepicker__day:hover {
+          background-color: #2d3748;
         }
         .react-datepicker__navigation {
           top: 10px !important;

@@ -9,6 +9,7 @@ import ReportAbsence from './pages/dashboard/AbsencePortal/ReportAbsence/ReportA
 
 function App() {
   return (
+    <div className="min-h-screen bg-gray-100 dark:bg-gray-900 dark:text-white">
     <Router>
       <Routes>
         {/* Shared Pages - All */}
@@ -38,6 +39,7 @@ function App() {
         <Route path="/dashboard/:dashboardType/previous-reports" element={<Profile />} />
       </Routes>
     </Router>
+    </div>
   );
 }
 
