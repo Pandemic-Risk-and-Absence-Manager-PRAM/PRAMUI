@@ -7,13 +7,12 @@ import NotificationDropDown from "../notifications/NotificationDropDown";
 import ProfileDropDown from "../profile/ProfileDropDown";
 
 const Header = ({ toggleNavigationBar, isOpen }) => {
-    const { dashboardType } = useParams();
-    const user = users[dashboardType];
-    
-  return (
-    <div className="flex-1 flex flex-col pl-2 pr-2 pt-1">
-      <header className="bg-white p-0.5 border-b flex items-center justify-between">
+  const { dashboardType } = useParams();
+  const user = users[dashboardType];
 
+  return (
+    <div className="flex-1 flex flex-col">
+      <header className="bg-white p-0.5 border-b flex items-center justify-between fixed top-0 left-0 w-full z-40">
         {/* Toggle Navigation Bar */}
         <div className="flex items-center">
           <button className="text-gray-600 mr-2" onClick={toggleNavigationBar}>
@@ -24,15 +23,16 @@ const Header = ({ toggleNavigationBar, isOpen }) => {
           <img src={PRAM} alt="PRAM" className="w-[120px] mr-2" />
         </div>
         <div className="flex items-center">
-        <div className="border-gray-300 h-6 mx-4"></div>
+          <div className="border-gray-300 h-6 mx-4"></div>
 
-        {/* Notifications */}
-        <NotificationDropDown />
+          {/* Notifications */}
+          <NotificationDropDown />
 
-        {/* User Profile */}
-        < ProfileDropDown user={user}/>
+          {/* User Profile */}
+          <ProfileDropDown user={user} />
         </div>
       </header>
+      <div className="pt-[49px]"></div> {/* added empty div to push content down. Adjust pt-[49px] if header height changes. */}
     </div>
   );
 };

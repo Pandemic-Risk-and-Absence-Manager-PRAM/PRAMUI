@@ -2,6 +2,8 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Login from './pages/login/Login';
 import Dashboard from './pages/dashboard/Dashboard';
 import Profile from './pages/navigation/Profile/Profile';
+import Calendar from './pages/navigation/Calendar/Calendar';
+import MyRequests from './pages/navigation/MyRequests/MyRequests';
 
 function App() {
   return (
@@ -10,8 +12,8 @@ function App() {
         <Route path="/" element={<Login />} />
         <Route path="/dashboard/:dashboardType/*" element={<Dashboard />} />
         <Route path="/dashboard/:dashboardType/profile" element={<Profile />} />
-        <Route path="/dashboard/:dashboardType/requests" element={<Profile />} />
-        <Route path="/dashboard/:dashboardType/calendar" element={<Profile />} />
+        <Route path="/dashboard/:dashboardType/requests" element={<MyRequests />} />
+        <Route path="/dashboard/:dashboardType/calendar" element={<Calendar />} />
         <Route path="/dashboard/:dashboardType/report-absence" element={<Profile />} />
         <Route path="/dashboard/:dashboardType/upload-documents" element={<Profile />} />
         <Route path="/dashboard/:dashboardType/resources" element={<Profile />} />
