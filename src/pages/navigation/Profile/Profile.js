@@ -32,7 +32,7 @@ const Profile = () => {
       <div className="flex flex-1">
         <NavigationBar isOpen={isOpen} toggleNavigationBar={toggleNavigationBar} />
         <div className="flex-1 min-h-screen" style={{ paddingLeft: isOpen ? "280px" : "15px", transition: "padding-left 0.3s ease" }}>
-          <div className="p-6 h-screen bg-gray-100">
+          <div className="p-6 bg-gray-100">
             <div className="max-w-5xl mx-auto bg-white p-6 rounded-lg shadow-md">
               <h1 className="text-4xl font-bold" style={{ fontFamily: 'Kanit, sans-serif' }}>{user.name}</h1>
               <div className="flex items-center mt-4">
@@ -52,7 +52,7 @@ const Profile = () => {
                 </div>
                 <DirectReports />
               </div>
-              <div className="mt-6 p-4 border rounded-md shadow-sm" style={{ fontFamily: 'Kanit, sans-serif' }}>
+              <div className="mt-1 p-4 border rounded-md shadow-sm" style={{ fontFamily: 'Kanit, sans-serif' }}>
                 <h2 className="text-lg font-semibold">Contact Details:</h2>
                 <p><strong>Email:</strong> {user.email}</p>
                 <p><strong>Mobile Phone:</strong> {user.mobile}</p>
