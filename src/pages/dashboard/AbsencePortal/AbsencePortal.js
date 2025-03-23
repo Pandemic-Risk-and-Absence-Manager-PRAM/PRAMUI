@@ -25,8 +25,8 @@ const AbsencePortal = () => {
       <div className="flex flex-1">
         <NavigationBar isOpen={isOpen} toggleNavigationBar={toggleNavigationBar} />
 
-        <div className="flex-1 min-h-screen" style={{ paddingLeft: isOpen ? "280px" : "100px", transition: "padding-left 0.3s ease" }}>
-          <div className="p-6 h-screen bg-gray-100">
+        <div className="flex-1 min-h-screen">
+          <div className="p-6 h-screen bg-gray-100" style={{ paddingLeft: isOpen ? "280px" : "100px", transition: "padding-left 0.3s ease" }}>
             <div className="max-w-5xl mx-auto bg-white p-0 rounded-lg shadow-md">
               <div className="flex flex-col overflow-y-auto p-10">
                 {/* Welcome Back message */}

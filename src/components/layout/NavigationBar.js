@@ -60,7 +60,7 @@ const NavigationBar = ({ isOpen, toggleNavigationBar }) => {
 
   return (
     <div className="flex">
-      <div className={`fixed h-screen bg-[#1F3557] p-5 pt-8 ${isOpen ? "w-[280px]" : "w-15"} duration-300 flex flex-col`}>
+      <div className={`fixed bg-[#1F3557] p-5 pt-8 ${isOpen ? "w-[280px]" : "w-15"} duration-300 flex flex-col`}>
 
         {/* Search Bar (Conditional Rendering) */}
         {isOpen && (
@@ -78,7 +78,7 @@ const NavigationBar = ({ isOpen, toggleNavigationBar }) => {
         )}
 
         {/* Menu Items */}
-        <ul className="mt-6 flex-1 overflow-y-auto" style={{ fontFamily: 'Kanit, sans-serif' }}>
+        <ul className="mt-6 flex-grow overflow-y-auto" style={{ fontFamily: 'Kanit, sans-serif', minHeight: isOpen ? '430px' : '630px'  }}>
           {filteredMenuItems.map((item, index) => (
             <Link to={item.link} key={index} className="flex items-center gap-x-4 p-3 text-gray-300 hover:bg-custom-green-27 rounded-md cursor-pointer">
               <span className="text-lg">{item.icon}</span>
