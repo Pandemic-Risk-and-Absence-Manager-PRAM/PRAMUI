@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { MdNotificationImportant  } from 'react-icons/fa';
+import { MdNotificationImportant } from "react-icons/md";
 
 const NotificationDropDown = () => {
   const [isOpen, setIsOpen] = useState(false);
