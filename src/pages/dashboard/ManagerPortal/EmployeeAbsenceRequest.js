@@ -2,9 +2,7 @@ import React from 'react';
 import Header from '../../../components/layout/Header';
 import NavigationBar from "../../../components/layout/NavigationBar";
 import './EmployeeAbsenceRequest.css';
-import TimeBalances from "../../../components/time-balances/TimeBalances";
-import {Link} from "react-router-dom";
-import Calendar from "../../navigation/Calendar/Calendar";
+import Calendar from "../../../components/calendar/Calendar";
 
 const EmployeeAbsenceRequest = () => {
     const [isOpen, setIsOpen] = React.useState(true);
@@ -86,7 +84,7 @@ const EmployeeAbsenceRequest = () => {
                                                 </td>
                                                 <td>Tested positive for COVID-19</td>
                                                 <td>
-                                                    <a href="#" className="link">View</a>
+                                                    <span className="link">View</span>
                                                 </td>
                                             </tr>
                                             </tbody>

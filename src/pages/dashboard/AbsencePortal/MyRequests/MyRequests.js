@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import Header from "../../../components/layout/Header";
-import NavigationBar from "../../../components/layout/NavigationBar";
-import TimeBalances from "../../../components/time-balances/TimeBalances";
+import Header from "../../../../components/layout/Header";
+import NavigationBar from "../../../../components/layout/NavigationBar";
+import TimeBalances from "../../../../components/time-balances/TimeBalances";
 import { useParams, Link } from "react-router-dom";
 
 const MyRequests = () => {
