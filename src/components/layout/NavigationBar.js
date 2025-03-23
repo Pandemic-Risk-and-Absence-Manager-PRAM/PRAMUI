@@ -13,7 +13,7 @@ const NavigationBar = ({ isOpen, toggleNavigationBar }) => {
   let menuItems = () => {
     switch (dashboardType) {
       case 'employee':
-        return menuItems = [
+        return [
           { name: "Home", icon: <FaChartBar />, link: `/dashboard/${dashboardType}` },
           { name: "Profile", icon: <FaUser />, link: `/dashboard/${dashboardType}/profile` },
           { name: "My Requests", icon: <BsFillFileEarmarkPlusFill />, link: `/dashboard/${dashboardType}/my-requests` },
@@ -25,7 +25,7 @@ const NavigationBar = ({ isOpen, toggleNavigationBar }) => {
           { name: "Settings", icon: <FaCog />, link: `/dashboard/${dashboardType}/settings` }
         ];
       case 'manager':
-        return menuItems = [
+        return [
           { name: "Home", icon: <FaChartBar />, link: `/dashboard/${dashboardType}` },
           { name: "Profile", icon: <FaUser />, link: `/dashboard/${dashboardType}/profile` },
           { name: "Employee Absence Requests", icon: <BsFillFileEarmarkPlusFill />, link: `/dashboard/${dashboardType}/employee-absence-requests` },
@@ -37,7 +37,7 @@ const NavigationBar = ({ isOpen, toggleNavigationBar }) => {
           { name: "Settings", icon: <FaCog />, link: `/dashboard/${dashboardType}/settings` }
         ];
       case 'hr':
-        return menuItems = [
+        return [
           { name: "Home", icon: <FaChartBar />, link: `/dashboard/${dashboardType}` },
           { name: "Profile", icon: <FaUser />, link: `/dashboard/${dashboardType}/profile` },
           { name: "Heatmap", icon: <FaMapMarkedAlt />, link: `/dashboard/${dashboardType}/heatmap` },
@@ -60,39 +60,45 @@ const NavigationBar = ({ isOpen, toggleNavigationBar }) => {
 
   return (
     <div className="flex">
-      <div className={`fixed bg-[#1F3557] p-5 pt-8 ${isOpen ? "w-[280px]" : "w-15"} duration-300 flex flex-col`}>
+      <div className={`fixed bg-[#1F3557] dark:bg-gray-800 p-5 pt-8 ${isOpen ? "w-[280px]" : "w-15"} duration-300 flex flex-col transition-all`}>
 
-        {/* Search Bar (Conditional Rendering) */}
+        {/* Search Bar */}
         {isOpen && (
-          <div className="mt-2 flex items-center bg-white rounded-full p-2" style={{ fontFamily: 'Kanit, sans-serif' }}>
-            <FaSearch className="text-gray-700 ml-2 mr-1" />
+          <div className="mt-2 flex items-center bg-white dark:bg-gray-700 rounded-full p-2 transition-all">
+            <FaSearch className="text-gray-700 dark:text-gray-300 ml-2 mr-1" />
             <input
               type="text"
               placeholder="Search"
-              className="bg-transparent text-gray-700 outline-none w-full text-sm"
+              className="bg-transparent text-gray-700 dark:text-gray-200 outline-none w-full text-sm"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
             />
-            <FaTimes className="text-gray-700 mr-2 cursor-pointer" onClick={() => setSearchQuery("")} />
+            <FaTimes className="text-gray-700 dark:text-gray-300 mr-2 cursor-pointer" onClick={() => setSearchQuery("")} />
           </div>
         )}
 
         {/* Menu Items */}
         <ul className="mt-6 flex-grow overflow-y-auto" style={{ fontFamily: 'Kanit, sans-serif', minHeight: isOpen ? '430px' : '630px'  }}>
           {filteredMenuItems.map((item, index) => (
-            <Link to={item.link} key={index} className="flex items-center gap-x-4 p-3 text-gray-300 hover:bg-custom-green-27 rounded-md cursor-pointer">
+            <Link 
+              to={item.link} 
+              key={index} 
+              className="flex items-center gap-x-4 p-3 text-gray-300 dark:text-gray-200 hover:bg-gray-700 dark:hover:bg-gray-600 rounded-md cursor-pointer transition-all duration-300"
+            >
               <span className="text-lg">{item.icon}</span>
               {isOpen && <span className="text-base">{item.name}</span>}
             </Link>
           ))}
         </ul>
 
-        {/* Help Section (Conditional Rendering) */}
+        {/* Help Section */}
         {isOpen && (
-          <div className="p-4 bg-custom-green-27 text-white rounded-lg text-center cursor-pointer">
+          <div className="p-4 bg-custom-green-27 dark:bg-gray-600 text-white rounded-lg text-center cursor-pointer transition-all duration-300">
             <FaQuestionCircle className="text-3xl mx-auto mb-2" />
             <p className="mt-2 text-sm">Need Help with PRAM?</p>
-            <button className="mt-2 bg-[#123352] py-2 px-4 rounded-md text-sm">Go to help center</button>
+            <button className="mt-2 bg-[#123352] dark:bg-gray-800 py-2 px-4 rounded-md text-sm transition-all duration-300">
+              Go to help center
+            </button>
           </div>
         )}
       </div>
