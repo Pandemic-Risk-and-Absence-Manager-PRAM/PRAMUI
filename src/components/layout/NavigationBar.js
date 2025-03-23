@@ -1,28 +1,60 @@
 import { useState } from "react";
 import { useParams, Link } from "react-router-dom";
-import { FaUser, FaCalendarAlt, FaUpload, FaQuestionCircle, FaCog, FaChartBar, FaSearch, FaTimes } from "react-icons/fa";
+import { FaUser, FaCalendarAlt, FaUpload, FaQuestionCircle, FaCog, FaChartBar, FaEye, FaMapMarkedAlt, FaSearch, FaTimes } from "react-icons/fa";
 import { BsFillFileEarmarkPlusFill } from "react-icons/bs";
 import { MdOutlineReport } from "react-icons/md";
 import { IoBook } from "react-icons/io5";
+import { FaBookAtlas } from "react-icons/fa6";
 
 const NavigationBar = ({ isOpen, toggleNavigationBar }) => {
   const { dashboardType } = useParams();
   const [searchQuery, setSearchQuery] = useState("");
 
-  const menuItems = [
-    { name: "Home", icon: <FaChartBar />, link: `/dashboard/${dashboardType}` },
-    { name: "Profile", icon: <FaUser />, link: `/dashboard/${dashboardType}/profile` },
-    { name: "My Requests", icon: <BsFillFileEarmarkPlusFill />, link: `/dashboard/${dashboardType}/requests` },
-    { name: "Calendar", icon: <FaCalendarAlt />, link: `/dashboard/${dashboardType}/calendar` },
-    { name: "Report Absence", icon: <MdOutlineReport />, link: `/dashboard/${dashboardType}/report-absence` },
-    { name: "Upload Documents", icon: <FaUpload />, link: `/dashboard/${dashboardType}/upload-documents` },
-    { name: "Resources", icon: <IoBook />, link: `/dashboard/${dashboardType}/resources` },
-    { name: "Help", icon: <FaQuestionCircle />, link: `/dashboard/${dashboardType}/help` },
-    { name: "Settings", icon: <FaCog />, link: `/dashboard/${dashboardType}/settings` },
-  ];
+  let menuItems = () => {
+    switch (dashboardType) {
+      case 'employee':
+        return menuItems = [
+          { name: "Home", icon: <FaChartBar />, link: `/dashboard/${dashboardType}` },
+          { name: "Profile", icon: <FaUser />, link: `/dashboard/${dashboardType}/profile` },
+          { name: "My Requests", icon: <BsFillFileEarmarkPlusFill />, link: `/dashboard/${dashboardType}/my-requests` },
+          { name: "Calendar", icon: <FaCalendarAlt />, link: `/dashboard/${dashboardType}/calendar` },
+          { name: "Report Absence", icon: <MdOutlineReport />, link: `/dashboard/${dashboardType}/report-absence` },
+          { name: "Upload Documents", icon: <FaUpload />, link: `/dashboard/${dashboardType}/upload-documents` },
+          { name: "Resources", icon: <IoBook />, link: `/dashboard/${dashboardType}/resources` },
+          { name: "Help", icon: <FaQuestionCircle />, link: `/dashboard/${dashboardType}/help` },
+          { name: "Settings", icon: <FaCog />, link: `/dashboard/${dashboardType}/settings` }
+        ];
+      case 'manager':
+        return menuItems = [
+          { name: "Home", icon: <FaChartBar />, link: `/dashboard/${dashboardType}` },
+          { name: "Profile", icon: <FaUser />, link: `/dashboard/${dashboardType}/profile` },
+          { name: "Employee Absence Requests", icon: <BsFillFileEarmarkPlusFill />, link: `/dashboard/${dashboardType}/employee-absence-requests` },
+          { name: "Shared Calendar", icon: <FaCalendarAlt />, link: `/dashboard/${dashboardType}/shared-calendar` },
+          { name: "View Documents", icon: <FaUpload />, link: `/dashboard/${dashboardType}/view-documents` },
+          { name: "Predictive Insights", icon: <FaEye />, link: `/dashboard/${dashboardType}/predictive-insights` },
+          { name: "Resources", icon: <IoBook />, link: `/dashboard/${dashboardType}/resources` },
+          { name: "Help", icon: <FaQuestionCircle />, link: `/dashboard/${dashboardType}/help` },
+          { name: "Settings", icon: <FaCog />, link: `/dashboard/${dashboardType}/settings` }
+        ];
+      case 'hr':
+        return menuItems = [
+          { name: "Home", icon: <FaChartBar />, link: `/dashboard/${dashboardType}` },
+          { name: "Profile", icon: <FaUser />, link: `/dashboard/${dashboardType}/profile` },
+          { name: "Heatmap", icon: <FaMapMarkedAlt />, link: `/dashboard/${dashboardType}/heatmap` },
+          { name: "View Documents", icon: <FaUpload />, link: `/dashboard/${dashboardType}/view-documents` },
+          { name: "Predictive Insights", icon: <FaEye />, link: `/dashboard/${dashboardType}/predictive-insights` },
+          { name: "Previous Reports", icon: <FaBookAtlas />, link: `/dashboard/${dashboardType}/previous-reports` },
+          { name: "Resources", icon: <IoBook />, link: `/dashboard/${dashboardType}/resources` },
+          { name: "Help", icon: <FaQuestionCircle />, link: `/dashboard/${dashboardType}/help` },
+          { name: "Settings", icon: <FaCog />, link: `/dashboard/${dashboardType}/settings` }
+        ];
+      default:
+        return <div>Invalid Dashboard Type</div>;
+    }
+  };
 
   // Filter the menuItems based on the search query
-  const filteredMenuItems = menuItems.filter(item =>
+  const filteredMenuItems = menuItems().filter(item =>
     item.name.toLowerCase().includes(searchQuery.toLowerCase())
   );
 

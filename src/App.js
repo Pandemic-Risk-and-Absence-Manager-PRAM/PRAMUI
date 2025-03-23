@@ -12,7 +12,7 @@ function App() {
         <Route path="/" element={<Login />} />
         <Route path="/dashboard/:dashboardType/*" element={<Dashboard />} />
         <Route path="/dashboard/:dashboardType/profile" element={<Profile />} />
-        <Route path="/dashboard/:dashboardType/requests" element={<MyRequests />} />
+        <Route path="/dashboard/:dashboardType/my-requests" element={<MyRequests />} />
         <Route path="/dashboard/:dashboardType/calendar" element={<Calendar />} />
         <Route path="/dashboard/:dashboardType/report-absence" element={<Profile />} />
         <Route path="/dashboard/:dashboardType/upload-documents" element={<Profile />} />

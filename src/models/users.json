@@ -32,7 +32,12 @@
     "hr": {
       "name": "Sarah Patel",
       "email": "sarah.patel@example.com",
+      "location": "London-HQ",
       "department": "HR",
-      "role": "HR Manager"
+      "role": "HR Manager",
+      "teams": "Resource Management",
+      "lineManager": "Rodrigo Fernandes",
+      "directReports": ["Rodrigo Fernandes", "N/A"],
+      "status": "Available"
     }
   }
