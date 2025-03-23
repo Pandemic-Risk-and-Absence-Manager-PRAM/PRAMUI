@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { FaBell } from 'react-icons/fa';
+import { MdNotificationImportant  } from 'react-icons/fa';
 
 const NotificationDropDown = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -25,7 +25,7 @@ const NotificationDropDown = () => {
   return (
     <div className="relative">
       <div className="flex items-center cursor-pointer border-r h-6 pr-2 mr-2" onClick={toggleDropdown}>
-        <FaBell className="text-gray-600 mr-2" />
+        <MdNotificationImportant  className="text-gray-600 mr-2" />
       </div>
 
       {/* User Notifications */}
