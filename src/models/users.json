@@ -27,12 +27,23 @@
       "teams": "Development",
       "lineManager": "Sandra Cooper",
       "directReports": ["Sandra Cooper", "Alex Johnson"],
-      "status": "Available"
+      "status": "Available",
+      "mobile": "+441234567",
+      "emergencyContact": "+4472345678",
+      "startDate": "10/03/2025"
     },
     "hr": {
       "name": "Sarah Patel",
       "email": "sarah.patel@example.com",
+      "location": "London-HQ",
       "department": "HR",
-      "role": "HR Manager"
+      "role": "HR Manager",
+      "teams": "Resource Management",
+      "lineManager": "Rodrigo Fernandes",
+      "directReports": ["Rodrigo Fernandes", "N/A"],
+      "status": "Available",
+      "mobile": "+441234567",
+      "emergencyContact": "+4472345678",
+      "startDate": "11/03/2025"
     }
   }
