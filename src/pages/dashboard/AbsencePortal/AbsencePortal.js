@@ -7,7 +7,7 @@ import { MdOutlineReport } from "react-icons/md";
 import { IoBook } from "react-icons/io5";
 import users from '../../../models/users.json';
 import { useParams, Link } from 'react-router-dom';
-import TimeBalances from '../../../components/time-balances/TimeBalances';
+import TimeBalances from '../../../components/overview/TimeBalances';
 
 const AbsencePortal = () => {
   const { dashboardType } = useParams();
