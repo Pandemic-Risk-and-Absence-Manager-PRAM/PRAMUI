@@ -1,7 +1,6 @@
 import { useParams, Link } from "react-router-dom";
-import { FaBars } from "react-icons/fa";
+import { FaBars, FaSun, FaMoon } from "react-icons/fa";
 import { useState, useEffect, useRef } from "react";
-import { FaSun, FaMoon } from "react-icons/fa";
 import users from "../../models/users.json";
 import logoLight from "../../assets/images/logo.png";
 import logoDark from "../../assets/images/logoDark.png";
@@ -14,59 +13,51 @@ const Header = ({ toggleNavigationBar }) => {
   const { dashboardType } = useParams();
   const user = users[dashboardType];
 
-  // Load dark mode from local storage or default to false
+  // Load dark mode from local storage
   const [darkMode, setDarkMode] = useState(() => localStorage.getItem("darkMode") === "true");
-  const toggleRef = useRef(null);
+  const dragStartX = useRef(null);
+  const hasToggled = useRef(false);
 
   // Toggle Dark Mode
   const toggleDarkMode = () => {
-    const newMode = !darkMode;
-    setDarkMode(newMode);
-    localStorage.setItem("darkMode", newMode);
+    setDarkMode((prevMode) => {
+      const newMode = !prevMode;
+      localStorage.setItem("darkMode", newMode);
+      document.documentElement.classList.toggle("dark", newMode);
+      return newMode;
+    });
+  };
 
-    // Apply dark mode class to <html> element
-    if (newMode) {
-      document.documentElement.classList.add("dark");
-    } else {
-      document.documentElement.classList.remove("dark");
+  // Ensure dark mode persists on reload
+  useEffect(() => {
+    document.documentElement.classList.toggle("dark", darkMode);
+  }, [darkMode]);
+
+  // Handle Drag Start
+  const handleDragStart = (event) => {
+    dragStartX.current = event.clientX || event.touches[0].clientX;
+    hasToggled.current = false;
+  };
+
+  // Handle Drag Move
+  const handleDragMove = (event) => {
+    if (dragStartX.current === null || hasToggled.current) return;
+
+    let currentX = event.clientX || event.touches[0].clientX;
+    let deltaX = currentX - dragStartX.current;
+
+    if (deltaX > 20 && !darkMode) {
+      toggleDarkMode();
+      hasToggled.current = true;
+    } else if (deltaX < -20 && darkMode) {
+      toggleDarkMode();
+      hasToggled.current = true;
     }
   };
 
-  // Ensure dark mode persists on page reload
-  useEffect(() => {
-    if (darkMode) {
-      document.documentElement.classList.add("dark");
-    } else {
-      document.documentElement.classList.remove("dark");
-    }
-  }, [darkMode]);
-
-  // Handle drag toggle
-  const handleDrag = (event) => {
-    event.preventDefault();
-    let startX = event.clientX || event.touches[0].clientX;
-
-    const onMove = (moveEvent) => {
-      let currentX = moveEvent.clientX || moveEvent.touches[0].clientX;
-      let delta = currentX - startX;
-      if (delta > 10 && !darkMode) {
-        toggleDarkMode();
-      } else if (delta < -10 && darkMode) {
-        toggleDarkMode();
-      }
-    };
-
-    const onEnd = () => {
-      document.removeEventListener("mousemove", onMove);
-      document.removeEventListener("mouseup", onEnd);
-      document.removeEventListener("touchmove", onMove);
-      document.removeEventListener("touchend", onEnd);
-    };
-
-    document.addEventListener("mousemove", onMove);
-    document.addEventListener("mouseup", onEnd);
-    document.addEventListener("touchmove", onMove);
-    document.addEventListener("touchend", onEnd);
+  // Handle Drag End
+  const handleDragEnd = () => {
+    dragStartX.current = null;
   };
 
   return (
@@ -81,30 +72,28 @@ const Header = ({ toggleNavigationBar }) => {
             MENU
           </div>
           <Link to={`/dashboard/${dashboardType}`} className="flex">
-            <img src={ darkMode? logoDark : logoLight } alt="Logo" className="w-[40px] mr-2" />
-            <img src={ darkMode? PRAMDark : PRAMLight } alt="PRAM" className="w-[100px] mr-2" />
+            <img src={darkMode ? logoDark : logoLight} alt="Logo" className="w-[40px] mr-2" />
+            <img src={darkMode ? PRAMDark : PRAMLight} alt="PRAM" className="w-[100px] mr-2" />
           </Link>
         </div>
 
         <div className="flex items-center gap-4">
-          {/* Dark Mode Toggle (Draggable with Icons) */}
           <div
-            ref={toggleRef}
-            onMouseDown={handleDrag}
-            onTouchStart={handleDrag}
+            onMouseDown={handleDragStart}
+            onTouchStart={handleDragStart}
+            onMouseMove={handleDragMove}
+            onTouchMove={handleDragMove}
+            onMouseUp={handleDragEnd}
+            onTouchEnd={handleDragEnd}
+            onClick={toggleDarkMode}
             className="relative w-16 h-6 bg-gray-300 dark:bg-gray-700 rounded-full flex items-center p-1 cursor-pointer transition-all"
           >
-            {/* Sun (Light Mode) */}
             <FaSun className="text-yellow-500 absolute left-1 text-sm" />
-
-            {/* Toggle Ball */}
             <div
               className={`w-5 h-5 bg-white dark:bg-gray-900 rounded-full shadow-md transform transition-transform ${
                 darkMode ? "translate-x-9" : "translate-x-0"
               }`}
             />
-
-            {/* Moon (Dark Mode) */}
             <FaMoon className="text-blue-500 absolute right-1 text-sm" />
           </div>
 
@@ -116,7 +105,6 @@ const Header = ({ toggleNavigationBar }) => {
         </div>
       </header>
 
-      {/* Push content down to prevent overlap */}
       <div className="pt-[49px]"></div>
     </div>
   );

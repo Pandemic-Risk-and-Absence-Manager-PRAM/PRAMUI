@@ -59,9 +59,11 @@ const NavigationBar = ({ isOpen, toggleNavigationBar }) => {
   );
 
   return (
-    <div className="flex">
-      <div className={`fixed bg-[#1F3557] dark:bg-gray-800 p-5 pt-8 ${isOpen ? "w-[280px]" : "w-15"} duration-300 flex flex-col transition-all`}>
-
+    <div 
+        className={`fixed left-0 top-0 bg-[#1F3557] dark:bg-gray-800 p-5 pt-[80px] transition-all duration-300 ${
+        isOpen ? "h-screen" : "h-screen"
+      } flex flex-col`}
+    >
         {/* Search Bar */}
         {isOpen && (
           <div className="mt-2 flex items-center bg-white dark:bg-gray-700 rounded-full p-2 transition-all">
@@ -78,7 +80,7 @@ const NavigationBar = ({ isOpen, toggleNavigationBar }) => {
         )}
 
         {/* Menu Items */}
-        <ul className="mt-6 flex-grow overflow-y-auto" style={{ fontFamily: 'Kanit, sans-serif', minHeight: isOpen ? '430px' : '630px'  }}>
+        <ul className="mt-6 flex-grow overflow-hidden" style={{ fontFamily: 'Kanit, sans-serif', minHeight: isOpen ? '430px' : '630px'  }}>
           {filteredMenuItems.map((item, index) => (
             <Link 
               to={item.link} 
@@ -102,7 +104,6 @@ const NavigationBar = ({ isOpen, toggleNavigationBar }) => {
           </div>
         )}
       </div>
-    </div>
   );
 };
 
