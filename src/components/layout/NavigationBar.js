@@ -83,7 +83,7 @@ const NavigationBar = ({ isOpen, toggleNavigationBar }) => {
             <Link 
               to={item.link} 
               key={index} 
-              className="flex items-center gap-x-4 p-3 text-gray-300 dark:text-gray-200 hover:bg-gray-700 dark:hover:bg-gray-600 rounded-md cursor-pointer transition-all duration-300"
+              className="flex items-center gap-x-4 p-3 text-gray-300 dark:text-gray-200 hover:bg-custom-green-27 dark:hover:bg-gray-600 rounded-md cursor-pointer transition-all duration-300"
             >
               <span className="text-lg">{item.icon}</span>
               {isOpen && <span className="text-base">{item.name}</span>}
@@ -93,7 +93,7 @@ const NavigationBar = ({ isOpen, toggleNavigationBar }) => {
 
         {/* Help Section */}
         {isOpen && (
-          <div className="p-4 bg-custom-green-27 dark:bg-gray-600 text-white rounded-lg text-center cursor-pointer transition-all duration-300">
+          <div className="p-4 bg-custom-green-27 text-white rounded-lg text-center cursor-pointer transition-all duration-300">
             <FaQuestionCircle className="text-3xl mx-auto mb-2" />
             <p className="mt-2 text-sm">Need Help with PRAM?</p>
             <button className="mt-2 bg-[#123352] dark:bg-gray-800 py-2 px-4 rounded-md text-sm transition-all duration-300">
