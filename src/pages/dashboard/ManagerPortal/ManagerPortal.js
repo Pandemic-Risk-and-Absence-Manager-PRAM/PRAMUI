@@ -1,11 +1,12 @@
 import React from 'react';
+import { useParams, Link } from 'react-router-dom';
+import users from '../../../models/users.json';
 import NavigationBar from '../../../components/layout/NavigationBar';
 import Header from '../../../components/layout/Header';
+import ManagerOverview from '../../../components/overview/ManagerOverview';
 import { FaUser, FaCalendarAlt, FaUpload, FaEye } from "react-icons/fa";
 import { BsFillFileEarmarkPlusFill } from "react-icons/bs";
 import { IoBook } from "react-icons/io5";
-import users from '../../../models/users.json';
-import { useParams, Link } from 'react-router-dom';
 
 const ManagerPortal = () => {
   const { dashboardType } = useParams();
@@ -36,6 +37,9 @@ const ManagerPortal = () => {
                   Welcome Back {user.name}!
                 </h1>
               </div>
+
+              {/* Team Capacity + Requests Overview */}
+              <ManagerOverview />
 
               {/* Dashboard Icons */}
               <div className="grid grid-cols-3 gap-8 flex-grow h-full" style={{ fontFamily: 'Kanit, sans-serif' }}>
