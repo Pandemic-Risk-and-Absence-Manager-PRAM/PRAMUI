@@ -1,11 +1,7 @@
 import React, { useState } from "react";
-import { useParams } from "react-router-dom";
 import { motion } from "framer-motion";
-import users from "../../models/users.json";
 
 const ManagerOverview = () => {
-    const { dashboardType } = useParams();
-    const user = users[dashboardType];
 
     // Progress Bar Values
     const teamCapacity = 75;

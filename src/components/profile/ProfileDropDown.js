@@ -1,31 +1,37 @@
-import React, { useState, useRef, useEffect } from 'react';
-import { FaCaretUp, FaCaretDown, FaUser } from 'react-icons/fa';
+import React, { useState, useRef, useEffect } from "react";
+import { FaCaretUp, FaCaretDown, FaUser } from "react-icons/fa";
 
 const ProfileDropDown = ({ user }) => {
     const [isOpen, setIsOpen] = useState(false);
     const dropdownRef = useRef(null);
+    const profileButtonRef = useRef(null);
     const [userImage, setUserImage] = useState(null);
 
     const toggleDropdown = () => {
-        setIsOpen(!isOpen);
+        setIsOpen((prev) => !prev);
     };
 
     const handleClickOutside = (event) => {
-        if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+        if (
+            dropdownRef.current &&
+            !dropdownRef.current.contains(event.target) &&
+            profileButtonRef.current &&
+            !profileButtonRef.current.contains(event.target)
+        ) {
             setIsOpen(false);
         }
     };
 
     useEffect(() => {
-        document.addEventListener('mousedown', handleClickOutside);
+        document.addEventListener("mousedown", handleClickOutside);
         return () => {
-            document.removeEventListener('mousedown', handleClickOutside);
+            document.removeEventListener("mousedown", handleClickOutside);
         };
     }, []);
 
     useEffect(() => {
         try {
-            const image = require(`../../assets/images/users/${user.name.replace(/\s+/g, '')}.png`);
+            const image = require(`../../assets/images/users/${user.name.replace(/\s+/g, "")}.png`);
             setUserImage(image);
         } catch (error) {
             setUserImage(null);
@@ -34,13 +40,14 @@ const ProfileDropDown = ({ user }) => {
 
     return (
         <div className="relative">
-            <div className="flex items-center cursor-pointer" onClick={toggleDropdown}>
+            {/* Clickable Profile Section */}
+            <div ref={profileButtonRef} className="flex items-center cursor-pointer" onClick={toggleDropdown}>
                 {userImage ? (
                     <img src={userImage} alt="User" className="w-[45px] mr-2 rounded-full" />
                 ) : (
                     <FaUser className="w-[45px] mr-2 text-gray-600 dark:text-gray-300" />
                 )}
-                <div className="pr-4 mr-0 text-gray-900 dark:text-white" style={{ fontFamily: 'Kanit, sans-serif' }}>
+                <div className="pr-4 mr-0 text-gray-900 dark:text-white" style={{ fontFamily: "Kanit, sans-serif" }}>
                     {user.name}
                 </div>
                 {isOpen ? (
@@ -50,7 +57,7 @@ const ProfileDropDown = ({ user }) => {
                 )}
             </div>
 
-            {/* User Profile Summary */}
+            {/* User Profile Summary Dropdown */}
             {isOpen && (
                 <div
                     ref={dropdownRef}
