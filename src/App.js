@@ -4,7 +4,7 @@ import Dashboard from './pages/dashboard/Dashboard';
 import Profile from './pages/shared/Profile/Profile.js';
 import Calendar from './components/calendar/Calendar.js';
 import MyRequests from './pages/dashboard/AbsencePortal/MyRequests/MyRequests.js';
-import EmployeeAbsenceRequest from "./pages/dashboard/ManagerPortal/EmployeeAbsenceRequest.js";
+import EmployeeAbsenceRequest from "./pages/dashboard/ManagerPortal/EmployeeAbsenceRequests/EmployeeAbsenceRequest.js";
 import ReportAbsence from './pages/dashboard/AbsencePortal/ReportAbsence/ReportAbsence.js';
 
 function App() {

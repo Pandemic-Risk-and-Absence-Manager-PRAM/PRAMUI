@@ -1,8 +1,8 @@
 import React from 'react';
-import Header from '../../../components/layout/Header';
-import NavigationBar from "../../../components/layout/NavigationBar";
+import Header from '../../../../components/layout/Header';
+import NavigationBar from "../../../../components/layout/NavigationBar";
 import './EmployeeAbsenceRequest.css';
-import Calendar from "../../../components/calendar/Calendar";
+import Calendar from "../../../../components/calendar/Calendar";
 
 const EmployeeAbsenceRequest = () => {
     const [isOpen, setIsOpen] = React.useState(true);
@@ -12,17 +12,19 @@ const EmployeeAbsenceRequest = () => {
     };
 
     return (
-        <div className="flex flex-col h-screen">
+        <div className="flex flex-col h-screen bg-gray-100 dark:bg-gray-800 transition-colors">
             <Header toggleNavigationBar={toggleNavigationBar} isOpen={isOpen} />
 
             <div className="flex flex-1">
                 <NavigationBar isOpen={isOpen} toggleNavigationBar={toggleNavigationBar} />
 
-                <div className="flex-1 min-h-screen">
-                    <div className="p-6 h-screen bg-gray-100" style={{ paddingLeft: isOpen ? "280px" : "100px", transition: "padding-left 0.3s ease" }}>
-                        <div className="max-w-5xl mx-auto bg-white rounded-lg shadow-md">
+                <div className="flex-1 min-h-screen transition-all" style={{ paddingLeft: isOpen ? "280px" : "100px" }}>
+                    <div className="p-6 h-screen bg-gray-100 dark:bg-gray-900 transition-colors">
+                        <div className="max-w-5xl mx-auto bg-white dark:bg-gray-800 rounded-lg shadow-md transition-colors">
                             <div className="p-6 w-full overflow-x-auto">
-                                <h1 className="text-3xl font-bold mb-6" style={{fontFamily: 'Kanit, sans-serif'}}>EMPLOYEE ABSENCE REQUESTS</h1>
+                                <h1 className="text-3xl font-bold mb-6 text-gray-900 dark:text-white" style={{ fontFamily: 'Kanit, sans-serif' }}>
+                                    MY REQUESTS
+                                </h1>
                                 <div className="flex space-x-4">
                                 {/*upper banner*/}
                                     <div className="out-sick">

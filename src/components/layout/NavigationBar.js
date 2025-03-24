@@ -83,7 +83,7 @@ const NavigationBar = ({ isOpen, toggleNavigationBar }) => {
             <Link 
               to={item.link} 
               key={index} 
-              className="flex items-center gap-x-4 p-3 text-gray-300 dark:text-gray-200 hover:bg-custom-green-27 dark:hover:bg-gray-600 rounded-md cursor-pointer transition-all duration-300"
+              className="flex items-center gap-x-4 p-3 text-gray-300 dark:text-gray-200 hover:bg-custom-green-27 dark:hover:bg-custom-green-27 rounded-md cursor-pointer transition-all duration-300"
             >
               <span className="text-lg">{item.icon}</span>
               {isOpen && <span className="text-base">{item.name}</span>}
