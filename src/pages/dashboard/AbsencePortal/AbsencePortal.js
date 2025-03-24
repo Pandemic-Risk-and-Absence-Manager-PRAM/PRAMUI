@@ -55,7 +55,7 @@ const AbsencePortal = () => {
                   <Link
                     key={path}
                     to={`/dashboard/${dashboardType}/${path}`}
-                    className="bg-[#cce3c7] dark:bg-gray-700 p-4 rounded-lg flex flex-col items-center
+                    className="bg-[#cce3c7] dark:bg-custom-green-27 p-4 rounded-lg flex flex-col items-center
                                       transition-colors duration-300 hover:bg-[#b2d1a8] dark:hover:bg-gray-600"
                   >
                     <span className="text-3xl mb-2">{icon}</span>

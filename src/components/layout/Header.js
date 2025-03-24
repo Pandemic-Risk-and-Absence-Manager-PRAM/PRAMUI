@@ -3,8 +3,10 @@ import { FaBars } from "react-icons/fa";
 import { useState, useEffect, useRef } from "react";
 import { FaSun, FaMoon } from "react-icons/fa";
 import users from "../../models/users.json";
-import logo from "../../assets/images/logo.png";
-import PRAM from "../../assets/images/PRAM.png";
+import logoLight from "../../assets/images/logo.png";
+import logoDark from "../../assets/images/logoDark.png";
+import PRAMLight from "../../assets/images/PRAM.png";
+import PRAMDark from "../../assets/images/PRAMDark.png";
 import NotificationDropDown from "../notifications/NotificationDropDown";
 import ProfileDropDown from "../profile/ProfileDropDown";
 
@@ -79,8 +81,8 @@ const Header = ({ toggleNavigationBar }) => {
             MENU
           </div>
           <Link to={`/dashboard/${dashboardType}`} className="flex">
-            <img src={logo} alt="Logo" className="w-[40px] mr-2" />
-            <img src={PRAM} alt="PRAM" className="w-[100px] mr-2" />
+            <img src={ darkMode? logoDark : logoLight } alt="Logo" className="w-[40px] mr-2" />
+            <img src={ darkMode? PRAMDark : PRAMLight } alt="PRAM" className="w-[100px] mr-2" />
           </Link>
         </div>
 
