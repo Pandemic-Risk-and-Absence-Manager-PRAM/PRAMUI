@@ -1,8 +1,8 @@
 import React from 'react';
 import { useParams, Link } from 'react-router-dom';
 import users from '../../../models/users.json';
-import NavigationBar from '../../../components/layout/NavigationBar';
 import Header from '../../../components/layout/Header';
+import NavigationBar from '../../../components/layout/NavigationBar';
 import ManagerOverview from '../../../components/overview/ManagerOverview';
 import { FaUser, FaCalendarAlt, FaUpload, FaEye } from "react-icons/fa";
 import { BsFillFileEarmarkPlusFill } from "react-icons/bs";

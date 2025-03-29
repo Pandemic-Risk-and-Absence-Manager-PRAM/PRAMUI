@@ -26,18 +26,17 @@ const Profile = () => {
   };
 
   return (
-    <div className="flex h-screen flex-col bg-gray-100 dark:bg-gray-800 transition-colors">
+    <div className="flex flex-col bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-white transition-all">
       <Header toggleNavigationBar={toggleNavigationBar} isOpen={isOpen} />
-
       <div className="flex flex-1">
         <NavigationBar isOpen={isOpen} toggleNavigationBar={toggleNavigationBar} />
-        
-        <div className="flex-1 min-h-screen transition-all" style={{ paddingLeft: isOpen ? "280px" : "15px" }}>
-          <div className="p-6 bg-gray-100 dark:bg-gray-900 transition-colors">
-            <div className="max-w-5xl mx-auto bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md transition-colors">
-              <h1 className="text-4xl font-bold text-gray-900 dark:text-white" style={{ fontFamily: 'Kanit, sans-serif' }}>
-                {user.name}
-              </h1>
+        <div className="flex-1 min-h-screen">
+        <div className="p-6 min-h-screen bg-gray-100 dark:bg-gray-900"
+             style={{ marginLeft: isOpen ? "280px" : "0px", transition: "margin-left 0.3s ease" }}>
+          <div className="max-w-5xl mx-auto bg-white dark:bg-gray-800 rounded-lg shadow-md transition-all">
+              <div className="p-6 w-full overflow-x-auto">
+                <h1 className="text-3xl font-bold mb-6 text-black dark:text-white" style={{ fontFamily: 'Kanit, sans-serif' }}>{user.name}</h1>
+
               
               <div className="flex items-center mt-4">
                 <div className="flex items-start">
@@ -75,6 +74,7 @@ const Profile = () => {
           </div>
         </div>
       </div>
+    </div>
     </div>
   );
 };
