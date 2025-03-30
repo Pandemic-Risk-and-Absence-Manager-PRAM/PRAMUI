@@ -1,0 +1,133 @@
+.flex-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding: 10px;
+}
+
+.flex-row {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+}
+
+.box-green {
+    background-color: #ecfdf5;
+    border-radius: 8px;
+    padding: 12px;
+    width: 350px;
+    display: flex;
+    flex-direction: column;
+    height: 100px;
+}
+
+.content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.top-section {
+    display: flex;
+    flex-direction: column;
+}
+
+.text-title {
+    font-weight: bold;
+    color: #1e293b;
+    font-size: 16px;
+}
+
+.text-upload-info {
+    font-size: 12px;
+    color: #64748b;
+    margin-top: 4px;
+}
+
+.bottom-section {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.text-date {
+    font-size: 14px;
+    color: #1e293b;
+    white-space: nowrap;
+}
+
+.box-red {
+    background-color: #fee2e2;
+    color: #dc2626;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: bold;
+    white-space: nowrap;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.test-result-container {
+    background-color: #f1f5f9;
+    padding: 1.5rem;
+    border-radius: 0.5rem;
+}
+
+.test-result-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.test-result-title {
+    color: #164e63;
+    font-size: 1.125rem;
+    font-weight: bold;
+}
+
+.download-button {
+    background-color: #3b82f6;
+    color: #ffffff;
+    font-size: 0.75rem;
+    padding: 0.5rem 1rem;
+    border-radius: 0.25rem;
+}
+
+.test-result-content {
+    background-color: #bfdbfe;
+    padding: 1rem;
+    margin-top: 1rem;
+    border-radius: 0.5rem;
+}
+
+.test-result-section {
+    background-color: #ffffff;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    margin-top: 1rem;
+}
+
+.test-result-section-title {
+    color: #164e63;
+    font-size: 1rem;
+    font-weight: bold;
+}
+
+.test-result-section-info {
+    color: #9ca3af;
+    font-size: 0.75rem;
+}
+
+.test-result-footer {
+    display: flex;
+    justify-content: space-between;
+    color: #9ca3af;
+    font-size: 0.75rem;
+    margin-top: 1rem;
+    border-top: 1px solid #e5e7eb;
+    padding-top: 0.5rem;
+}

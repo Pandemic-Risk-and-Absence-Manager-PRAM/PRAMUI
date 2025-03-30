@@ -6,6 +6,7 @@ import Calendar from './components/calendar/Calendar.js';
 import MyRequests from './pages/dashboard/AbsencePortal/MyRequests/MyRequests.js';
 import EmployeeAbsenceRequest from "./pages/dashboard/ManagerPortal/EmployeeAbsenceRequests/EmployeeAbsenceRequest.js";
 import ReportAbsence from './pages/dashboard/AbsencePortal/ReportAbsence/ReportAbsence.js';
+import ViewDocuments from "./pages/dashboard/ManagerPortal/ViewDocuments";
 
 function App() {
   return (
@@ -21,7 +22,7 @@ function App() {
         <Route path="/dashboard/:dashboardType/settings" element={<Profile />} />
 
         {/* Shared Pages - Manager + HR */}
-        <Route path="/dashboard/:dashboardType/view-documents" element={<Profile />} />
+        <Route path="/dashboard/:dashboardType/view-documents" element={<ViewDocuments />} />
         <Route path="/dashboard/:dashboardType/predictive-insights" element={<Profile />} />
 
         {/* Employee Pages  */}
