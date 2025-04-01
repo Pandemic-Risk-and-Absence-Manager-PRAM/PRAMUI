@@ -6,9 +6,15 @@
     padding: 10px;
 }
 
-.flex-row {
+.flex-column {
     display: flex;
     flex-direction: row;
+    gap: 1rem;
+}
+
+.flex-row {
+    display: flex;
+    flex-direction: column;
     gap: 1rem;
 }
 
@@ -61,6 +67,19 @@
 .box-red {
     background-color: #fee2e2;
     color: #dc2626;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: bold;
+    white-space: nowrap;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.box-green-small {
+    background-color: #bae6ba;
+    color: #249D26;
     padding: 6px 12px;
     border-radius: 20px;
     font-size: 12px;

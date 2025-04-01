@@ -6,7 +6,7 @@ import Calendar from './components/calendar/Calendar.js';
 import MyRequests from './pages/dashboard/AbsencePortal/MyRequests/MyRequests.js';
 import EmployeeAbsenceRequest from "./pages/dashboard/ManagerPortal/EmployeeAbsenceRequests/EmployeeAbsenceRequest.js";
 import ReportAbsence from './pages/dashboard/AbsencePortal/ReportAbsence/ReportAbsence.js';
-import ViewDocuments from "./pages/dashboard/ManagerPortal/ViewDocuments";
+import ViewDocuments from "./pages/shared/ViewDocuments/ViewDocuments";
 
 function App() {
   return (
