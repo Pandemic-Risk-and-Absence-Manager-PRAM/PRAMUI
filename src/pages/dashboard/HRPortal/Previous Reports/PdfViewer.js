@@ -5,7 +5,7 @@ pdfjs.GlobalWorkerOptions.workerSrc = '/pdf.worker.min.mjs';
 
 const PdfViewer = ({ pdfUrl }) => {
   const [pdf, setPdf] = useState(null);
-  
+
   // Load the PDF document when component mounts
   useEffect(() => {
     const loadPdf = async () => {
