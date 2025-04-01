@@ -7,6 +7,7 @@ import MyRequests from './pages/dashboard/AbsencePortal/MyRequests/MyRequests.js
 import EmployeeAbsenceRequest from "./pages/dashboard/ManagerPortal/EmployeeAbsenceRequests/EmployeeAbsenceRequest.js";
 import ReportAbsence from './pages/dashboard/AbsencePortal/ReportAbsence/ReportAbsence.js';
 import ViewDocuments from "./pages/shared/ViewDocuments/ViewDocuments";
+import PreviousReports from './pages/dashboard/HRPortal/Previous Reports/PreviousReports.js';
 
 function App() {
   return (
@@ -37,7 +38,7 @@ function App() {
 
         {/* HR Pages */}
         <Route path="/dashboard/:dashboardType/heatmap" element={<Profile />} />
-        <Route path="/dashboard/:dashboardType/previous-reports" element={<Profile />} />
+        <Route path="/dashboard/:dashboardType/previous-reports" element={<PreviousReports />} />
       </Routes>
     </Router>
     </div>
