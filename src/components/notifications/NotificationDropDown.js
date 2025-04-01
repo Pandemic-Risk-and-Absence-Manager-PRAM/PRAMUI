@@ -32,7 +32,7 @@ const NotificationDropDown = () => {
         <div className="relative">
             {/* Notification Bell Icon */}
             <div ref={bellRef} className="cursor-pointer relative" onClick={toggleDropdown}>
-                <FaBell className="text-gray-600 dark:text-gray-300 text-lg" />
+                <FaBell className="text-gray-600 dark:text-gray-300 text-2xl" />
                 {/* Notification Badge (if needed) */}
                 <span className="absolute top-0 right-0 bg-red-500 text-white text-[8px] rounded-full px-1">
                     2

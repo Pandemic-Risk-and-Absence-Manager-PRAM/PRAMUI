@@ -95,15 +95,17 @@ const NavigationBar = ({ isOpen, toggleNavigationBar }) => {
 
         {/* Help Section */}
         {isOpen && (
-          <div className="p-4 bg-custom-green-27 text-white rounded-lg text-center cursor-pointer transition-all duration-300">
-            <FaQuestionCircle className="text-3xl mx-auto mb-2" />
-            <p className="mt-2 text-sm">Need Help with PRAM?</p>
+        <div className="p-3 bg-custom-green-27 text-white rounded-lg text-center transition-all duration-300">
+          <FaQuestionCircle className="text-3xl mx-auto mb-2" />
+          <p className="mt-2 text-sm">Need Help with PRAM?</p>
+          <Link to={`/dashboard/${dashboardType}/help`}>
             <button className="mt-2 bg-[#123352] dark:bg-gray-800 py-2 px-4 rounded-md text-sm transition-all duration-300">
-              Go to help center
+              Go to Help Centre
             </button>
-          </div>
-        )}
-      </div>
+          </Link>
+        </div>
+      )}
+    </div>
   );
 };
 
