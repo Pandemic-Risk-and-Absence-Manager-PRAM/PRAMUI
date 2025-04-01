@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Header from '../../../components/layout/Header';
 import NavigationBar from "../../../components/layout/NavigationBar";
 import './ViewDocuments.css';
-import {useParams} from "react-router-dom";
+import { useParams } from "react-router-dom";
 
 const ViewDocuments = () => {
     const { dashboardType } = useParams();
@@ -39,33 +39,34 @@ const ViewDocuments = () => {
                                 <div className="flex-row">
                                     <div className="flex-column">
                                         {/*view documents sidebar*/}
-                                        <div className="box-green" onClick={toggleVisibility1} style={{ cursor: 'pointer' }}>
+                                        <div className="box-green dark:bg-gray-700 dark:text-white" onClick={toggleVisibility1} style={{ cursor: 'pointer' }}>
                                             <div className="content">
                                                 <div className="top-section">
-                                                    <div className="text-title">COVID PCR Test Result</div>
-                                                    <div className="text-upload-info">Uploaded by: Alex Johnson | Mar 5, 2025 at 14:32</div>
+                                                    <div className="text-title dark:text-white">COVID PCR Test Result</div>
+                                                    <div className="text-upload-info dark:text-gray-400">Uploaded by: Alex Johnson | Mar 5, 2025 at 14:32</div>
                                                 </div>
                                                 <div className="bottom-section">
-                                                    <div className="text-date">Mar 5, 2025</div>
-                                                    <div className="box-red">Positive</div>
+                                                    <div className="text-date dark:text-gray-400">Mar 5, 2025</div>
+                                                    <div className="box-red dark:bg-red-800 dark:text-white">Positive</div>
                                                 </div>
                                             </div>
                                         </div>
+                                        <div className="w-px bg-gray-300 dark:bg-gray-600 mx-4"></div>
                                         {/*document*/}
                                         {isVisible1 && (
-                                            <div className="test-result-container">
-                                                <div className="test-result-header">
-                                                    <h1 className="test-result-title">COVID PCR Test Result</h1>
-                                                    <a href="./covid-19-test-result" download="covid-19-test-result" className="download-button">
+                                            <div className="test-result-container flex-grow dark:bg-gray-700 dark:text-white">
+                                                <div className="test-result-header dark:border-b dark:border-gray-700">
+                                                    <h1 className="test-result-title dark:text-white ">COVID PCR Test Result</h1>
+                                                    <a href="./covid-19-test-result" download="covid-19-test-result" className="download-button dark:bg-gray-600 dark:border dark:border-gray-500 dark:text-white">
                                                         Download
                                                     </a>
                                                 </div>
                                                 <div className="test-result-content">
-                                                    <div className="test-result-section">
+                                                    <div className="test-result-section dark:border-b dark:border-gray-700">
                                                         <h2 className="test-result-section-title">COVID-19 RT-PCR Test Result</h2>
                                                         <p className="test-result-section-info">Test ID: COV-29938-Z | Date: Mar 5, 2025</p>
                                                     </div>
-                                                    <div className="test-result-section">
+                                                    <div className="test-result-section dark:border-b dark:border-gray-700">
                                                         <p className="test-result-section-info"><strong>Patient:</strong> Alex Johnson</p>
                                                         <p className="test-result-section-info"><strong>Sample Collection:</strong> Mar 4, 2025</p>
                                                         <p className="test-result-section-info"><strong>Sample Type:</strong> Nasopharyngeal Swab</p>
@@ -75,7 +76,7 @@ const ViewDocuments = () => {
                                                         <p className="test-result-section-info">SARS-CoV-2 RNA: Detected</p>
                                                     </div>
                                                 </div>
-                                                <div className="test-result-footer">
+                                                <div className="test-result-footer dark:border-t dark:border-gray-700">
                                                     <p>Uploaded by: Alex Johnson | Mar 5, 2025 at 14:32</p>
                                                     <p>| Page 1 of 1</p>
                                                 </div>
@@ -83,51 +84,51 @@ const ViewDocuments = () => {
                                         )}
                                     </div>
                                     {dashboardType === 'hr' && (
-                                    <div className="flex-column">
-                                        {/*2 document sidebar*/}
-                                        <div className="box-green" onClick={toggleVisibility2} style={{ cursor: 'pointer' }}>
-                                            <div className="content">
-                                                <div className="top-section">
-                                                    <div className="text-title">COVID At-Home Test</div>
-                                                    <div className="text-upload-info">Uploaded by: Pluto Smith | Apr 10, 2025 at 10:15</div>
-                                                </div>
-                                                <div className="bottom-section">
-                                                    <div className="text-date">Apr 10, 2025</div>
-                                                    <div className="box-green-small">Negative</div>
+                                        <div className="flex-column">
+                                            {/*2 document sidebar*/}
+                                            <div className="box-green dark:bg-gray-700 dark:text-white" onClick={toggleVisibility2} style={{ cursor: 'pointer' }}>
+                                                <div className="content">
+                                                    <div className="top-section">
+                                                        <div className="text-title dark:text-white">COVID At-Home Test</div>
+                                                        <div className="text-upload-info dark:text-gray-400">Uploaded by: Pluto Smith | Apr 10, 2025 at 10:15</div>
+                                                    </div>
+                                                    <div className="bottom-section">
+                                                        <div className="text-date dark:text-gray-400">Apr 10, 2025</div>
+                                                        <div className="box-green-small dark:bg-green-800 dark:text-white">Negative</div>
+                                                    </div>
                                                 </div>
                                             </div>
+                                            {/*2 document*/}
+                                            {isVisible2 && (
+                                                <div className="test-result-container dark:bg-gray-800 dark:text-white">
+                                                    <div className="test-result-header dark:border-b dark:border-gray-700">
+                                                        <h1 className="test-result-title">COVID At-Home Test</h1>
+                                                        <a href="./covid-19-test-result" download="covid-19-test-result" className="download-button dark:bg-gray-600 dark:border dark:border-gray-500 dark:text-white">
+                                                            Download
+                                                        </a>
+                                                    </div>
+                                                    <div className="test-result-content">
+                                                        <div className="test-result-section dark:border-b dark:border-gray-700">
+                                                            <h2 className="test-result-section-title">COVID At-Home Test Result</h2>
+                                                            <p className="test-result-section-info">Test ID: ANO-12345-X | Date: Apr 10, 2025</p>
+                                                        </div>
+                                                        <div className="test-result-section dark:border-b dark:border-gray-700">
+                                                            <p className="test-result-section-info"><strong>Patient:</strong> Pluto Smith</p>
+                                                            <p className="test-result-section-info"><strong>Sample Collection:</strong> Apr 9, 2025</p>
+                                                            <p className="test-result-section-info"><strong>Sample Type:</strong> Lateral Flow Swab</p>
+                                                        </div>
+                                                        <div className="test-result-section">
+                                                            <p className="test-result-section-title">Result: NEGATIVE</p>
+                                                            <p className="test-result-section-info">SARS-CoV-2 RNA: Not Detected</p>
+                                                        </div>
+                                                    </div>
+                                                    <div className="test-result-footer dark:border-t dark:border-gray-700">
+                                                        <p>Uploaded by: Pluto Smith | Apr 10, 2025 at 10:15</p>
+                                                        <p>| Page 1 of 1</p>
+                                                    </div>
+                                                </div>
+                                            )}
                                         </div>
-                                        {/*2 document*/}
-                                        {isVisible2 && (
-                                            <div className="test-result-container">
-                                                <div className="test-result-header">
-                                                    <h1 className="test-result-title">COVID At-Home Test</h1>
-                                                    <a href="./covid-19-test-result" download="covid-19-test-result" className="download-button">
-                                                        Download
-                                                    </a>
-                                                </div>
-                                                <div className="test-result-content">
-                                                    <div className="test-result-section">
-                                                        <h2 className="test-result-section-title">COVID At-Home Test Result</h2>
-                                                        <p className="test-result-section-info">Test ID: ANO-12345-X | Date: Apr 10, 2025</p>
-                                                    </div>
-                                                    <div className="test-result-section">
-                                                        <p className="test-result-section-info"><strong>Patient:</strong> Pluto Smith</p>
-                                                        <p className="test-result-section-info"><strong>Sample Collection:</strong> Apr 9, 2025</p>
-                                                        <p className="test-result-section-info"><strong>Sample Type:</strong> Lateral Flow Swab</p>
-                                                    </div>
-                                                    <div className="test-result-section">
-                                                        <p className="test-result-section-title">Result: NEGATIVE</p>
-                                                        <p className="test-result-section-info">SARS-CoV-2 RNA: Not Detected</p>
-                                                    </div>
-                                                </div>
-                                                <div className="test-result-footer">
-                                                    <p>Uploaded by: Pluto Smith | Apr 10, 2025 at 10:15</p>
-                                                    <p>| Page 1 of 1</p>
-                                                </div>
-                                            </div>
-                                        )}
-                                    </div>
                                     )}
                                 </div>
                             </div>

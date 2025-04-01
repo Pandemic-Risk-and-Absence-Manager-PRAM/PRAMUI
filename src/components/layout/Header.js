@@ -88,13 +88,13 @@ const Header = ({ toggleNavigationBar }) => {
             onClick={toggleDarkMode}
             className="relative w-16 h-6 bg-gray-300 dark:bg-gray-700 rounded-full flex items-center p-1 cursor-pointer transition-all"
           >
-            <FaSun className="text-yellow-500 absolute left-1 text-sm" />
+            <FaSun className="text-yellow-500 absolute left-1.5 text-sm z-10" />
             <div
               className={`w-5 h-5 bg-white dark:bg-gray-900 rounded-full shadow-md transform transition-transform ${
                 darkMode ? "translate-x-9" : "translate-x-0"
               }`}
             />
-            <FaMoon className="text-blue-500 absolute right-1 text-sm" />
+            <FaMoon className="text-blue-500 absolute right-1.5 text-sm" />
           </div>
 
           {/* Notifications */}

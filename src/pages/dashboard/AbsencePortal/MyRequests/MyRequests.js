@@ -42,8 +42,6 @@ const MyRequests = () => {
             <div className="max-w-5xl mx-auto bg-white dark:bg-gray-800 rounded-lg shadow-md transition-all">
                 <div className="p-6 w-full overflow-x-auto">
                     <h1 className="text-3xl font-bold mb-6 text-black dark:text-white" style={{ fontFamily: 'Kanit, sans-serif' }}>MY REQUESTS</h1>
-
-
                                 <div className="flex items-center mt-4">
                                     {/* Time Balances Section */}
                                     <div className="flex-1">
