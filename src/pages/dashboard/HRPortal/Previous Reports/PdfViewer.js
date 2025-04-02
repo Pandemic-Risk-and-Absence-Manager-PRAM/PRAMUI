@@ -1,14 +1,16 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import * as pdfjs from 'pdfjs-dist/legacy/build/pdf';
 
 pdfjs.GlobalWorkerOptions.workerSrc = '/pdf.worker.min.mjs';
 
 const PdfViewer = ({ pdfUrl }) => {
   const [pdf, setPdf] = useState(null);
+  const rendered = useRef(false); 
+  const containerRef = useRef(null);
 
-  // Load the PDF document when component mounts
   useEffect(() => {
     const loadPdf = async () => {
+      rendered.current = false; 
       const pdfDocument = await pdfjs.getDocument(pdfUrl).promise;
       setPdf(pdfDocument);
     };
@@ -17,37 +19,55 @@ const PdfViewer = ({ pdfUrl }) => {
   }, [pdfUrl]);
 
   useEffect(() => {
-    const renderPage = (pageNum) => {
-      pdf.getPage(pageNum).then((page) => {
-        // Create a new canvas for each page
-        const canvas = document.createElement('canvas');
-        const context = canvas.getContext('2d');
-        const viewport = page.getViewport({ scale: 1.5 });
+    if (!pdf || rendered.current) return;
+    rendered.current = true; 
 
-        // Set canvas dimensions to match the page size
-        canvas.width = viewport.width;
-        canvas.height = viewport.height;
+    const container = containerRef.current;
+    container.innerHTML = ''; 
 
-        // Render PDF page onto canvas
-        page.render({
-          canvasContext: context,
-          viewport: viewport,
-        });
+    const renderPage = async (pageNum) => {
+      const page = await pdf.getPage(pageNum);
+      const canvas = document.createElement('canvas');
+      const context = canvas.getContext('2d');
 
-        // Append the newly created canvas to the DOM
-        document.getElementById('pdf-container').appendChild(canvas);
-      });
+      const containerWidth = container.clientWidth;
+      const viewport = page.getViewport({ scale: 1 });
+
+      const scale = containerWidth / viewport.width;
+      const scaledViewport = page.getViewport({ scale });
+
+      canvas.width = scaledViewport.width;
+      canvas.height = scaledViewport.height;
+
+      await page.render({
+        canvasContext: context,
+        viewport: scaledViewport,
+      }).promise;
+
+      container.appendChild(canvas);
     };
 
-    if (pdf) {
-      // Render all pages of the PDF once the document is loaded
+    const renderAllPages = async () => {
       for (let pageNum = 1; pageNum <= pdf.numPages; pageNum++) {
-        renderPage(pageNum);
+        await renderPage(pageNum);
       }
-    }
-  }, [pdf, pdfUrl]); // Only re-run if `pdf` or `pdfUrl` changes
+    };
 
-  return <div id="pdf-container"></div>; // Container for dynamically appended canvases
+    renderAllPages();
+  }, [pdf]);
+
+  return (
+    <div
+      ref={containerRef}
+      style={{
+        width: '100%',
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        gap: '10px',
+      }}
+    />
+  );
 };
 
 export default PdfViewer;
