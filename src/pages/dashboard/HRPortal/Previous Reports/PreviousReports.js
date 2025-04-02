@@ -25,38 +25,35 @@ const PreviousReports = () => {
 
     const handleOptionClick = (option) => {
         console.log("handleOptionClick triggered with:", option.file);
-        setSelectedPDF([{ uri: option.file }]); //Set selected document
+        setSelectedPDF((prevSelected) =>
+            prevSelected && prevSelected.uri === option.file ? null : { uri: option.file }
+        );
     };
 
     React.useEffect(() => {
-        console.log("selectedPDF updated to:", selectedPDF); //Log selectedPDF changes
+        console.log("selectedPDF updated to:", selectedPDF);
     }, [selectedPDF]);
 
     return (
         <div className="flex flex-col bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-white transition-all">
             <Header toggleNavigationBar={toggleNavigationBar} isOpen={isOpen} />
-            
             <div className="flex flex-1">
                 <NavigationBar isOpen={isOpen} toggleNavigationBar={toggleNavigationBar} />
-                
                 <div className="flex-1 min-h-screen">
                     <div 
                         className="p-6 min-h-screen bg-gray-100 dark:bg-gray-900"
                         style={{ marginLeft: isOpen ? "280px" : "0px", transition: "margin-left 0.3s ease" }}
                     >
                         <div className="max-w-5xl mx-auto bg-white dark:bg-gray-800 rounded-lg shadow-md p-6">
-                            
                             <div className="flex">
-                                
-                                {/* LHS*/}
+                                {/* Left Sidebar */}
                                 <div className="w-1/4 pr-6 border-r border-gray-300 dark:border-gray-700">
                                     <h1 className="text-4xl font-bold text-black dark:text-white mb-4" style={{ fontFamily: 'Kanit, sans-serif' }}>
                                         PREVIOUS REPORTS
                                     </h1>
-
                                     {/* Search Bar */}
                                     <div className="flex items-center p-3 bg-gray-200 dark:bg-gray-700 rounded-full">
-                                        <FaSearch className="text-gray-700 dark:text-gray-300 ml-2" />
+                                        <FaSearch className="text-gray-700 dark:text-gray-300 ml-2 mr-1" />
                                         <input
                                             type="text"
                                             className="bg-transparent text-gray-700 dark:text-gray-200 w-full text-sm outline-none"
@@ -64,12 +61,9 @@ const PreviousReports = () => {
                                             value={searchQuery}
                                             onChange={(e) => setSearchQuery(e.target.value)}
                                         />
-                                        {searchQuery && (
-                                            <FaTimes className="text-gray-700 dark:text-gray-300 mr-2 cursor-pointer" onClick={() => setSearchQuery("")} />
-                                        )}
+                                        <FaTimes className="text-gray-700 dark:text-gray-300 mr-2 cursor-pointer" onClick={() => setSearchQuery("")} />
                                     </div>
-
-                                    {/* Nav Box */}
+                                    {/* Navigation */}
                                     <div className="mt-6 p-4 bg-[#1F3557] dark:bg-gray-600 text-white rounded-lg">
                                         <div className="flex flex-col gap-2">
                                             {filteredOptions.map((option, index) => (
@@ -85,7 +79,7 @@ const PreviousReports = () => {
                                         </div>
                                     </div>
                                 </div>
-                                {/* RIGHT SECTION */}
+                                {/* Right Content */}
                                 <div className="w-3/4 pl-6 flex flex-col">
                                     <h2 className="text-2xl font-bold mb-4" style={{ fontFamily: 'Kanit, sans-serif' }}>
                                         Document Preview
@@ -96,7 +90,7 @@ const PreviousReports = () => {
                                     >
                                         {selectedPDF ? (
                                             <div style={{ width: "95%", height: "600px" }}>
-                                                <PdfViewer pdfUrl={selectedPDF[0].uri} />
+                                                <PdfViewer pdfUrl={selectedPDF.uri} />
                                             </div>
                                         ) : (
                                             <p className="text-gray-500 p-4">Select a document from the side menu to preview...</p>
