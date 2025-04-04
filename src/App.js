@@ -8,6 +8,7 @@ import EmployeeAbsenceRequest from "./pages/dashboard/ManagerPortal/EmployeeAbse
 import ReportAbsence from './pages/dashboard/AbsencePortal/ReportAbsence/ReportAbsence.js';
 import ViewDocuments from "./pages/shared/ViewDocuments/ViewDocuments";
 import PreviousReports from './pages/dashboard/HRPortal/Previous Reports/PreviousReports.js';
+import Resources from "./pages/shared/Resources/Resources";
 
 function App() {
   return (
@@ -18,7 +19,7 @@ function App() {
         <Route path="/" element={<Login />} />
         <Route path="/dashboard/:dashboardType/*" element={<Dashboard />} />
         <Route path="/dashboard/:dashboardType/profile" element={<Profile />} />
-        <Route path="/dashboard/:dashboardType/resources" element={<Profile />} />
+        <Route path="/dashboard/:dashboardType/resources" element={<Resources />} />
         <Route path="/dashboard/:dashboardType/help" element={<Profile />} />
         <Route path="/dashboard/:dashboardType/settings" element={<Profile />} />
 
