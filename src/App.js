@@ -8,7 +8,7 @@ import EmployeeAbsenceRequest from "./pages/dashboard/ManagerPortal/EmployeeAbse
 import ReportAbsence from './pages/dashboard/AbsencePortal/ReportAbsence/ReportAbsence.js';
 import ViewDocuments from "./pages/shared/ViewDocuments/ViewDocuments";
 import PreviousReports from './pages/dashboard/HRPortal/Previous Reports/PreviousReports.js';
-import ManagerPredictiveInsights from './pages/dashboard/ManagerPortal/ManagerPredictiveInsights/ManagerPredictiveInsights.js';
+import ManagerPredictiveInsights from './pages/shared/ManagerPredictiveInsights/ManagerPredictiveInsights.js';
 
 function App() {
   return (

@@ -1,15 +1,16 @@
 import React, { useState, useMemo } from 'react';
-import Header from '../../../../components/layout/Header';
-import NavigationBar from '../../../../components/layout/NavigationBar';
+import Header from '../../../components/layout/Header';
+import NavigationBar from '../../../components/layout/NavigationBar';
 import './ManagerPredictiveInsights.css';
+import { useParams } from "react-router-dom";
 
 const ManagerPredictiveInsights = () => {
-
     const [isOpen, setIsOpen] = useState(true);
     const [currentPage, setCurrentPage] = useState(0);
     const [selectedLocation, setSelectedLocation] = useState('london');
     const [currentMonth, setCurrentMonth] = useState(5); 
     const [currentDate] = useState(25);
+    const { dashboardType } = useParams();
 
 
     const toggleNavigationBar = () => {
@@ -110,8 +111,8 @@ const ManagerPredictiveInsights = () => {
                                 
                                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
                                     <div className="absences-by-team">
-                                        <h2 className="text-xl font-semibold mb-4">Absences by Team</h2>
-                                        
+                                        {dashboardType === 'manager' && (<h2 className="text-xl font-semibold mb-4">Absences by Team</h2>)}
+                                        {dashboardType === 'hr' && (<h2 className="text-xl font-semibold mb-4">Absences by department</h2>)}
                                         <div className="date-navigator">
                                             <button className="nav-arrow" onClick={goToPreviousMonth}>&lt;</button>
                                             <span className="date">{monthNames[currentMonth]} {currentDate}</span>
