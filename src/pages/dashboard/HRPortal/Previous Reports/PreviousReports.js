@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { FaTimes, FaSearch } from "react-icons/fa";
 import Header from "../../../../components/layout/Header";
 import NavigationBar from "../../../../components/layout/NavigationBar";
-import PdfViewer from './PdfViewer';
+import PdfViewer from '../../../shared/PdfViewer';
 
 const PreviousReports = () => {
     const [isOpen, setIsOpen] = useState(true);
