@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useMemo } from 'react';
 import Header from '../../../../components/layout/Header';
 import NavigationBar from '../../../../components/layout/NavigationBar';
 import './ManagerPredictiveInsights.css';
@@ -21,12 +21,22 @@ const ManagerPredictiveInsights = () => {
         "JULY", "AUGUST", "SEPTEMBER", "OCTOBER", "NOVEMBER", "DECEMBER"
     ];
 
-    const teamDataByMonth = Array.from({ length: 12 }, () => ({
-        team1: Math.floor(Math.random() * 8) + 1,
-        team2: Math.floor(Math.random() * 10) + 1,
-        team3: Math.floor(Math.random() * 5) + 1,
-        team4: Math.floor(Math.random() * 7) + 1,
-    }));
+    const teamDataByMonth = useMemo(() => {
+        return [
+            { team1: 3, team2: 7, team3: 2, team4: 6 },  
+            { team1: 5, team2: 4, team3: 3, team4: 0 },  
+            { team1: 2, team2: 8, team3: 3, team4: 0 },  
+            { team1: 10, team2: 0, team3: 0, team4: 0 }, 
+            { team1: 3, team2: 3, team3: 3, team4: 3 },  
+            { team1: 4, team2: 6, team3: 2, team4: 0 },  
+            { team1: 5, team2: 5, team3: 0, team4: 0 },  
+            { team1: 3, team2: 4, team3: 2, team4: 5 },  
+            { team1: 2, team2: 2, team3: 2, team4: 2 },  
+            { team1: 0, team2: 8, team3: 0, team4: 0 },  
+            { team1: 8, team2: 3, team3: 0, team4: 0 },  
+            { team1: 2, team2: 3, team3: 4, team4: 5 }   
+        ];
+    }, []);
 
     const goToPreviousMonth = () => {
         let newMonth = currentMonth;
@@ -46,6 +56,22 @@ const ManagerPredictiveInsights = () => {
             newMonth = newMonth + 1;
         }
         setCurrentMonth(newMonth);
+    };
+
+    const goToPreviousNews = () => {
+        let newPage = currentPage;
+        if (newPage > 0) {
+            newPage = newPage - 1;
+        }
+        setCurrentPage(newPage);
+    };
+    
+    const goToNextNews = () => {
+        let newPage = currentPage;
+        if (newPage < newsItems.length - 1) {
+            newPage = newPage + 1;
+        }
+        setCurrentPage(newPage);
     };
 
     const handleLocationChange = (e) => {
@@ -192,13 +218,7 @@ const ManagerPredictiveInsights = () => {
                                             <div className="news-pagination">
                                                 <button 
                                                     className="pagination-button back-button" 
-                                                    onClick={() => {
-                                                        let newPage = currentPage;
-                                                        if (newPage > 0) {
-                                                            newPage = newPage - 1;
-                                                        }
-                                                        setCurrentPage(newPage);
-                                                    }}
+                                                    onClick={goToPreviousNews}
                                                     disabled={currentPage === 0}
                                                 >
                                                     Back
@@ -209,22 +229,14 @@ const ManagerPredictiveInsights = () => {
                                                         <span 
                                                             key={index} 
                                                             className={`pagination-dot ${index === currentPage ? 'active' : ''}`}
-                                                            onClick={() => {
-                                                                setCurrentPage(index);
-                                                            }}
+                                                            onClick={() => setCurrentPage(index)}
                                                         ></span>
                                                     ))}
                                                 </div>
                                                 
                                                 <button 
                                                     className="pagination-button next-button"
-                                                    onClick={() => {
-                                                        let newPage = currentPage;
-                                                        if (newPage < newsItems.length - 1) {
-                                                            newPage = newPage + 1;
-                                                        }
-                                                        setCurrentPage(newPage);
-                                                    }}
+                                                    onClick={goToNextNews}
                                                     disabled={currentPage === newsItems.length - 1}
                                                 >
                                                     Next
