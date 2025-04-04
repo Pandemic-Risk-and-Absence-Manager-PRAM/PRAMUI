@@ -8,6 +8,7 @@ import EmployeeAbsenceRequest from "./pages/dashboard/ManagerPortal/EmployeeAbse
 import ReportAbsence from './pages/dashboard/AbsencePortal/ReportAbsence/ReportAbsence.js';
 import ViewDocuments from "./pages/shared/ViewDocuments/ViewDocuments";
 import PreviousReports from './pages/dashboard/HRPortal/Previous Reports/PreviousReports.js';
+import ManagerPredictiveInsights from './pages/shared/ManagerPredictiveInsights/ManagerPredictiveInsights.js';
 import Resources from "./pages/shared/Resources/Resources";
 
 function App() {
@@ -25,7 +26,7 @@ function App() {
 
         {/* Shared Pages - Manager + HR */}
         <Route path="/dashboard/:dashboardType/view-documents" element={<ViewDocuments />} />
-        <Route path="/dashboard/:dashboardType/predictive-insights" element={<Profile />} />
+        <Route path="/dashboard/:dashboardType/predictive-insights" element={<ManagerPredictiveInsights />} />
 
         {/* Employee Pages  */}
         <Route path="/dashboard/:dashboardType/my-requests" element={<MyRequests />} />
