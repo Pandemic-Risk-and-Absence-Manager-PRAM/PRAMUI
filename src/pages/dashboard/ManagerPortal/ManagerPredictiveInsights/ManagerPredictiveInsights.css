@@ -1,9 +1,8 @@
-/* Main layout styles */
+
 .flex-1 {
     flex: 1 1 0%;
 }
 
-/* Absences by team section */
 .absences-by-team {
     border-radius: 0.5rem;
     background-color: #ffffff;
@@ -49,7 +48,7 @@
     justify-content: center;
 }
 
-/* SVG styles will be applied directly to the SVG element */
+
 
 .team-legend {
     display: flex;
@@ -187,7 +186,7 @@
     background-color: #3b82f6;
 }
 
-/* Confirmed Cases section */
+
 .confirmed-cases {
     margin-top: 2rem;
     border-radius: 0.5rem;
@@ -309,7 +308,7 @@
     color: #6b7280;
 }
 
-/* Responsive adjustments */
+
 @media (max-width: 768px) {
     .grid-cols-1 {
         grid-template-columns: 1fr;

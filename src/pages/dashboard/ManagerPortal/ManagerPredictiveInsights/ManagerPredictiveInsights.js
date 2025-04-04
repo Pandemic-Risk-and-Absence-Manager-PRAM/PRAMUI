@@ -4,12 +4,18 @@ import NavigationBar from '../../../../components/layout/NavigationBar';
 import './ManagerPredictiveInsights.css';
 
 const ManagerPredictiveInsights = () => {
+
     const [isOpen, setIsOpen] = useState(true);
     const [currentPage, setCurrentPage] = useState(0);
     const [selectedLocation, setSelectedLocation] = useState('london');
     const [currentMonth, setCurrentMonth] = useState(5); 
-    const [currentDate, setCurrentDate] = useState(25);
-    
+    const [currentDate] = useState(25);
+
+
+    const toggleNavigationBar = () => {
+        setIsOpen(!isOpen);
+    };
+
     const monthNames = [
         "JANUARY", "FEBRUARY", "MARCH", "APRIL", "MAY", "JUNE", 
         "JULY", "AUGUST", "SEPTEMBER", "OCTOBER", "NOVEMBER", "DECEMBER"
@@ -22,20 +28,28 @@ const ManagerPredictiveInsights = () => {
         team4: Math.floor(Math.random() * 7) + 1,
     }));
 
-    const toggleNavigationBar = () => {
-        setIsOpen(!isOpen);
-    };
-    
-    const handleLocationChange = (e) => {
-        setSelectedLocation(e.target.value);
-    };
-    
     const goToPreviousMonth = () => {
-        setCurrentMonth(prev => (prev === 0 ? 11 : prev - 1));
+        let newMonth = currentMonth;
+        if (newMonth === 0) {
+            newMonth = 11;
+        } else {
+            newMonth = newMonth - 1;
+        }
+        setCurrentMonth(newMonth);
     };
     
     const goToNextMonth = () => {
-        setCurrentMonth(prev => (prev === 11 ? 0 : prev + 1));
+        let newMonth = currentMonth;
+        if (newMonth === 11) {
+            newMonth = 0;
+        } else {
+            newMonth = newMonth + 1;
+        }
+        setCurrentMonth(newMonth);
+    };
+
+    const handleLocationChange = (e) => {
+        setSelectedLocation(e.target.value);
     };
 
     const newsItems = [
@@ -53,19 +67,19 @@ const ManagerPredictiveInsights = () => {
         }
     ];
 
-    return (
+    return(
         <div className="flex flex-col h-screen bg-gray-100 dark:bg-gray-800 transition-colors">
-            <Header toggleNavigationBar={toggleNavigationBar} isOpen={isOpen} />
+        <Header toggleNavigationBar={toggleNavigationBar} isOpen={isOpen} />
 
-            <div className="flex flex-1">
-                <NavigationBar isOpen={isOpen} toggleNavigationBar={toggleNavigationBar} />
-                
-                <div className="flex-1 min-h-screen transition-all" style={{ paddingLeft: isOpen ? "280px" : "100px" }}>
-                    <div className="p-6 h-screen bg-gray-100 dark:bg-gray-900 transition-colors">
-                        <div className="max-w-5xl mx-auto bg-white dark:bg-gray-800 rounded-lg shadow-md transition-colors">
-                            <div className="p-6 w-full overflow-x-auto">
-                                <h1 className="text-3xl font-bold mb-6 text-gray-900 dark:text-white" style={{ fontFamily: 'Kanit, sans-serif' }}>
-                                    PREDICTIVE INSIGHTS
+        <div className="flex flex-1">
+            <NavigationBar isOpen={isOpen} toggleNavigationBar={toggleNavigationBar} />
+            
+            <div className="flex-1 min-h-screen transition-all" style={{ paddingLeft: isOpen ? "280px" : "100px" }}>
+                <div className="p-6 h-screen bg-gray-100 dark:bg-gray-900 transition-colors">
+                    <div className="max-w-5xl mx-auto bg-white dark:bg-gray-800 rounded-lg shadow-md transition-colors">
+                        <div className="p-6 w-full overflow-x-auto">
+                            <h1 className="text-3xl font-bold mb-6 text-gray-900 dark:text-white" style={{ fontFamily: 'Kanit, sans-serif' }}>
+                                PREDICTIVE INSIGHTS
                                 </h1>
                                 
                                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
@@ -77,16 +91,16 @@ const ManagerPredictiveInsights = () => {
                                             <span className="date">{monthNames[currentMonth]} {currentDate}</span>
                                             <button className="nav-arrow" onClick={goToNextMonth}>&gt;</button>
                                         </div>
-                                        
+
                                         <div className="pie-chart-container">
                                             <div className="pie-chart">
                                                 <svg width="220" height="220" viewBox="0 0 220 220">
-                                                    {/* Circle background */}
+                                                  
                                                     <circle cx="110" cy="110" r="100" fill="white" />
+
                                                     
-                                                    {/* Dynamic pie chart based on current month data */}
                                                     <g>
-                                                        {/* Calculate the total for percentages */}
+                                                   
                                                         {(() => {
                                                             const currentData = teamDataByMonth[currentMonth];
                                                             const total = currentData.team1 + currentData.team2 + 
@@ -134,11 +148,11 @@ const ManagerPredictiveInsights = () => {
                                                         })()}
                                                     </g>
                                                     
-                                                    {/* Center circle - can be used for overlay effect */}
+                                                    {}
                                                     <circle cx="110" cy="110" r="40" fill="#F3F4F6" fillOpacity="0.3" />
                                                 </svg>
                                             </div>
-                                            
+
                                             <div className="team-legend">
                                                 <div className="team-item">
                                                     <span className="team-color team1"></span>
@@ -178,7 +192,13 @@ const ManagerPredictiveInsights = () => {
                                             <div className="news-pagination">
                                                 <button 
                                                     className="pagination-button back-button" 
-                                                    onClick={() => setCurrentPage(prev => Math.max(0, prev - 1))}
+                                                    onClick={() => {
+                                                        let newPage = currentPage;
+                                                        if (newPage > 0) {
+                                                            newPage = newPage - 1;
+                                                        }
+                                                        setCurrentPage(newPage);
+                                                    }}
                                                     disabled={currentPage === 0}
                                                 >
                                                     Back
@@ -189,14 +209,22 @@ const ManagerPredictiveInsights = () => {
                                                         <span 
                                                             key={index} 
                                                             className={`pagination-dot ${index === currentPage ? 'active' : ''}`}
-                                                            onClick={() => setCurrentPage(index)}
+                                                            onClick={() => {
+                                                                setCurrentPage(index);
+                                                            }}
                                                         ></span>
                                                     ))}
                                                 </div>
                                                 
                                                 <button 
                                                     className="pagination-button next-button"
-                                                    onClick={() => setCurrentPage(prev => Math.min(newsItems.length - 1, prev + 1))}
+                                                    onClick={() => {
+                                                        let newPage = currentPage;
+                                                        if (newPage < newsItems.length - 1) {
+                                                            newPage = newPage + 1;
+                                                        }
+                                                        setCurrentPage(newPage);
+                                                    }}
                                                     disabled={currentPage === newsItems.length - 1}
                                                 >
                                                     Next
@@ -231,14 +259,14 @@ const ManagerPredictiveInsights = () => {
                                                                             <div className="line-chart-container">
                                         <div className="line-chart">
                                             <svg width="100%" height="100%" viewBox="0 0 1000 300">
-                                                {/* Background grid lines */}
+                                                {}
                                                 <line x1="40" y1="50" x2="950" y2="50" stroke="#E5E7EB" strokeWidth="1" />
                                                 <line x1="40" y1="100" x2="950" y2="100" stroke="#E5E7EB" strokeWidth="1" />
                                                 <line x1="40" y1="150" x2="950" y2="150" stroke="#E5E7EB" strokeWidth="1" />
                                                 <line x1="40" y1="200" x2="950" y2="200" stroke="#E5E7EB" strokeWidth="1" />
                                                 <line x1="40" y1="250" x2="950" y2="250" stroke="#E5E7EB" strokeWidth="1" />
                                                 
-                                                {/* 2024 Line (gray) */}
+                                                {}
                                                 <path 
                                                     d="M40,200 L120,180 L200,170 L280,160 L360,155 L440,160 L520,150 L600,145 L680,150 L760,140 L840,145 L920,150" 
                                                     fill="none" 
@@ -246,7 +274,7 @@ const ManagerPredictiveInsights = () => {
                                                     strokeWidth="2" 
                                                 />
                                                 
-                                                {/* 2025 Line (blue) */}
+                                                {}
                                                 <path 
                                                     d="M40,180 L120,160 L200,150 L280,145 L360,140 L440,145 L520,130 L600,120 L680,110 L760,105 L840,90 L920,50" 
                                                     fill="none" 
@@ -254,7 +282,7 @@ const ManagerPredictiveInsights = () => {
                                                     strokeWidth="2" 
                                                 />
                                                 
-                                                {/* Data points for 2024 */}
+                                                {}
                                                 <circle cx="40" cy="200" r="3" fill="#9CA3AF" />
                                                 <circle cx="120" cy="180" r="3" fill="#9CA3AF" />
                                                 <circle cx="200" cy="170" r="3" fill="#9CA3AF" />
@@ -268,7 +296,7 @@ const ManagerPredictiveInsights = () => {
                                                 <circle cx="840" cy="145" r="3" fill="#9CA3AF" />
                                                 <circle cx="920" cy="150" r="3" fill="#9CA3AF" />
                                                 
-                                                {/* Data points for 2025 */}
+                                                {}
                                                 <circle cx="40" cy="180" r="3" fill="#3B82F6" />
                                                 <circle cx="120" cy="160" r="3" fill="#3B82F6" />
                                                 <circle cx="200" cy="150" r="3" fill="#3B82F6" />
@@ -282,7 +310,7 @@ const ManagerPredictiveInsights = () => {
                                                 <circle cx="840" cy="90" r="3" fill="#3B82F6" />
                                                 <circle cx="920" cy="50" r="3" fill="#3B82F6" />
                                                 
-                                                {/* Year labels at the end of each line */}
+                                                {}
                                                 <text x="950" y="150" fill="#9CA3AF" fontSize="12" fontWeight="500" textAnchor="start" dominantBaseline="middle">2024</text>
                                                 <text x="950" y="50" fill="#3B82F6" fontSize="12" fontWeight="500" textAnchor="start" dominantBaseline="middle">2025</text>
                                             </svg>
@@ -301,7 +329,7 @@ const ManagerPredictiveInsights = () => {
                                         </div>
                                         
                                         <div className="line-chart-legend">
-                                            {/* Removing the legend items since we now have labels directly on the chart */}
+                                            {}
                                         </div>
                                     </div>
                                 </div>
