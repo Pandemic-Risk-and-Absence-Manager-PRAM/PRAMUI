@@ -21,7 +21,6 @@ const NavigationBar = ({ isOpen, toggleNavigationBar }) => {
           { name: "Report Absence", icon: <MdOutlineReport />, link: `/dashboard/${dashboardType}/report-absence` },
           { name: "Upload Documents", icon: <FaUpload />, link: `/dashboard/${dashboardType}/upload-documents` },
           { name: "Resources", icon: <IoBook />, link: `/dashboard/${dashboardType}/resources` },
-          { name: "Help", icon: <FaQuestionCircle />, link: `/dashboard/${dashboardType}/help` },
           { name: "Settings", icon: <FaCog />, link: `/dashboard/${dashboardType}/settings` }
         ];
       case 'manager':
@@ -33,7 +32,6 @@ const NavigationBar = ({ isOpen, toggleNavigationBar }) => {
           { name: "View Documents", icon: <FaUpload />, link: `/dashboard/${dashboardType}/view-documents` },
           { name: "Predictive Insights", icon: <FaEye />, link: `/dashboard/${dashboardType}/predictive-insights` },
           { name: "Resources", icon: <IoBook />, link: `/dashboard/${dashboardType}/resources` },
-          { name: "Help", icon: <FaQuestionCircle />, link: `/dashboard/${dashboardType}/help` },
           { name: "Settings", icon: <FaCog />, link: `/dashboard/${dashboardType}/settings` }
         ];
       case 'hr':
@@ -45,7 +43,6 @@ const NavigationBar = ({ isOpen, toggleNavigationBar }) => {
           { name: "Predictive Insights", icon: <FaEye />, link: `/dashboard/${dashboardType}/predictive-insights` },
           { name: "Previous Reports", icon: <FaBookAtlas />, link: `/dashboard/${dashboardType}/previous-reports` },
           { name: "Resources", icon: <IoBook />, link: `/dashboard/${dashboardType}/resources` },
-          { name: "Help", icon: <FaQuestionCircle />, link: `/dashboard/${dashboardType}/help` },
           { name: "Settings", icon: <FaCog />, link: `/dashboard/${dashboardType}/settings` }
         ];
       default:

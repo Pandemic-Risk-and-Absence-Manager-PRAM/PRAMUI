@@ -97,8 +97,9 @@ const Header = ({ toggleNavigationBar }) => {
             <FaMoon className="text-blue-500 absolute right-1.5 text-sm" />
           </div>
 
-          {/* Notifications */}
-          <NotificationDropDown />
+          <div className="flex items-center border-r border-gray-300 dark:border-white-700 pr-4">
+            <NotificationDropDown />
+          </div>
 
           {/* User Profile */}
           <ProfileDropDown user={user} />
