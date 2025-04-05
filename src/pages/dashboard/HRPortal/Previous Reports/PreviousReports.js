@@ -10,9 +10,9 @@ const PreviousReports = () => {
     const [selectedPDF, setSelectedPDF] = useState(null);
 
     const navigationOptions = [
-        { name: "March 2025", file: "/documents/March2025.pdf" },
-        { name: "February 2025", file: "/documents/February2025.pdf" },
-        { name: "January 2025", file: "/documents/January2025.pdf" }
+        { name: "January 2025", file: "/documents/previous-reports/January2025.pdf" },
+        { name: "February 2025", file: "/documents/previous-reports/February2025.pdf" },
+        { name: "March 2025", file: "/documents/previous-reports/March2025.pdf" },
     ];
 
     const filteredOptions = navigationOptions.filter((option) =>
@@ -80,16 +80,28 @@ const PreviousReports = () => {
                                     </div>
                                 </div>
                                 {/* Right Content */}
-                                <div className="w-3/4 pl-6 flex flex-col">
+                                <div className="w-3/4 pl-6 flex flex-col relative">
                                     <h2 className="text-2xl font-bold mb-4" style={{ fontFamily: 'Kanit, sans-serif' }}>
                                         Document Preview
                                     </h2>
+
+                                    {/* Download button */}
+                                    {selectedPDF && (
+                                        <a
+                                            href={selectedPDF.uri}
+                                            download
+                                            className="absolute top-0 right-0 mt-1 mr-1 bg-green-800 text-white px-4 py-2 rounded-md text-sm hover:bg-green-900 transition"
+                                        >
+                                            Download Report
+                                        </a>
+                                    )}
+
                                     <div 
-                                        className="border rounded-lg shadow-md overflow-y-auto overflow-x-auto"
-                                        style={{ maxHeight: "700px", width: "100%", display: "flex", justifyContent: "center" }}
+                                        className="border rounded-lg shadow-md"
+                                        style={{ width: "100%", display: "flex", justifyContent: "center" }}
                                     >
                                         {selectedPDF ? (
-                                            <div style={{ width: "95%", height: "600px" }}>
+                                            <div style={{ width: "95%" }}>
                                                 <PdfViewer pdfUrl={selectedPDF.uri} />
                                             </div>
                                         ) : (
