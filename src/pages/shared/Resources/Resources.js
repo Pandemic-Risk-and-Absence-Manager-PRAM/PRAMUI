@@ -38,23 +38,23 @@ const Resources = () => {
     }, [selectedPDF]);
 
     return (
-        <div className="flex flex-col h-screen bg-gray-100 dark:bg-gray-800 transition-colors">
+        <div className="flex flex-col bg-gray-100 dark:bg-gray-800 transition-colors">
             <Header toggleNavigationBar={toggleNavigationBar} isOpen={isOpen} />
 
             <div className="flex flex-1">
                 <NavigationBar isOpen={isOpen} toggleNavigationBar={toggleNavigationBar} />
 
                 <div className="flex-1 min-h-screen transition-all" style={{ paddingLeft: isOpen ? "280px" : "100px" }}>
-                    <div className="p-6 h-screen bg-gray-100 dark:bg-gray-900 transition-colors">
+                    <div className="p-6 min-h-screen bg-gray-100 dark:bg-gray-900 transition-colors">
                         <div className="max-w-5xl mx-auto bg-white dark:bg-gray-800 rounded-lg shadow-md transition-colors">
                             <div className="p-6 w-full overflow-x-auto">
                                 <h1 className="text-3xl font-bold mb-6 text-gray-900 dark:text-white" style={{ fontFamily: 'Kanit, sans-serif' }}>
                                     RESOURCES
                                 </h1>
-                                <div className="w-[907px] bg-blue-50 p-4 rounded-md">
-                                    <div className="text-cyan-900 text-lg font-bold">Recent Updates</div>
-                                    <div className="text-cyan-900 text-sm mt-2">New sick leave policy due to pandemic situation - Updated Mar 1, 2025</div>
-                                    <div className="text-cyan-900 text-sm mt-1">Return to office guidelines for recovered employees - Updated Feb 15, 2025</div>
+                                <div className="w-[907px] bg-blue-50 dark:bg-gray-700 p-4 rounded-md">
+                                    <div className="text-cyan-900 text-lg font-bold dark:text-white">Recent Updates</div>
+                                    <div className="text-cyan-900 text-sm mt-2 dark:text-white">New sick leave policy due to pandemic situation - Updated Mar 1, 2025</div>
+                                    <div className="text-cyan-900 text-sm mt-1 dark:text-white">Return to office guidelines for recovered employees - Updated Feb 15, 2025</div>
                                 </div>
                                 <div className="flex p-4">
                                     {/* sidebar */}

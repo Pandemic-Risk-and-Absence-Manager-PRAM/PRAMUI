@@ -36,7 +36,7 @@ const ViewDocuments = () => {
                                 <h1 className="text-3xl font-bold mb-6 text-gray-900 dark:text-white" style={{ fontFamily: 'Kanit, sans-serif' }}>
                                     VIEW DOCUMENTS
                                 </h1>
-                                <div className="flex-row">
+                                <div className="flex flex-row gap-6">
                                     <div className="flex-column">
                                         {/*view documents sidebar*/}
                                         <div className="box-green dark:bg-gray-700 dark:text-white" onClick={toggleVisibility1} style={{ cursor: 'pointer' }}>
