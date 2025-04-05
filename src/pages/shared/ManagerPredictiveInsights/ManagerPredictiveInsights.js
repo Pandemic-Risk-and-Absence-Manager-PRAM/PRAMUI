@@ -110,20 +110,20 @@ const ManagerPredictiveInsights = () => {
                                 </h1>
                                 
                                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
-                                    <div className="absences-by-team">
-                                        {dashboardType === 'manager' && (<h2 className="text-xl font-semibold mb-4 text-gray-900 dark:text-white">Absences by Team</h2>)}
-                                        {dashboardType === 'hr' && (<h2 className="text-xl font-semibold mb-4 text-gray-900 dark:text-white">Absences by department</h2>)}
+                                    <div className="absences-by-team dark:bg-gray-800">
+                                        {dashboardType === 'manager' && (<h2 className="text-xl font-semibold mb-4 dark:text-white">Absences by Team</h2>)}
+                                        {dashboardType === 'hr' && (<h2 className="text-xl font-semibold mb-4 dark:text-white">Absences by department</h2>)}
                                         <div className="date-navigator">
-                                            <button className="nav-arrow" onClick={goToPreviousMonth}>&lt;</button>
-                                            <span className="date">{monthNames[currentMonth]} {currentDate}</span>
-                                            <button className="nav-arrow" onClick={goToNextMonth}>&gt;</button>
+                                            <button className="nav-arrow dark:text-gray-300" onClick={goToPreviousMonth}>&lt;</button>
+                                            <span className="date dark:text-white">{monthNames[currentMonth]} {currentDate}</span>
+                                            <button className="nav-arrow dark:text-gray-300" onClick={goToNextMonth}>&gt;</button>
                                         </div>
 
                                         <div className="pie-chart-container">
                                             <div className="pie-chart">
                                                 <svg width="220" height="220" viewBox="0 0 220 220">
                                                   
-                                                    <circle cx="110" cy="110" r="100" fill="white" />
+                                                    <circle cx="110" cy="110" r="100" fill="none" className="dark:fill-gray-700" />
 
                                                     
                                                     <g>
@@ -166,59 +166,58 @@ const ManagerPredictiveInsights = () => {
                                                             
                                                             return (
                                                                 <>
-                                                                    {createSlice(team1Angle, "#E0E7FF")}
-                                                                    {createSlice(team2Angle, "#FFEDD5")}
-                                                                    {createSlice(team3Angle, "#F3F4F6")}
-                                                                    {createSlice(team4Angle, "#DBEAFE")}
+                                                                    {createSlice(team1Angle, "#818CF8")}
+                                                                    {createSlice(team2Angle, "#FB923C")}
+                                                                    {createSlice(team3Angle, "#9CA3AF")}
+                                                                    {createSlice(team4Angle, "#60A5FA")}
                                                                 </>
                                                             );
                                                         })()}
                                                     </g>
                                                     
-                                                    {}
-                                                    <circle cx="110" cy="110" r="40" fill="#F3F4F6" fillOpacity="0.3" />
+                                                    <circle cx="110" cy="110" r="40" fill="#F3F4F6" className="dark:fill-gray-600" fillOpacity="0.3" />
                                                 </svg>
                                             </div>
 
                                             <div className="team-legend">
                                                 <div className="team-item">
-                                                    <span className="team-color team1"></span>
-                                                    <span className="team-name">Team 1</span>
-                                                    <span className="colon">:</span>
-                                                    <span className="team-count">{teamDataByMonth[currentMonth].team1}</span>
+                                                    <span className="team-color team1 dark:bg-indigo-400"></span>
+                                                    <span className="team-name dark:text-gray-300">Team 1</span>
+                                                    <span className="colon dark:text-gray-300">:</span>
+                                                    <span className="team-count dark:text-white">{teamDataByMonth[currentMonth].team1}</span>
                                                 </div>
                                                 <div className="team-item">
-                                                    <span className="team-color team2"></span>
-                                                    <span className="team-name">Team 2</span>
-                                                    <span className="colon">:</span>
-                                                    <span className="team-count">{teamDataByMonth[currentMonth].team2}</span>
+                                                    <span className="team-color team2 dark:bg-orange-400"></span>
+                                                    <span className="team-name dark:text-gray-300">Team 2</span>
+                                                    <span className="colon dark:text-gray-300">:</span>
+                                                    <span className="team-count dark:text-white">{teamDataByMonth[currentMonth].team2}</span>
                                                 </div>
                                                 <div className="team-item">
-                                                    <span className="team-color team3"></span>
-                                                    <span className="team-name">Team 3</span>
-                                                    <span className="colon">:</span>
-                                                    <span className="team-count">{teamDataByMonth[currentMonth].team3}</span>
+                                                    <span className="team-color team3 dark:bg-gray-400"></span>
+                                                    <span className="team-name dark:text-gray-300">Team 3</span>
+                                                    <span className="colon dark:text-gray-300">:</span>
+                                                    <span className="team-count dark:text-white">{teamDataByMonth[currentMonth].team3}</span>
                                                 </div>
                                                 <div className="team-item">
-                                                    <span className="team-color team4"></span>
-                                                    <span className="team-name">Team 4</span>
-                                                    <span className="colon">:</span>
-                                                    <span className="team-count">{teamDataByMonth[currentMonth].team4}</span>
+                                                    <span className="team-color team4 dark:bg-blue-400"></span>
+                                                    <span className="team-name dark:text-gray-300">Team 4</span>
+                                                    <span className="colon dark:text-gray-300">:</span>
+                                                    <span className="team-count dark:text-white">{teamDataByMonth[currentMonth].team4}</span>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                     
-                                    <div className="recent-news">
-                                        <h2 className="text-xl font-semibold mb-4">Recent News</h2>
+                                    <div className="recent-news dark:bg-gray-800">
+                                        <h2 className="text-xl font-semibold mb-4 dark:text-white">Recent News</h2>
                                         
-                                        <div className="news-card">
-                                            <h3 className="news-title">{newsItems[currentPage].title}</h3>
-                                            <p className="news-content">{newsItems[currentPage].content}</p>
+                                        <div className="news-card dark:bg-gray-700">
+                                            <h3 className="news-title dark:text-white">{newsItems[currentPage].title}</h3>
+                                            <p className="news-content dark:text-gray-300">{newsItems[currentPage].content}</p>
                                             
                                             <div className="news-pagination">
                                                 <button 
-                                                    className="pagination-button back-button" 
+                                                    className="pagination-button back-button dark:text-blue-400 dark:disabled:text-gray-500" 
                                                     onClick={goToPreviousNews}
                                                     disabled={currentPage === 0}
                                                 >
@@ -229,14 +228,14 @@ const ManagerPredictiveInsights = () => {
                                                     {newsItems.map((_, index) => (
                                                         <span 
                                                             key={index} 
-                                                            className={`pagination-dot ${index === currentPage ? 'active' : ''}`}
+                                                            className={`pagination-dot ${index === currentPage ? 'active dark:bg-blue-500' : 'dark:bg-gray-500'}`}
                                                             onClick={() => setCurrentPage(index)}
                                                         ></span>
                                                     ))}
                                                 </div>
                                                 
                                                 <button 
-                                                    className="pagination-button next-button"
+                                                    className="pagination-button next-button dark:text-blue-400 dark:disabled:text-gray-500"
                                                     onClick={goToNextNews}
                                                     disabled={currentPage === newsItems.length - 1}
                                                 >
@@ -247,12 +246,12 @@ const ManagerPredictiveInsights = () => {
                                     </div>
                                 </div>
                                 
-                                <div className="confirmed-cases">
+                                <div className="confirmed-cases dark:bg-gray-800">
                                     <div className="location-header">
-                                        <h2 className="text-xl font-semibold">Confirmed Cases</h2>
+                                        <h2 className="text-xl font-semibold dark:text-white">Confirmed Cases</h2>
                                         <div className="location-dropdown">
                                             <select 
-                                                className="location-select" 
+                                                className="location-select dark:text-white dark:bg-gray-800" 
                                                 value={selectedLocation}
                                                 onChange={handleLocationChange}
                                             >
@@ -265,21 +264,19 @@ const ManagerPredictiveInsights = () => {
                                                 <option value="cardiff">CARDIFF</option>
                                                 <option value="belfast">BELFAST</option>
                                             </select>
-                                            <span className="dropdown-arrow">▼</span>
+                                            <span className="dropdown-arrow dark:text-white">▼</span>
                                         </div>
                                     </div>
                                     
-                                                                            <div className="line-chart-container">
-                                        <div className="line-chart">
+                                    <div className="line-chart-container">
+                                        <div className="line-chart dark:bg-gray-700">
                                             <svg width="100%" height="100%" viewBox="0 0 1000 300">
-                                                {}
-                                                <line x1="40" y1="50" x2="950" y2="50" stroke="#E5E7EB" strokeWidth="1" />
-                                                <line x1="40" y1="100" x2="950" y2="100" stroke="#E5E7EB" strokeWidth="1" />
-                                                <line x1="40" y1="150" x2="950" y2="150" stroke="#E5E7EB" strokeWidth="1" />
-                                                <line x1="40" y1="200" x2="950" y2="200" stroke="#E5E7EB" strokeWidth="1" />
-                                                <line x1="40" y1="250" x2="950" y2="250" stroke="#E5E7EB" strokeWidth="1" />
+                                                <line x1="40" y1="50" x2="950" y2="50" stroke="#E5E7EB" className="dark:stroke-gray-600" strokeWidth="1" />
+                                                <line x1="40" y1="100" x2="950" y2="100" stroke="#E5E7EB" className="dark:stroke-gray-600" strokeWidth="1" />
+                                                <line x1="40" y1="150" x2="950" y2="150" stroke="#E5E7EB" className="dark:stroke-gray-600" strokeWidth="1" />
+                                                <line x1="40" y1="200" x2="950" y2="200" stroke="#E5E7EB" className="dark:stroke-gray-600" strokeWidth="1" />
+                                                <line x1="40" y1="250" x2="950" y2="250" stroke="#E5E7EB" className="dark:stroke-gray-600" strokeWidth="1" />
                                                 
-                                                {}
                                                 <path 
                                                     d="M40,200 L120,180 L200,170 L280,160 L360,155 L440,160 L520,150 L600,145 L680,150 L760,140 L840,145 L920,150" 
                                                     fill="none" 
@@ -287,7 +284,6 @@ const ManagerPredictiveInsights = () => {
                                                     strokeWidth="2" 
                                                 />
                                                 
-                                                {}
                                                 <path 
                                                     d="M40,180 L120,160 L200,150 L280,145 L360,140 L440,145 L520,130 L600,120 L680,110 L760,105 L840,90 L920,50" 
                                                     fill="none" 
@@ -295,7 +291,6 @@ const ManagerPredictiveInsights = () => {
                                                     strokeWidth="2" 
                                                 />
                                                 
-                                                {}
                                                 <circle cx="40" cy="200" r="3" fill="#9CA3AF" />
                                                 <circle cx="120" cy="180" r="3" fill="#9CA3AF" />
                                                 <circle cx="200" cy="170" r="3" fill="#9CA3AF" />
@@ -309,7 +304,6 @@ const ManagerPredictiveInsights = () => {
                                                 <circle cx="840" cy="145" r="3" fill="#9CA3AF" />
                                                 <circle cx="920" cy="150" r="3" fill="#9CA3AF" />
                                                 
-                                                {}
                                                 <circle cx="40" cy="180" r="3" fill="#3B82F6" />
                                                 <circle cx="120" cy="160" r="3" fill="#3B82F6" />
                                                 <circle cx="200" cy="150" r="3" fill="#3B82F6" />
@@ -323,26 +317,32 @@ const ManagerPredictiveInsights = () => {
                                                 <circle cx="840" cy="90" r="3" fill="#3B82F6" />
                                                 <circle cx="920" cy="50" r="3" fill="#3B82F6" />
                                                 
-                                                {}
-                                                <text x="950" y="150" fill="#9CA3AF" fontSize="12" fontWeight="500" textAnchor="start" dominantBaseline="middle">2024</text>
+                                                <text x="950" y="150" fill="#9CA3AF" className="dark:fill-gray-400" fontSize="12" fontWeight="500" textAnchor="start" dominantBaseline="middle">2024</text>
                                                 <text x="950" y="50" fill="#3B82F6" fontSize="12" fontWeight="500" textAnchor="start" dominantBaseline="middle">2025</text>
                                             </svg>
                                         </div>
                                         
                                         <div className="y-axis">
                                             {[1200, 1100, 1000, 900, 800, 700, 600, 500, 400, 300, 200, 100, 0].map(num => (
-                                                <div key={num} className="y-axis-label">{num}</div>
+                                                <div key={num} className="y-axis-label dark:text-gray-400">{num}</div>
                                             ))}
                                         </div>
                                         
                                         <div className="x-axis">
                                             {['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'].map(month => (
-                                                <div key={month} className="x-axis-label">{month}</div>
+                                                <div key={month} className="x-axis-label dark:text-gray-400">{month}</div>
                                             ))}
                                         </div>
                                         
                                         <div className="line-chart-legend">
-                                            {}
+                                            <div className="year-item">
+                                                <span className="year-color year2025"></span>
+                                                <span className="year-label dark:text-gray-300">2025</span>
+                                            </div>
+                                            <div className="year-item">
+                                                <span className="year-color year2024"></span>
+                                                <span className="year-label dark:text-gray-300">2024</span>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
