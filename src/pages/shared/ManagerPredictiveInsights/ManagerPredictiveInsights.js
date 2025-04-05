@@ -111,8 +111,8 @@ const ManagerPredictiveInsights = () => {
                                 
                                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
                                     <div className="absences-by-team">
-                                        {dashboardType === 'manager' && (<h2 className="text-xl font-semibold mb-4">Absences by Team</h2>)}
-                                        {dashboardType === 'hr' && (<h2 className="text-xl font-semibold mb-4">Absences by department</h2>)}
+                                        {dashboardType === 'manager' && (<h2 className="text-xl font-semibold mb-4 text-gray-900 dark:text-white">Absences by Team</h2>)}
+                                        {dashboardType === 'hr' && (<h2 className="text-xl font-semibold mb-4 text-gray-900 dark:text-white">Absences by department</h2>)}
                                         <div className="date-navigator">
                                             <button className="nav-arrow" onClick={goToPreviousMonth}>&lt;</button>
                                             <span className="date">{monthNames[currentMonth]} {currentDate}</span>
