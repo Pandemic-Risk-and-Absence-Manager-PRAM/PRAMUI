@@ -334,14 +334,7 @@ const ManagerPredictiveInsights = () => {
                                         </div>
                                         
                                         <div className="line-chart-legend">
-                                            <div className="year-item">
-                                                <span className="year-color year2025"></span>
-                                                <span className="year-label dark:text-gray-300">2025</span>
-                                            </div>
-                                            <div className="year-item">
-                                                <span className="year-color year2024"></span>
-                                                <span className="year-label dark:text-gray-300">2024</span>
-                                            </div>
+                                            {}
                                         </div>
                                     </div>
                                 </div>
