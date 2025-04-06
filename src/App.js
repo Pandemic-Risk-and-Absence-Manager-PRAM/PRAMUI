@@ -2,6 +2,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Login from './pages/login/Login';
 import Dashboard from './pages/dashboard/Dashboard';
 import Profile from './pages/shared/Profile/Profile.js';
+import Help from './pages/shared/Help/Help.js';
 import Calendar from './components/calendar/Calendar.js';
 import MyRequests from './pages/dashboard/AbsencePortal/MyRequests/MyRequests.js';
 import EmployeeAbsenceRequest from "./pages/dashboard/ManagerPortal/EmployeeAbsenceRequests/EmployeeAbsenceRequest.js";
@@ -21,7 +22,7 @@ function App() {
         <Route path="/dashboard/:dashboardType/*" element={<Dashboard />} />
         <Route path="/dashboard/:dashboardType/profile" element={<Profile />} />
         <Route path="/dashboard/:dashboardType/resources" element={<Resources />} />
-        <Route path="/dashboard/:dashboardType/help" element={<Profile />} />
+        <Route path="/dashboard/:dashboardType/help" element={<Help />} />
         <Route path="/dashboard/:dashboardType/settings" element={<Profile />} />
 
         {/* Shared Pages - Manager + HR */}
