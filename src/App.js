@@ -10,6 +10,7 @@ import ViewDocuments from "./pages/shared/ViewDocuments/ViewDocuments";
 import PreviousReports from './pages/dashboard/HRPortal/Previous Reports/PreviousReports.js';
 import ManagerPredictiveInsights from './pages/shared/ManagerPredictiveInsights/ManagerPredictiveInsights.js';
 import Resources from "./pages/shared/Resources/Resources";
+import SharedCalendar from "./pages/shared/SharedCalendar/SharedCalendar.js";
 
 function App() {
   return (
@@ -36,7 +37,7 @@ function App() {
 
         {/* Manager Pages */}
         <Route path="/dashboard/:dashboardType/employee-absence-requests" element={<EmployeeAbsenceRequest />} />
-        <Route path="/dashboard/:dashboardType/shared-calendar" element={<Calendar />} />
+        <Route path="/dashboard/:dashboardType/shared-calendar" element={<SharedCalendar />} />
 
         {/* HR Pages */}
         <Route path="/dashboard/:dashboardType/heatmap" element={<Profile />} />
