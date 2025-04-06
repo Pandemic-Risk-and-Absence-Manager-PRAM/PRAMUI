@@ -12,6 +12,7 @@ import PreviousReports from './pages/dashboard/HRPortal/Previous Reports/Previou
 import ManagerPredictiveInsights from './pages/shared/ManagerPredictiveInsights/ManagerPredictiveInsights.js';
 import Resources from "./pages/shared/Resources/Resources";
 import UploadDocument from "./pages/dashboard/AbsencePortal/UploadDocuments/UploadDocument";
+import HeatMap from './pages/dashboard/HRPortal/Heatmap/HeatMap.js';
 
 function App() {
   return (
@@ -41,7 +42,7 @@ function App() {
         <Route path="/dashboard/:dashboardType/shared-calendar" element={<Calendar />} />
 
         {/* HR Pages */}
-        <Route path="/dashboard/:dashboardType/heatmap" element={<Profile />} />
+        <Route path="/dashboard/:dashboardType/heatmap" element={<HeatMap />} />
         <Route path="/dashboard/:dashboardType/previous-reports" element={<PreviousReports />} />
       </Routes>
     </Router>
