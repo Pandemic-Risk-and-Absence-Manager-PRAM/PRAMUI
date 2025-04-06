@@ -2,6 +2,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Login from './pages/login/Login';
 import Dashboard from './pages/dashboard/Dashboard';
 import Profile from './pages/shared/Profile/Profile.js';
+import Help from './pages/shared/Help/Help.js';
 import Calendar from './components/calendar/Calendar.js';
 import MyRequests from './pages/dashboard/AbsencePortal/MyRequests/MyRequests.js';
 import EmployeeAbsenceRequest from "./pages/dashboard/ManagerPortal/EmployeeAbsenceRequests/EmployeeAbsenceRequest.js";
@@ -10,6 +11,7 @@ import ViewDocuments from "./pages/shared/ViewDocuments/ViewDocuments";
 import PreviousReports from './pages/dashboard/HRPortal/Previous Reports/PreviousReports.js';
 import ManagerPredictiveInsights from './pages/shared/ManagerPredictiveInsights/ManagerPredictiveInsights.js';
 import Resources from "./pages/shared/Resources/Resources";
+import UploadDocument from "./pages/dashboard/AbsencePortal/UploadDocuments/UploadDocument";
 
 function App() {
   return (
@@ -21,7 +23,7 @@ function App() {
         <Route path="/dashboard/:dashboardType/*" element={<Dashboard />} />
         <Route path="/dashboard/:dashboardType/profile" element={<Profile />} />
         <Route path="/dashboard/:dashboardType/resources" element={<Resources />} />
-        <Route path="/dashboard/:dashboardType/help" element={<Profile />} />
+        <Route path="/dashboard/:dashboardType/help" element={<Help />} />
         <Route path="/dashboard/:dashboardType/settings" element={<Profile />} />
 
         {/* Shared Pages - Manager + HR */}
@@ -32,7 +34,7 @@ function App() {
         <Route path="/dashboard/:dashboardType/my-requests" element={<MyRequests />} />
         <Route path="/dashboard/:dashboardType/calendar" element={<Calendar />} />
         <Route path="/dashboard/:dashboardType/report-absence" element={<ReportAbsence />} />
-        <Route path="/dashboard/:dashboardType/upload-documents" element={<Profile />} />
+        <Route path="/dashboard/:dashboardType/upload-documents" element={<UploadDocument />} />
 
         {/* Manager Pages */}
         <Route path="/dashboard/:dashboardType/employee-absence-requests" element={<EmployeeAbsenceRequest />} />
