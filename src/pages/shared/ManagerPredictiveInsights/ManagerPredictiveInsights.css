@@ -1,3 +1,4 @@
+
 .flex-1 {
     flex: 1 1 0%;
 }
@@ -341,5 +342,101 @@
     position: relative;
     background-color: #F9FAFB;
     border-radius: 4px;
-    overflow: hidden
+    overflow: hidden;
+    transition: background-color 0.3s ease;
+}
+
+.dark .line-chart {
+    background-color: #374151;
+}
+
+.y-axis {
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.y-axis-label {
+    font-size: 0.75rem;
+    color: #6b7280;
+    transform: translateY(-50%);
+    transition: color 0.3s ease;
+}
+
+.dark .y-axis-label {
+    color: #9ca3af;
+}
+
+.x-axis {
+    position: absolute;
+    bottom: 0;
+    left: 40px;
+    width: calc(100% - 40px);
+    display: flex;
+    justify-content: space-between;
+}
+
+.x-axis-label {
+    font-size: 0.75rem;
+    color: #6b7280;
+    transform: translateX(-50%);
+    transition: color 0.3s ease;
+}
+
+.dark .x-axis-label {
+    color: #9ca3af;
+}
+
+.line-chart-legend {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 1rem;
+}
+
+.year-item {
+    display: flex;
+    align-items: center;
+    margin-left: 1rem;
+}
+
+.year-color {
+    width: 24px;
+    height: 2px;
+    margin-right: 0.5rem;
+}
+
+.year2025 {
+    background-color: #3b82f6;
+}
+
+.year2024 {
+    background-color: #9ca3af;
+}
+
+.year-label {
+    font-size: 0.75rem;
+    color: #6b7280;
+    transition: color 0.3s ease;
+}
+
+.dark .year-label {
+    color: #d1d5db;
+}
+
+@media (max-width: 768px) {
+    .grid-cols-1 {
+        grid-template-columns: 1fr;
+    }
+    
+    .team-legend {
+        flex-direction: column;
+    }
+    
+    .line-chart-container {
+        height: 200px;
+    }
 }

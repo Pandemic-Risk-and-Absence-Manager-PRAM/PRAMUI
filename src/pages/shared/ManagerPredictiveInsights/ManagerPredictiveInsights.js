@@ -123,9 +123,8 @@ const ManagerPredictiveInsights = () => {
                                             <div className="pie-chart">
                                                 <svg width="220" height="220" viewBox="0 0 220 220">
                                                   
-                                                    <circle cx="110" cy="110" r="100" fill="none" className="dark:fill-gray-700" />
+                                                    <circle cx="110" cy="110" r="100" fill="white" className="dark:fill-gray-700" />
 
-                                                    
                                                     <g>
                                                    
                                                         {(() => {
