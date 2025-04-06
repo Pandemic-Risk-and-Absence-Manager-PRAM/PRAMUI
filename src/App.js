@@ -11,6 +11,7 @@ import ViewDocuments from "./pages/shared/ViewDocuments/ViewDocuments";
 import PreviousReports from './pages/dashboard/HRPortal/Previous Reports/PreviousReports.js';
 import ManagerPredictiveInsights from './pages/shared/ManagerPredictiveInsights/ManagerPredictiveInsights.js';
 import Resources from "./pages/shared/Resources/Resources";
+import UploadDocument from "./pages/dashboard/AbsencePortal/UploadDocuments/UploadDocument";
 
 function App() {
   return (
@@ -33,7 +34,7 @@ function App() {
         <Route path="/dashboard/:dashboardType/my-requests" element={<MyRequests />} />
         <Route path="/dashboard/:dashboardType/calendar" element={<Calendar />} />
         <Route path="/dashboard/:dashboardType/report-absence" element={<ReportAbsence />} />
-        <Route path="/dashboard/:dashboardType/upload-documents" element={<Profile />} />
+        <Route path="/dashboard/:dashboardType/upload-documents" element={<UploadDocument />} />
 
         {/* Manager Pages */}
         <Route path="/dashboard/:dashboardType/employee-absence-requests" element={<EmployeeAbsenceRequest />} />
