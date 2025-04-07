@@ -7,6 +7,7 @@ import { IoBook } from "react-icons/io5";
 import users from '../../../models/users.json';
 import { useParams, Link } from 'react-router-dom';
 import { FaBookAtlas } from 'react-icons/fa6';
+import DepartmentAbsences from "../../../components/overview/DepartmentAbsences";
 
 const HRPortal = () => {
   const { dashboardType } = useParams();
@@ -37,7 +38,7 @@ const HRPortal = () => {
                   Welcome Back {user.name}!
                 </h1>
               </div>
-
+              <DepartmentAbsences />
               {/* Dashboard Icons */}
               <div className="grid grid-cols-3 gap-8 flex-grow h-full" style={{ fontFamily: 'Kanit, sans-serif' }}>
                 {[
