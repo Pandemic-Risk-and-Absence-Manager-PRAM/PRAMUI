@@ -8,8 +8,9 @@ const HeatMap = () => {
   const [isOpen, setIsOpen] = useState(true);
   const toggleNavigationBar = () => setIsOpen(!isOpen);
 
-  const [tooltip, setTooltip] = useState({ visible: false, x: 0, y: 0, text: '' });
+  const [tooltip, setTooltip] = useState({ visible: false, text: '' });
   const mapRef = useRef(null);
+  const [clickedRegion, setClickedRegion] = useState(null);
 
   // Define risk levels and their corresponding colors
   const riskColors = {
@@ -52,17 +53,12 @@ const HeatMap = () => {
     const target = e.target;
     const regionId = extractRegionId(target);
   
-    if (regionId) {
+    if (regionId && regionId !== clickedRegion) {
       // Highlight the region by changing its style
       target.style.stroke = '#000'; // Add a black border
       target.style.strokeWidth = '2px'; // Make the border thicker
       target.style.opacity = '0.8'; // Slightly dim the region
-    }
-  
-    // Check if the hovered element is the location mark
-    if (target.classList.contains('location-mark')) {
-      target.style.stroke = '#000'; // Add a black border
-      target.style.strokeWidth = '2px'; // Make the border thicker
+      target.style.filter = 'drop-shadow(0px 0px 10px #7a7979)';
     }
   
     const regionName =
@@ -73,62 +69,128 @@ const HeatMap = () => {
         mapdata.state_specific[regionId].name) ||
       'Your location: Slough';
   
-    const containerRect = e.currentTarget.getBoundingClientRect();
-    const x = e.clientX - containerRect.left;
-    const y = e.clientY - containerRect.top;
-  
-    setTooltip({ visible: true, x, y, text: regionName });
+    setTooltip({ visible: true, text: regionName });
   };
   
   const handleRegionMouseLeave = (e) => {
     const target = e.target;
+    const regionId = extractRegionId(target);
   
-    // Remove the highlight effect
-    target.style.stroke = 'none'; // Remove the border
-    target.style.strokeWidth = '0'; // Reset the border width
-    target.style.opacity = '1'; // Reset the opacity
-  
-    // Check if the hovered element is the location mark
-    if (target.classList.contains('location-mark')) {
-      target.style.stroke = 'none'; // Remove the black border
+    // Only reset styles if the region is not clicked
+    if (regionId !== clickedRegion) {
+      target.style.stroke = 'none'; // Remove the border
       target.style.strokeWidth = '0'; // Reset the border width
+      target.style.opacity = '1'; // Reset the opacity
+      target.style.filter = 'none';
     }
   
-    setTooltip({ visible: false, x: 0, y: 0, text: '' });
+    setTooltip({ visible: false, text: '' });
   };
 
-  document.querySelectorAll('.sm_location').forEach((location) => {
-    location.addEventListener('mouseenter', () => {
-      const path = location.querySelector('path');
-      path.style.stroke = '#000000';
-      path.style.strokeWidth = '2';
-    });
+  const handleRegionClick = (e) => {
+    const target = e.target;
+    const regionId = extractRegionId(target);
   
-    location.addEventListener('mouseleave', () => {
-      const path = location.querySelector('path');
-      path.style.stroke = 'none';
-      path.style.strokeWidth = '0';
+    if (regionId) {
+      // Unhighlight the previously clicked region
+      if (clickedRegion) {
+        const svgElement = mapRef.current;
+        const previousRegion = svgElement.querySelector(`#${clickedRegion}`);
+        if (previousRegion) {
+          previousRegion.style.stroke = 'none'; // Remove the border
+          previousRegion.style.strokeWidth = '0'; // Reset the border width
+          previousRegion.style.opacity = '1'; // Reset the opacity
+          previousRegion.style.filter = 'none';
+        }
+      }
+  
+      // Set the clicked region
+      setClickedRegion(regionId);
+  
+      // Highlight the clicked region
+      target.style.stroke = '#000'; // Add a black border
+      target.style.strokeWidth = '2px'; // Make the border thicker
+      target.style.opacity = '0.8'; // Slightly dim the region
+      target.style.filter = 'drop-shadow(0px 0px 10px #7a7979)';
+  
+      // Update the tooltip with the clicked region's name
+      const regionName =
+        (regionId &&
+          mapdata &&
+          mapdata.state_specific &&
+          mapdata.state_specific[regionId] &&
+          mapdata.state_specific[regionId].name) ||
+        'Unknown Region';
+  
+      setTooltip({ visible: true, text: regionName });
+    }
+  };
+
+  useEffect(() => {
+    const handleOutsideClick = (e) => {
+      if (mapRef.current && !mapRef.current.contains(e.target)) {
+        setTooltip({ visible: false, text: '' });
+        setClickedRegion(null);
+      }
+    };
+  
+    document.addEventListener('click', handleOutsideClick);
+  
+    return () => {
+      document.removeEventListener('click', handleOutsideClick);
+    };
+  }, []);
+
+  const handleKeyMouseEnter = (color) => {
+    const svgElement = mapRef.current;
+    if (!svgElement) return;
+  
+    const regionElements = svgElement.querySelectorAll('path');
+    regionElements.forEach((el) => {
+      if (el.style.fill === color) {
+        el.style.stroke = '#000'; // Add a black border
+        el.style.strokeWidth = '2px'; // Make the border thicker
+        el.style.opacity = '0.8'; // Slightly dim the region
+        el.style.filter = 'drop-shadow(0px 0px 10px #7a7979)';
+      }
     });
-  });
+  };
+  
+  const handleKeyMouseLeave = (color) => {
+    const svgElement = mapRef.current;
+    if (!svgElement) return;
+  
+    const regionElements = svgElement.querySelectorAll('path');
+    regionElements.forEach((el) => {
+      if (el.style.fill === color && extractRegionId(el) !== clickedRegion) {
+        el.style.stroke = 'none'; // Remove the border
+        el.style.strokeWidth = '0'; // Reset the border width
+        el.style.opacity = '1'; // Reset the opacity
+        el.style.filter = 'none';
+      }
+    });
+  };
   
   useEffect(() => {
     const svgElement = mapRef.current;
     if (!svgElement) return;
-
+  
     const regionElements = svgElement.querySelectorAll('path');
     regionElements.forEach((el) => {
       const regionId = extractRegionId(el);
       if (regionId && regionColors.current[regionId]) {
-        el.style.fill = regionColors.current[regionId];
+        el.style.fill = regionColors.current[regionId]; // Assign color based on risk level
       }
       el.addEventListener('mouseenter', handleRegionMouseEnter);
       el.addEventListener('mouseleave', handleRegionMouseLeave);
+      el.addEventListener('click', handleRegionClick); // Ensure click event is added
     });
-
+  
     return () => {
       regionElements.forEach((el) => {
         el.removeEventListener('mouseenter', handleRegionMouseEnter);
         el.removeEventListener('mouseleave', handleRegionMouseLeave);
+        el.removeEventListener('click', handleRegionClick); // Clean up click event
       });
     };
   }, []);
@@ -183,23 +245,24 @@ const HeatMap = () => {
               />
 
               {tooltip.visible && (
-                <div
-                  style={{
-                    position: 'absolute',
-                    top: tooltip.y + 10,
-                    left: tooltip.x + 10,
-                    backgroundColor: 'rgba(0, 0, 0, 0.75)',
-                    color: '#fff',
-                    padding: '5px 10px',
-                    borderRadius: '4px',
-                    pointerEvents: 'none',
-                    whiteSpace: 'nowrap',
-                    zIndex: 10,
-                  }}
-                >
-                  {tooltip.text}
-                </div>
-              )}
+              <div
+                style={{
+                  position: 'absolute',
+                  top: '20px', // Fixed position at the top
+                  left: '11%', // Center horizontally
+                  transform: 'translateX(-50%)', // Adjust for centering
+                  backgroundColor: 'rgba(21, 59, 116, 0.99)',
+                  color: '#fff',
+                  padding: '5px 10px',
+                  borderRadius: '8px',
+                  pointerEvents: 'auto',
+                  whiteSpace: 'nowrap',
+                  zIndex: 10,
+                }}
+              >
+                {tooltip.text}
+              </div>
+            )}
             </div>
 
             {/* Legend/Key */}
@@ -207,7 +270,7 @@ const HeatMap = () => {
             className="legend"
             style={{
               position: 'absolute',
-              top: '200px', // Adjusted position
+              top: '200px',
               right: '100px',
               backgroundColor: 'white',
               padding: '10px 20px',
@@ -220,7 +283,10 @@ const HeatMap = () => {
               width: '350px',
             }}
           >
-            <h3 className="text-lg font-bold mb-2" style={{ textAlign: 'center', marginBottom: '40px', color: 'black' }} >
+            <h3
+              className="text-lg font-bold mb-2"
+              style={{ textAlign: 'center', marginBottom: '40px', color: 'black' }}
+            >
               KEY
             </h3>
             <div
@@ -252,13 +318,17 @@ const HeatMap = () => {
                 overflow: 'hidden',
               }}
             >
-              <div style={{ flexGrow: 1.5, backgroundColor: '#cccccc' }}></div> {/* Grey (longer) */}
-              <div style={{ flexGrow: 1, backgroundColor: '#d84315' }}></div> {/* Red */}
-              <div style={{ flexGrow: 1, backgroundColor: '#f7c663' }}></div> {/* Yellow */}
-              <div style={{ flexGrow: 1, backgroundColor: '#d3eaf2' }}></div> {/* Light Blue */}
-              <div style={{ flexGrow: 1, backgroundColor: '#1e88e5' }}></div> {/* Blue */}
+              {Object.entries(riskColors).map(([riskLevel, color]) => (
+                <div
+                  key={riskLevel}
+                  style={{ flexGrow: 1, backgroundColor: color }}
+                  onMouseEnter={() => handleKeyMouseEnter(color)}
+                  onMouseLeave={() => handleKeyMouseLeave(color)}
+                ></div>
+              ))}
             </div>
           </div>
+             
           </div>
         </div>
       </div>
