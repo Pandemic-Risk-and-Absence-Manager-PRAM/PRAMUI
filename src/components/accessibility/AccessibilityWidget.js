@@ -17,7 +17,6 @@ export default function AccessibilityWidget() {
     const popupRef = useRef(null);
     const buttonRef = useRef(null);
 
-    const { isDark, toggleDarkMode } = useTheme();
 
     const toggleProfile = (name, className) => {
     setToggles(prev => {
@@ -83,7 +82,7 @@ export default function AccessibilityWidget() {
                 <p className="font-medium">{icon} {name}</p>
                 <p className="text-sm text-gray-600 dark:text-white">{desc}</p>
                 </div>
-                <label className="inline-flex items-center cursor-pointer">
+                <label className="inline-flex items-center cursor-pointer pl-3">
                 <input
                     type="checkbox"
                     className="sr-only peer"

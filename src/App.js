@@ -13,11 +13,11 @@ import ManagerPredictiveInsights from './pages/shared/ManagerPredictiveInsights/
 import Resources from "./pages/shared/Resources/Resources";
 import UploadDocument from "./pages/dashboard/AbsencePortal/UploadDocuments/UploadDocument";
 import HeatMap from './pages/dashboard/HRPortal/Heatmap/HeatMap.js';
-import { ThemeProvider } from './components/accessibility/DarkModeContext.js';
+import { DarkModeProvider } from './components/accessibility/DarkModeContext.js';
 
 function App() {
   return (
-    <ThemeProvider>
+    <DarkModeProvider>
     <div className="min-h-screen bg-gray-100 dark:bg-gray-900 dark:text-white">
     <Router>
       <Routes>
@@ -49,7 +49,7 @@ function App() {
       </Routes>
     </Router>
     </div>
-    </ThemeProvider>
+    </DarkModeProvider>
   );
 }
 
