@@ -1,13 +1,22 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import logo from '../../assets/images/logo.png';
 import PRAM from '../../assets/images/PRAM.png';
 import './Login.css';
+import SSO from "./SSO";
 
 const Login = () => {
-  const navigate = useNavigate(); 
+  const navigate = useNavigate();
+  const [showSSO, setShowSSO] = useState(false);
+  const [dashboardType, setDashboardType] = useState('');
 
   const handleLogin = (dashboardType) => {
+    setDashboardType(dashboardType);
+    setShowSSO(true);
+  };
+
+  const handleSSOLogin = () => {
+    setShowSSO(false);
     navigate(`/dashboard/${dashboardType}`);
   };
 
@@ -29,6 +38,15 @@ const Login = () => {
           HR Portal
         </button>
       </div>
+
+      {showSSO && (
+          <div className="modal">
+            <div className="modal-content">
+              <SSO handleLogin={handleSSOLogin} />
+              <button onClick={() => setShowSSO(false)}>Close</button>
+            </div>
+          </div>
+      )}
     </div>
   );
 };
