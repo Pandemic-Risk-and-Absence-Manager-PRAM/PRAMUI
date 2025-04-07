@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { useTheme } from '../../components/accessibility/DarkModeContext';
 import { FaWheelchair } from "react-icons/fa";
 
 const profiles = [
@@ -7,26 +8,29 @@ const profiles = [
     { name: "ADHD Friendly Profile", desc: "More focus & fewer distractions", icon: "🧠", className: "adhd-friendly" },
     { name: "Cognitive Disability Profile", desc: "Assists with reading & focusing", icon: "🧩", className: "cognitive-friendly" },
     { name: "Dark Mode", desc: "High contrast dark mode", icon: "🌙", className: "dark" },
-    { name: "High Contrast", desc: "Boost color contrast", icon: "🌈", className: "high-contrast" },
+    { name: "Dyslexic Filter", desc: "Boost color contrast", icon: "🌈", className: "high-contrast" },
   ];
 
 export default function AccessibilityWidget() {
-  const [open, setOpen] = useState(false);
-  const [toggles, setToggles] = useState({});
-  const popupRef = useRef(null);
-  const buttonRef = useRef(null);
+    const [open, setOpen] = useState(false);
+    const [toggles, setToggles] = useState({});
+    const popupRef = useRef(null);
+    const buttonRef = useRef(null);
 
-  const toggleProfile = (name, className) => {
+
+    const toggleProfile = (name, className) => {
     setToggles(prev => {
-      const updated = { ...prev, [name]: !prev[name] };
-      if (updated[name]) {
-        document.body.classList.add(className);
-      } else {
-        document.body.classList.remove(className);
-      }
-      return updated;
+        const updated = { ...prev, [name]: !prev[name] };
+        if (updated[name]) {
+            document.body.classList.add(className);
+            document.documentElement.classList.add(className);
+          } else {
+            document.body.classList.remove(className);
+            document.documentElement.classList.remove(className);
+          }
+        return updated;
     });
-  };
+    };
 
   useEffect(() => {
     const handleClickOutside = (event) => {
@@ -56,9 +60,9 @@ export default function AccessibilityWidget() {
       {/* Floating Accessibility Button */}
       <button
         ref={buttonRef}
-        className="fixed bottom-5 right-3 bg-[#cce3c7] dark:bg-custom-green-27 hover:bg-[#b2d1a8] dark:hover:bg-gray-600 text-white p-3 rounded-full shadow-lg z-50"
+        className="fixed bottom-5 right-3 transform -translate-y-1/2 bg-[#cce3c7] dark:bg-custom-green-27 hover:bg-[#b2d1a8] dark:hover:bg-gray-600 text-white p-3 rounded-full shadow-lg z-50"
         onClick={() => setOpen(!open)}
-      >
+        >
         <FaWheelchair />
       </button>
 
@@ -66,28 +70,31 @@ export default function AccessibilityWidget() {
       {open && (
         <div
           ref={popupRef}
-          className="fixed top-0 right-0 w-80 h-full bg-[#1F3557] dark:bg-gray-800 shadow-lg z-40 p-6 overflow-y-auto"
+          className="fixed top-[60px] right-0 w-100 rounded-lg h-full bg-[#1F3557] dark:bg-gray-800 shadow-lg z-40 p-6 overflow-y-auto"
           style={{ fontFamily: 'Kanit, sans-serif' }}
         >
           <h2 className="text-xl font-semibold mb-4 text-white">Accessibility Adjustments</h2>
 
           <div className="space-y-3">
           {profiles.map(({ name, desc, icon, className }) => (
-            <div key={name} className="bg-white p-4 rounded-xl shadow flex justify-between items-center">
+            <div key={name} className="bg-white dark:bg-gray-700 p-4 rounded-xl shadow flex justify-between items-center">
                 <div>
                 <p className="font-medium">{icon} {name}</p>
-                <p className="text-sm text-gray-600">{desc}</p>
+                <p className="text-sm text-gray-600 dark:text-white">{desc}</p>
                 </div>
-                <label className="inline-flex items-center cursor-pointer">
+                <label className="inline-flex items-center cursor-pointer pl-3">
                 <input
                     type="checkbox"
                     className="sr-only peer"
                     checked={toggles[name] || false}
                     onChange={() => toggleProfile(name, className)}
                 />
-                <div className="w-11 h-6 bg-gray-200 rounded-full peer peer-checked:bg-blue-500 relative transition-colors">
-                    <div className="absolute left-1 top-1 bg-white w-4 h-4 rounded-full transition-transform peer-checked:translate-x-5"></div>
-                </div>
+                <div className="w-11 h-6 bg-gray-200 rounded-full peer-checked:bg-[#1F3557] relative transition-colors">
+                    <div
+                        className={`absolute top-0.5 left-0.5 w-5 h-5 bg-white rounded-full transition-transform`}
+                        style={{ transform: toggles[name] ? 'translateX(20px)' : 'translateX(0)' }}
+                    />
+                    </div>
                 </label>
             </div>
             ))}
