@@ -17,15 +17,22 @@ const screenTints = [
 
 export default function AccessibilityWidget() {
   const [open, setOpen] = useState(false);
-  const [toggles, setToggles] = useState({});
+  const [toggles, setToggles] = useState(() => {
+    // Load previous toggle states from localStorage
+    const savedToggles = localStorage.getItem('accessibilityToggles');
+    return savedToggles ? JSON.parse(savedToggles) : {};
+  });
   const [activeTint, setActiveTint] = useState(null);
   const popupRef = useRef(null);
   const buttonRef = useRef(null);
 
   const toggleProfile = (name, className) => {
-    setToggles(prev => {
+    setToggles((prev) => {
       const updated = { ...prev, [name]: !prev[name] };
       const enabled = updated[name];
+
+      // Update localStorage whenever toggles change
+      localStorage.setItem('accessibilityToggles', JSON.stringify(updated));
 
       if (enabled) {
         document.body.classList.add(className);
@@ -121,7 +128,7 @@ export default function AccessibilityWidget() {
                 </label>
               </div>
             ))}
-            
+
             {/* Screen Tint Options */}
             {toggles["Dyslexic Filter"] && (
               <div className="mb-2 ml-2">

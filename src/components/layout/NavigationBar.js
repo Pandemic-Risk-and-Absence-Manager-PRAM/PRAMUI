@@ -59,7 +59,7 @@ const NavigationBar = ({ isOpen, toggleNavigationBar }) => {
     <div 
       className={`fixed left-0 top-0 bg-[#1F3557] dark:bg-gray-800 p-5 pt-[80px] transition-all duration-300 ${
         isOpen ? "h-screen" : "h-screen"
-      } flex flex-col overflow-y-auto max-h-screen`}
+      } flex flex-col overflow-y-hidden max-h-screen`}
     >
         {/* Search Bar */}
         {isOpen && (

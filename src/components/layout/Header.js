@@ -47,7 +47,6 @@ const Header = ({ toggleNavigationBar }) => {
   
     return () => observer.disconnect();
   }, []);
-  
 
   // Ensure dark mode persists on reload
   useEffect(() => {

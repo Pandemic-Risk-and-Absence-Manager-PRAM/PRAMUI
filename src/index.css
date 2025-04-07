@@ -25,6 +25,9 @@ body.seizure-safe {
   animation: none !important;
   transition: none !important;
   filter: saturate(50%);
+  transform: scale(1);
+  height: 100vh;
+  overflow-x: hidden;
 }
 
 /* Vision Impaired: increase font and zoom slightly */
@@ -56,6 +59,7 @@ body::after {
   z-index: 9999;
 }
 
+/* ADHD Overlay for focused visibility */
 .adhd-overlay {
   position: fixed;
   top: 0;
