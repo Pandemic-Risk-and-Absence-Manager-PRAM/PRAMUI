@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useTheme } from '../../components/accessibility/DarkModeContext';
 import { FaWheelchair } from "react-icons/fa";
+import ADHDOverlay from './ADHDOverlay';
 
 const profiles = [
     { name: "Seizure Safe Profile", desc: "Clear flashes & reduces color", icon: "⚡", className: "seizure-safe" },
@@ -101,6 +102,7 @@ export default function AccessibilityWidget() {
           </div>
         </div>
       )}
+      <ADHDOverlay isActive={toggles["ADHD Friendly Profile"]} />
     </>
   );
 }
