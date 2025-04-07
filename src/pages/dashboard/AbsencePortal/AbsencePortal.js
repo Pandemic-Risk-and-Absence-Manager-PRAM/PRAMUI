@@ -2,6 +2,7 @@ import React from 'react';
 import Header from '../../../components/layout/Header';
 import NavigationBar from '../../../components/layout/NavigationBar';
 import TimeBalances from '../../../components/overview/TimeBalances';
+import AccessibilityWidget from '../../../components/accessibility/AccessibilityWidget';
 import Footer from '../../../components/layout/Footer';
 import users from '../../../models/users.json';
 import { useParams, Link } from 'react-router-dom';
@@ -69,7 +70,7 @@ const AbsencePortal = () => {
             </div>
           </div>
         </div>
-
+        <AccessibilityWidget />
         <Footer isOpen={isOpen} />
       </div>
     </div>

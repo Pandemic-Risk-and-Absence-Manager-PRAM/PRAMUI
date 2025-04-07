@@ -3,6 +3,7 @@ import NavigationBar from "../../../components/layout/NavigationBar";
 import Header from "../../../components/layout/Header";
 import PdfViewer from "../PdfViewer"
 import {FaSearch, FaTimes} from "react-icons/fa";
+import AccessibilityWidget from '../../../components/accessibility/AccessibilityWidget';
 
 const Resources = () => {
     const [isOpen, setIsOpen] = useState(true);
@@ -111,6 +112,7 @@ const Resources = () => {
                     </div>
                 </div>
             </div>
+            <AccessibilityWidget />
         </div>
     );
 };

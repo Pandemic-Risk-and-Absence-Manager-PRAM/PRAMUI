@@ -1,6 +1,7 @@
 import React from 'react';
 import NavigationBar from '../../../components/layout/NavigationBar';
 import Header from '../../../components/layout/Header';
+import AccessibilityWidget from '../../../components/accessibility/AccessibilityWidget';
 import { FaUser, FaUpload, FaEye, FaMapMarkedAlt } from "react-icons/fa";
 import { IoBook } from "react-icons/io5";
 import users from '../../../models/users.json';
@@ -58,6 +59,7 @@ const HRPortal = () => {
                   </Link>
                 ))}
               </div>
+              <AccessibilityWidget />
             </div>
           </div>
         </div>

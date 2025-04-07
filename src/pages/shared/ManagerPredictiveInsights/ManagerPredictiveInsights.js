@@ -3,6 +3,7 @@ import Header from '../../../components/layout/Header';
 import NavigationBar from '../../../components/layout/NavigationBar';
 import './ManagerPredictiveInsights.css';
 import { useParams } from "react-router-dom";
+import AccessibilityWidget from '../../../components/accessibility/AccessibilityWidget';
 
 const ManagerPredictiveInsights = () => {
     const [isOpen, setIsOpen] = useState(true);
@@ -343,6 +344,7 @@ const ManagerPredictiveInsights = () => {
                     </div>
                 </div>
             </div>
+            <AccessibilityWidget />
         </div>
     );
 };

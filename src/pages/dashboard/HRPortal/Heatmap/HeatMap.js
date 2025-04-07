@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import Header from '../../../../components/layout/Header.js';
 import NavigationBar from '../../../../components/layout/NavigationBar.js';
+import AccessibilityWidget from '../../../../components/accessibility/AccessibilityWidget.js';
 import { ReactComponent as UKMap } from '../../../../assets/images/counties.svg';
 import mapdata from '../../../../assets/images/data/mapdata.js';
 
@@ -262,6 +263,7 @@ const HeatMap = () => {
           </div>
         </div>
       </div>
+      <AccessibilityWidget />
     </div>
   );
 };

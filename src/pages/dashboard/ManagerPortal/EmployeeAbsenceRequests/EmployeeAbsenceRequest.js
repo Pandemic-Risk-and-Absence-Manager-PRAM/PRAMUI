@@ -3,6 +3,7 @@ import Header from '../../../../components/layout/Header';
 import NavigationBar from "../../../../components/layout/NavigationBar";
 import './EmployeeAbsenceRequest.css';
 import Calendar from "../../../../components/calendar/Calendar";
+import AccessibilityWidget from '../../../../components/accessibility/AccessibilityWidget';
 
 const EmployeeAbsenceRequest = () => {
     const [isOpen, setIsOpen] = React.useState(true);
@@ -98,6 +99,7 @@ const EmployeeAbsenceRequest = () => {
                     </div>
                 </div>
             </div>
+            <AccessibilityWidget />
         </div>
     );
 };

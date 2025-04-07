@@ -19,3 +19,39 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+/* Seizure Safe: reduce flashing and saturation */
+body.seizure-safe {
+  animation: none !important;
+  transition: none !important;
+  filter: saturate(50%);
+}
+
+/* Vision Impaired: increase font and zoom slightly */
+body.vision-impaired {
+  font-size: 1.15rem;
+  zoom: 1.1;
+}
+
+/* ADHD Friendly: reduce animations and distractions */
+body.adhd-friendly {
+  scroll-behavior: auto !important;
+  animation: none !important;
+}
+
+/* Cognitive Disability: increase letter spacing and line height */
+body.cognitive-friendly {
+  letter-spacing: 0.05em;
+  line-height: 1.75;
+}
+
+/* High Contrast */
+body.high-contrast {
+  filter: contrast(1.5) brightness(1.1);
+}
+
+/* Dark mode */
+body.dark {
+  background-color: #111827;
+  color: #f9fafb;
+}
