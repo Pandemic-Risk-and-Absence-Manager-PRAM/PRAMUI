@@ -3,6 +3,7 @@ import Header from '../../../components/layout/Header';
 import NavigationBar from "../../../components/layout/NavigationBar";
 import './ViewDocuments.css';
 import { useParams } from "react-router-dom";
+import AccessibilityWidget from '../../../components/accessibility/AccessibilityWidget';
 
 const ViewDocuments = () => {
     const { dashboardType } = useParams();
@@ -136,6 +137,7 @@ const ViewDocuments = () => {
                     </div>
                 </div>
             </div>
+            <AccessibilityWidget />
         </div>
     );
 };

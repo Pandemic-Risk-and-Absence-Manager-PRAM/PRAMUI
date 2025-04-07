@@ -1,12 +1,14 @@
 import React, { useState, useMemo } from "react";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import "./ReportAbsence.css";
 import Header from "../../../../components/layout/Header";
 import NavigationBar from "../../../../components/layout/NavigationBar";
+import AccessibilityWidget from "../../../../components/accessibility/AccessibilityWidget";
 
 const ReportAbsence = () => {
+  const { dashboardType } = useParams();
   const [isOpen, setIsOpen] = useState(true);
   const [absenceReason, setAbsenceReason] = useState("");
   const [absencePeriod, setAbsencePeriod] = useState({
@@ -139,7 +141,7 @@ const ReportAbsence = () => {
 
                   {/* Buttons */}
                   <div className="flex justify-between">
-                    <Link to="/dashboard">
+                    <Link to={`/dashboard/${dashboardType}`}>
                       <button className="bg-gray-300 dark:bg-gray-700 dark:text-white text-black px-4 py-2 rounded transition-all">
                         Cancel
                       </button>
@@ -157,6 +159,7 @@ const ReportAbsence = () => {
           </div>
         </div>
       </div>
+      <AccessibilityWidget />
     </div>
   );
 };

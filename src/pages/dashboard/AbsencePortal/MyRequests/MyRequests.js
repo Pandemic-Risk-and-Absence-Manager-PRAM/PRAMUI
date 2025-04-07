@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Header from "../../../../components/layout/Header";
 import NavigationBar from "../../../../components/layout/NavigationBar";
 import TimeBalances from "../../../../components/overview/TimeBalances";
+import AccessibilityWidget from "../../../../components/accessibility/AccessibilityWidget";
 import { useParams, Link } from "react-router-dom";
 
 const MyRequests = () => {
@@ -95,6 +96,7 @@ const MyRequests = () => {
                     </div>
                 </div>
             </div>
+            <AccessibilityWidget />
         </div>
     );
 };

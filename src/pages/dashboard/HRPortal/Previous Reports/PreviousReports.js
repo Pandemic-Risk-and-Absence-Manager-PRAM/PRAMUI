@@ -3,6 +3,7 @@ import { FaTimes, FaSearch } from "react-icons/fa";
 import Header from "../../../../components/layout/Header";
 import NavigationBar from "../../../../components/layout/NavigationBar";
 import PdfViewer from '../../../shared/PdfViewer';
+import AccessibilityWidget from "../../../../components/accessibility/AccessibilityWidget";
 
 const PreviousReports = () => {
     const [isOpen, setIsOpen] = useState(true);
@@ -114,6 +115,7 @@ const PreviousReports = () => {
                     </div>
                 </div>
             </div>
+            <AccessibilityWidget />
         </div>
     );      
 };
