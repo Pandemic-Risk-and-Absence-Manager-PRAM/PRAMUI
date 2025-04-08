@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./SSO.css";
-import mockCredentials from "./MockCredentials.json";
+import mockCredentials from "../../models/MockCredentials.json";
 
 function SSO({ handleLogin, closeModal }) {
     const [id, setId] = useState('');
