@@ -16,18 +16,6 @@ const MyRequests = () => {
         { id: 3, duration: "Jan 2 2026", type: "Annual Leave", days: 1, status: "Pending ⏳" },
     ]);
 
-    // Function to add a new request
-    const addRequest = () => {
-        const newRequest = {
-            id: requests.length + 1,
-            duration: "Feb 10 - Feb 12 2026",
-            type: "Annual Leave",
-            days: 3,
-            status: "Pending ⏳"
-        };
-        setRequests([...requests, newRequest]);
-    };
-
     const toggleNavigationBar = () => {
         setIsOpen(!isOpen);
     };
@@ -56,12 +44,11 @@ const MyRequests = () => {
                                                 REPORT ABSENCE
                                             </button>
                                         </Link>
-                                        <button 
-                                            onClick={addRequest} 
-                                            className="bg-gray-300 dark:bg-gray-700 text-black dark:text-white px-4 py-2 rounded transition-colors"
-                                        >
-                                            REQUEST TIME OFF
-                                        </button>
+                                        <Link to={`/dashboard/${dashboardType}/request-absence`}>
+                                            <button className="bg-gray-300 dark:bg-gray-700 text-black dark:text-white px-4 py-2 rounded transition-colors">
+                                                REQUEST TIME OFF
+                                            </button>
+                                        </Link>
                                     </div>
                                 </div>
                                 

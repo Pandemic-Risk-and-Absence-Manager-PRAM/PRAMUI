@@ -14,6 +14,7 @@ import UploadDocument from "./pages/dashboard/AbsencePortal/UploadDocuments/Uplo
 import HeatMap from './pages/dashboard/HRPortal/Heatmap/HeatMap.js';
 import { DarkModeProvider } from './components/accessibility/DarkModeContext.js';
 import SharedCalendar from './pages/shared/SharedCalendar/SharedCalendar.js';
+import RequestAbsence from "./pages/dashboard/AbsencePortal/RequestAbsence/RequestAbsence";
 
 function App() {
   return (
@@ -37,6 +38,7 @@ function App() {
         <Route path="/dashboard/:dashboardType/my-requests" element={<MyRequests />} />
         <Route path="/dashboard/:dashboardType/calendar" element={<SharedCalendar />} />
         <Route path="/dashboard/:dashboardType/report-absence" element={<ReportAbsence />} />
+        <Route path="/dashboard/:dashboardType/request-absence" element={<RequestAbsence />} />
         <Route path="/dashboard/:dashboardType/upload-documents" element={<UploadDocument />} />
 
         {/* Manager Pages */}
