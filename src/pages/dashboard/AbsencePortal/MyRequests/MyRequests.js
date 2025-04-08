@@ -16,18 +16,6 @@ const MyRequests = () => {
         { id: 3, duration: "Jan 2 2026", type: "Annual Leave", days: 1, status: "Pending ⏳" },
     ]);
 
-    // Function to add a new request
-    const addRequest = () => {
-        const newRequest = {
-            id: requests.length + 1,
-            duration: "Feb 10 - Feb 12 2026",
-            type: "Annual Leave",
-            days: 3,
-            status: "Pending ⏳"
-        };
-        setRequests([...requests, newRequest]);
-    };
-
     const toggleNavigationBar = () => {
         setIsOpen(!isOpen);
     };
