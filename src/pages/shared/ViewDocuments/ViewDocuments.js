@@ -24,7 +24,7 @@ const ViewDocuments = () => {
     };
 
     return (
-        <div className="flex flex-col h-screen">
+        <div className="flex flex-col h-screen" style={{ fontFamily: 'Kanit, sans-serif' }}>
             <Header toggleNavigationBar={toggleNavigationBar} isOpen={isOpen} />
 
             <div className="flex flex-1">

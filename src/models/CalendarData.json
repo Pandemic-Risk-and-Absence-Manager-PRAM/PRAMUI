@@ -85,6 +85,336 @@
         "end": "2025-01-25",
         "allDay": true,
         "extendedProps": { "type": "leave-event", "employeeId": 3, "teamId": 1, "leaveType": "COVID-19 Contact" }
+      },
+      {
+        "id": "203",
+        "title": "Emma Williams - COVID-19 Symptoms",
+        "start": "2025-02-10",
+        "end": "2025-02-17",
+        "allDay": true,
+        "extendedProps": {
+            "type": "leave-event",
+            "employeeId": 4,
+            "teamId": 1,
+            "leaveType": "COVID-19 Symptoms"
+        }
+      },
+      {
+          "id": "204",
+          "title": "Robert Jones - COVID-19 Isolation",
+          "start": "2025-02-22",
+          "end": "2025-02-29",
+          "allDay": true,
+          "extendedProps": {
+              "type": "leave-event",
+              "employeeId": 5,
+              "teamId": 2,
+              "leaveType": "COVID-19 Isolation"
+          }
+      },
+      {
+          "id": "205",
+          "title": "Jennifer Garcia - COVID-19 Symptoms",
+          "start": "2025-03-05",
+          "end": "2025-03-12",
+          "allDay": true,
+          "extendedProps": {
+              "type": "leave-event",
+              "employeeId": 6,
+              "teamId": 2,
+              "leaveType": "COVID-19 Symptoms"
+          }
+      },
+      {
+          "id": "206",
+          "title": "David Miller - COVID-19 Contact",
+          "start": "2025-03-18",
+          "end": "2025-03-25",
+          "allDay": true,
+          "extendedProps": {
+              "type": "leave-event",
+              "employeeId": 7,
+              "teamId": 2,
+              "leaveType": "COVID-19 Contact"
+          }
+      },
+      {
+          "id": "207",
+          "title": "Lisa Davis - COVID-19 Isolation",
+          "start": "2025-04-08",
+          "end": "2025-04-15",
+          "allDay": true,
+          "extendedProps": {
+              "type": "leave-event",
+              "employeeId": 8,
+              "teamId": 2,
+              "leaveType": "COVID-19 Isolation"
+          }
+      },
+      {
+          "id": "208",
+          "title": "James Wilson - COVID-19 Symptoms",
+          "start": "2025-04-20",
+          "end": "2025-04-27",
+          "allDay": true,
+          "extendedProps": {
+              "type": "leave-event",
+              "employeeId": 9,
+              "teamId": 2,
+              "leaveType": "COVID-19 Symptoms"
+          }
+      },
+      {
+          "id": "209",
+          "title": "Patricia Moore - COVID-19 Contact",
+          "start": "2025-05-10",
+          "end": "2025-05-17",
+          "allDay": true,
+          "extendedProps": {
+              "type": "leave-event",
+              "employeeId": 10,
+              "teamId": 2,
+              "leaveType": "COVID-19 Contact"
+          }
+      },
+      {
+          "id": "210",
+          "title": "Daniel Taylor - COVID-19 Isolation",
+          "start": "2025-05-22",
+          "end": "2025-05-29",
+          "allDay": true,
+          "extendedProps": {
+              "type": "leave-event",
+              "employeeId": 11,
+              "teamId": 3,
+              "leaveType": "COVID-19 Isolation"
+          }
+      },
+      {
+          "id": "211",
+          "title": "Nancy Anderson - COVID-19 Symptoms",
+          "start": "2025-06-05",
+          "end": "2025-06-12",
+          "allDay": true,
+          "extendedProps": {
+              "type": "leave-event",
+              "employeeId": 12,
+              "teamId": 3,
+              "leaveType": "COVID-19 Symptoms"
+          }
+      },
+      {
+          "id": "212",
+          "title": "Paul Thomas - COVID-19 Contact",
+          "start": "2025-06-18",
+          "end": "2025-06-25",
+          "allDay": true,
+          "extendedProps": {
+              "type": "leave-event",
+              "employeeId": 13,
+              "teamId": 4,
+              "leaveType": "COVID-19 Contact"
+          }
+      },
+      {
+          "id": "213",
+          "title": "Mary Jackson - COVID-19 Isolation",
+          "start": "2025-07-08",
+          "end": "2025-07-15",
+          "allDay": true,
+          "extendedProps": {
+              "type": "leave-event",
+              "employeeId": 14,
+              "teamId": 4,
+              "leaveType": "COVID-19 Isolation"
+          }
+      },
+      {
+          "id": "214",
+          "title": "Alfie Baker - COVID-19 Symptoms",
+          "start": "2025-07-20",
+          "end": "2025-07-27",
+          "allDay": true,
+          "extendedProps": {
+              "type": "leave-event",
+              "employeeId": 2,
+              "teamId": 1,
+              "leaveType": "COVID-19 Symptoms"
+          }
+      },
+      {
+          "id": "215",
+          "title": "Michael Brown - COVID-19 Contact",
+          "start": "2025-08-10",
+          "end": "2025-08-17",
+          "allDay": true,
+          "extendedProps": {
+              "type": "leave-event",
+              "employeeId": 3,
+              "teamId": 1,
+              "leaveType": "COVID-19 Contact"
+          }
+      },
+      {
+          "id": "216",
+          "title": "Emma Williams - COVID-19 Isolation",
+          "start": "2025-08-22",
+          "end": "2025-08-29",
+          "allDay": true,
+          "extendedProps": {
+              "type": "leave-event",
+              "employeeId": 4,
+              "teamId": 1,
+              "leaveType": "COVID-19 Isolation"
+          }
+      },
+      {
+          "id": "217",
+          "title": "Robert Jones - COVID-19 Symptoms",
+          "start": "2025-09-05",
+          "end": "2025-09-12",
+          "allDay": true,
+          "extendedProps": {
+              "type": "leave-event",
+              "employeeId": 5,
+              "teamId": 2,
+              "leaveType": "COVID-19 Symptoms"
+          }
+      },
+      {
+          "id": "218",
+          "title": "Jennifer Garcia - COVID-19 Contact",
+          "start": "2025-09-18",
+          "end": "2025-09-25",
+          "allDay": true,
+          "extendedProps": {
+              "type": "leave-event",
+              "employeeId": 6,
+              "teamId": 2,
+              "leaveType": "COVID-19 Contact"
+          }
+      },
+      {
+          "id": "219",
+          "title": "David Miller - COVID-19 Isolation",
+          "start": "2025-10-08",
+          "end": "2025-10-15",
+          "allDay": true,
+          "extendedProps": {
+              "type": "leave-event",
+              "employeeId": 7,
+              "teamId": 2,
+              "leaveType": "COVID-19 Isolation"
+          }
+      },
+      {
+          "id": "220",
+          "title": "Lisa Davis - COVID-19 Symptoms",
+          "start": "2025-10-20",
+          "end": "2025-10-27",
+          "allDay": true,
+          "extendedProps": {
+              "type": "leave-event",
+              "employeeId": 8,
+              "teamId": 2,
+              "leaveType": "COVID-19 Symptoms"
+          }
+      },
+      {
+          "id": "221",
+          "title": "James Wilson - COVID-19 Contact",
+          "start": "2025-11-10",
+          "end": "2025-11-17",
+          "allDay": true,
+          "extendedProps": {
+              "type": "leave-event",
+              "employeeId": 9,
+              "teamId": 2,
+              "leaveType": "COVID-19 Contact"
+          }
+      },
+      {
+          "id": "222",
+          "title": "Patricia Moore - COVID-19 Isolation",
+          "start": "2025-11-22",
+          "end": "2025-11-29",
+          "allDay": true,
+          "extendedProps": {
+              "type": "leave-event",
+              "employeeId": 10,
+              "teamId": 2,
+              "leaveType": "COVID-19 Isolation"
+          }
+      },
+      {
+          "id": "223",
+          "title": "Daniel Taylor - COVID-19 Symptoms",
+          "start": "2025-12-05",
+          "end": "2025-12-12",
+          "allDay": true,
+          "extendedProps": {
+              "type": "leave-event",
+              "employeeId": 11,
+              "teamId": 3,
+              "leaveType": "COVID-19 Symptoms"
+          }
+      },
+      {
+          "id": "224",
+          "title": "Nancy Anderson - COVID-19 Contact",
+          "start": "2025-12-18",
+          "end": "2025-12-25",
+          "allDay": true,
+          "extendedProps": {
+              "type": "leave-event",
+              "employeeId": 12,
+              "teamId": 3,
+              "leaveType": "COVID-19 Contact"
+          }
+      },
+      {
+          "id": "301",
+          "title": "COVID Protocol Meeting",
+          "start": "2025-01-05T10:00:00",
+          "end": "2025-01-05T11:30:00",
+          "extendedProps": {
+              "type": "meeting-event",
+              "teamId": 1,
+              "details": "Review updated COVID protocols"
+          }
+      },
+      {
+          "id": "302",
+          "title": "Health & Safety Briefing",
+          "start": "2025-04-12T14:00:00",
+          "end": "2025-04-12T15:30:00",
+          "extendedProps": {
+              "type": "meeting-event",
+              "teamId": 1,
+              "details": "Quarterly health and safety update"
+          }
+      },
+      {
+          "id": "303",
+          "title": "COVID Response Team",
+          "start": "2025-07-20T11:00:00",
+          "end": "2025-07-20T12:30:00",
+          "extendedProps": {
+              "type": "meeting-event",
+              "teamId": 1,
+              "details": "Review and update response procedures"
+          }
+      },
+      {
+          "id": "304",
+          "title": "Annual Health Review",
+          "start": "2025-10-15T13:00:00",
+          "end": "2025-10-15T14:30:00",
+          "extendedProps": {
+              "type": "meeting-event",
+              "teamId": 1,
+              "details": "Annual health policy review"
+          }
       }
     ]
   }
