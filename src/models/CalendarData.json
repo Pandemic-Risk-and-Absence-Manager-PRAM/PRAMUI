@@ -1,0 +1,91 @@
+{
+    "employees": [
+      { "id": 1, "name": "Alex Johnson", "teamId": 1 },
+      { "id": 2, "name": "Alfie Baker", "teamId": 1 },
+      { "id": 3, "name": "Michael Brown", "teamId": 1 },
+      { "id": 4, "name": "Emma Williams", "teamId": 1 },
+      { "id": 5, "name": "Robert Jones", "teamId": 2 },
+      { "id": 6, "name": "Jennifer Garcia", "teamId": 2 },
+      { "id": 7, "name": "David Miller", "teamId": 2 },
+      { "id": 8, "name": "Lisa Davis", "teamId": 2 },
+      { "id": 9, "name": "James Wilson", "teamId": 2 },
+      { "id": 10, "name": "Patricia Moore", "teamId": 2 },
+      { "id": 11, "name": "Daniel Taylor", "teamId": 3 },
+      { "id": 12, "name": "Nancy Anderson", "teamId": 3 },
+      { "id": 13, "name": "Paul Thomas", "teamId": 4 },
+      { "id": 14, "name": "Mary Jackson", "teamId": 4 }
+    ],
+    "publicHolidays": [
+      {
+        "title": "🎄 Christmas Day",
+        "start": "2025-12-25",
+        "allDay": true,
+        "extendedProps": { "type": "public-holiday", "icon": "🎄" }
+      },
+      {
+        "title": "🎆 New Year's Day",
+        "start": "2025-01-01",
+        "allDay": true,
+        "extendedProps": { "type": "public-holiday", "icon": "🎆" }
+      },
+      {
+        "title": "🇬🇧 Bank Holiday",
+        "start": "2025-05-26",
+        "allDay": true,
+        "extendedProps": { "type": "public-holiday", "icon": "🇬🇧" }
+      },
+      {
+        "title": "🌸 Spring Bank Holiday",
+        "start": "2025-05-05",
+        "allDay": true,
+        "extendedProps": { "type": "public-holiday", "icon": "🌸" }
+      },
+      {
+        "title": "👻 Halloween",
+        "start": "2025-10-31",
+        "allDay": true,
+        "extendedProps": { "type": "public-holiday", "icon": "👻" }
+      },
+      {
+        "title": "🦃 Thanksgiving",
+        "start": "2025-11-27",
+        "allDay": true,
+        "extendedProps": { "type": "public-holiday", "icon": "🦃" }
+      }
+    ],
+    "leaveEvents": [
+      {
+        "id": "101",
+        "title": "Alex Johnson - COVID-19 Isolation",
+        "start": "2025-01-15",
+        "end": "2025-01-22",
+        "allDay": true,
+        "extendedProps": { "type": "leave-event", "employeeId": 1, "teamId": 1, "leaveType": "COVID-19 Isolation" }
+      },
+      {
+        "id": "102",
+        "title": "Alex Johnson - COVID-19 Symptoms",
+        "start": "2025-10-05",
+        "end": "2025-10-12",
+        "allDay": true,
+        "extendedProps": { "type": "leave-event", "employeeId": 1, "teamId": 1, "leaveType": "COVID-19 Symptoms" }
+      },
+      {
+        "id": "201",
+        "title": "Alfie Baker - COVID-19 Isolation",
+        "start": "2025-01-08",
+        "end": "2025-01-15",
+        "allDay": true,
+        "extendedProps": { "type": "leave-event", "employeeId": 2, "teamId": 1, "leaveType": "COVID-19 Isolation" }
+      },
+      {
+        "id": "202",
+        "title": "Michael Brown - COVID-19 Contact",
+        "start": "2025-01-20",
+        "end": "2025-01-25",
+        "allDay": true,
+        "extendedProps": { "type": "leave-event", "employeeId": 3, "teamId": 1, "leaveType": "COVID-19 Contact" }
+      }
+    ]
+  }
+  
