@@ -13,7 +13,7 @@ const EmployeeAbsenceRequest = () => {
     };
 
     return (
-        <div className="flex flex-col h-screen bg-gray-100 dark:bg-gray-800 transition-colors">
+        <div className="flex flex-col h-screen bg-gray-100 dark:bg-gray-800 transition-colors" style={{ fontFamily: 'Kanit, sans-serif' }}>
             <Header toggleNavigationBar={toggleNavigationBar} isOpen={isOpen} />
 
             <div className="flex flex-1">
