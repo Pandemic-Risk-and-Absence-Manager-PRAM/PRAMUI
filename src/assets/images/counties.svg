@@ -3,8 +3,8 @@
 <style>
 
   .sm_location:hover path {
-    fill: #006400; /* Change to a lighter green on hover */
-    stroke: #000000; /* Change stroke color to red on hover */
+    fill: #006400; /* Change to a green on hover */
+    stroke: #000000; 
     stroke-width: 1; /* Increase stroke width on hover */
   }
 </style>
