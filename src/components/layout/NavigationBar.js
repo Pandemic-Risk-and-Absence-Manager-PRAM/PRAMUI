@@ -20,8 +20,7 @@ const NavigationBar = ({ isOpen, toggleNavigationBar }) => {
           { name: "Calendar", icon: <FaCalendarAlt />, link: `/dashboard/${dashboardType}/calendar` },
           { name: "Report Absence", icon: <MdOutlineReport />, link: `/dashboard/${dashboardType}/report-absence` },
           { name: "Upload Documents", icon: <FaUpload />, link: `/dashboard/${dashboardType}/upload-documents` },
-          { name: "Resources", icon: <IoBook />, link: `/dashboard/${dashboardType}/resources` },
-          { name: "Settings", icon: <FaCog />, link: `/dashboard/${dashboardType}/settings` }
+          { name: "Resources", icon: <IoBook />, link: `/dashboard/${dashboardType}/resources` }
         ];
       case 'manager':
         return [
@@ -31,8 +30,7 @@ const NavigationBar = ({ isOpen, toggleNavigationBar }) => {
           { name: "Shared Calendar", icon: <FaCalendarAlt />, link: `/dashboard/${dashboardType}/shared-calendar` },
           { name: "View Documents", icon: <FaUpload />, link: `/dashboard/${dashboardType}/view-documents` },
           { name: "Predictive Insights", icon: <FaEye />, link: `/dashboard/${dashboardType}/predictive-insights` },
-          { name: "Resources", icon: <IoBook />, link: `/dashboard/${dashboardType}/resources` },
-          { name: "Settings", icon: <FaCog />, link: `/dashboard/${dashboardType}/settings` }
+          { name: "Resources", icon: <IoBook />, link: `/dashboard/${dashboardType}/resources` }
         ];
       case 'hr':
         return [
@@ -42,8 +40,7 @@ const NavigationBar = ({ isOpen, toggleNavigationBar }) => {
           { name: "View Documents", icon: <FaUpload />, link: `/dashboard/${dashboardType}/view-documents` },
           { name: "Predictive Insights", icon: <FaEye />, link: `/dashboard/${dashboardType}/predictive-insights` },
           { name: "Previous Reports", icon: <FaBookAtlas />, link: `/dashboard/${dashboardType}/previous-reports` },
-          { name: "Resources", icon: <IoBook />, link: `/dashboard/${dashboardType}/resources` },
-          { name: "Settings", icon: <FaCog />, link: `/dashboard/${dashboardType}/settings` }
+          { name: "Resources", icon: <IoBook />, link: `/dashboard/${dashboardType}/resources` }
         ];
       default:
         return <div>Invalid Dashboard Type</div>;

@@ -40,12 +40,9 @@ const Login = () => {
       </div>
 
       {showSSO && (
-          <div className="modal">
-            <div className="modal-content">
-              <SSO handleLogin={handleSSOLogin} />
-              <button onClick={() => setShowSSO(false)}>Close</button>
-            </div>
-          </div>
+        <div className="modal">
+          <SSO handleLogin={handleSSOLogin} closeModal={() => setShowSSO(false)} />
+        </div>
       )}
     </div>
   );
