@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Header from '../../../components/layout/Header';
 import NavigationBar from '../../../components/layout/NavigationBar';
+import AccessibilityWidget from '../../../components/accessibility/AccessibilityWidget';
 import './SharedCalendar.css';
 import FullCalendar from '@fullcalendar/react';
 import dayGridPlugin from '@fullcalendar/daygrid';
@@ -681,6 +682,7 @@ const SharedCalendar = () => {
                     </div>
                 </div>
             </div>
+            <AccessibilityWidget />
         </div>
     );
 };

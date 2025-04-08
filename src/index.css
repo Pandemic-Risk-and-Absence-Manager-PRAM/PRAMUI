@@ -25,6 +25,9 @@ body.seizure-safe {
   animation: none !important;
   transition: none !important;
   filter: saturate(50%);
+  transform: scale(1);
+  height: 100vh;
+  overflow-x: hidden;
 }
 
 /* Vision Impaired: increase font and zoom slightly */
@@ -39,17 +42,24 @@ body.cognitive-friendly {
   line-height: 1.75;
 }
 
-/* High Contrast */
-body.high-contrast {
-  filter: contrast(1.5) brightness(1.1);
+/* Dyslexic Filters - Screen Tints */
+:root {
+  --screen-tint: transparent;
 }
 
-/* Dark mode */
-body.dark {
-  background-color: #111827;
-  color: #f9fafb;
+body::after {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: var(--screen-tint);
+  pointer-events: none;
+  z-index: 9999;
 }
 
+/* ADHD Overlay for focused visibility */
 .adhd-overlay {
   position: fixed;
   top: 0;

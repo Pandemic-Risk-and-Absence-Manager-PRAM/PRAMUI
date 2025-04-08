@@ -3,6 +3,7 @@ import "react-datepicker/dist/react-datepicker.css";
 import "./UploadDocument.css";
 import Header from "../../../../components/layout/Header";
 import NavigationBar from "../../../../components/layout/NavigationBar";
+import AccessibilityWidget from "../../../../components/accessibility/AccessibilityWidget";
 import FileUpload from "./FileUpload";
 
 const UploadDocument = () => {
@@ -32,6 +33,7 @@ const UploadDocument = () => {
           </div>
         </div>
       </div>
+      <AccessibilityWidget />
     </div>
   );
 };
