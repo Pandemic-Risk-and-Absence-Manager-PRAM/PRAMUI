@@ -146,9 +146,17 @@
   }
   
   .fc-event.meeting-event {
-    background-color: rgba(96, 165, 250, 0.15);
-    border-left: 3px solid #3b82f6;
-    color: #3b82f6;
+    background-color: rgba(59, 130, 246, 0.25); /* Darker blue background */
+    border-left: 3px solid #2563eb; /* Darker border */
+    color: #1e40af; /* Darker text color */
+    font-weight: 500; /* Make font slightly bolder */
+  }
+  
+  .dark .fc-event.meeting-event {
+    background-color: rgba(59, 130, 246, 0.25); /* Darker background in dark mode */
+    color: #dbeafe; /* Lighter text in dark mode for contrast */
+    border-left: 3px solid #3b82f6; /* Keep the border visible */
+    font-weight: 500; /* Make font slightly bolder */
   }
   
   .fc-event.training-event {
@@ -166,11 +174,9 @@
     background-color: rgba(251, 146, 60, 0.1);
     color: #fdba74;
   }
-  
-  .dark .fc-event.meeting-event {
-    background-color: rgba(96, 165, 250, 0.1);
-    color: #93c5fd;
-  }
+
+
+
   
   .dark .fc-event.training-event {
     background-color: rgba(139, 92, 246, 0.1);

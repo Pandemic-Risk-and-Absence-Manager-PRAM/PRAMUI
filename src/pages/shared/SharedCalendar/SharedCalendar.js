@@ -17,32 +17,55 @@ const SharedCalendar = () => {
     const { dashboardType } = useParams();
 
     useEffect(() => {
-        // Combine public holidays with leave events
-        const allEvents = [...calendarData.publicHolidays];
+        // Start with empty event array
+        let filteredEvents = [];
 
-        // Filter events based on dashboard type from URL params
+        // Add holidays (ensure they have unique IDs)
+        calendarData.publicHolidays.forEach(holiday => {
+            filteredEvents.push({
+                ...holiday,
+                id: holiday.id || `holiday-${holiday.start}`
+            });
+        });
+
+        // Filter leave events based on dashboard type
         if (dashboardType === 'employee') {
             // For employees, only show their own leaves and team meetings
-            const employeeEvents = calendarData.leaveEvents.filter(event => 
-                event.extendedProps.employeeId === currentEmployeeId || 
-                (event.extendedProps.type === 'meeting-event' && 
-                 event.extendedProps.teamId === calendarData.employees.find(e => e.id === currentEmployeeId)?.teamId)
-            );
-            allEvents.push(...employeeEvents);
+            filteredEvents = [
+                ...filteredEvents,
+                ...calendarData.leaveEvents.filter(event => 
+                    (event.extendedProps.type === 'leave-event' && 
+                     event.extendedProps.employeeId === currentEmployeeId) || 
+                    (event.extendedProps.type === 'meeting-event' && 
+                     event.extendedProps.teamId === calendarData.employees.find(e => e.id === currentEmployeeId)?.teamId)
+                )
+            ];
         } else if (dashboardType === 'manager') {
             // For managers, only show Team 1 employees and meetings
-            const teamOneEvents = calendarData.leaveEvents.filter(event => 
-                event.extendedProps.teamId === 1 ||
-                (event.extendedProps.type === 'meeting-event' && 
-                 event.extendedProps.teamId === 1)
-            );
-            allEvents.push(...teamOneEvents);
+            filteredEvents = [
+                ...filteredEvents,
+                ...calendarData.leaveEvents.filter(event => 
+                    (event.extendedProps.type === 'leave-event' && 
+                     event.extendedProps.teamId === 1) ||
+                    (event.extendedProps.type === 'meeting-event' && 
+                     event.extendedProps.teamId === 1)
+                )
+            ];
         } else {
             // For HR, show all leaves across all teams
-            allEvents.push(...calendarData.leaveEvents);
+            filteredEvents = [
+                ...filteredEvents,
+                ...calendarData.leaveEvents
+            ];
         }
 
-        setEvents(allEvents);
+        // Ensure all events have unique IDs
+        const eventsWithIds = filteredEvents.map(event => ({
+            ...event,
+            id: event.id || `event-${Date.now()}-${Math.random().toString(36).substr(2, 9)}`
+        }));
+
+        setEvents(eventsWithIds);
     }, [dashboardType, currentEmployeeId]);
 
     const toggleNavigationBar = () => {
@@ -92,18 +115,6 @@ const SharedCalendar = () => {
         }
     };
 
-    const renderEventContent = (eventInfo) => {
-        const event = eventInfo.event;
-        const eventType = event.extendedProps.type || 'default';
-
-        return (
-            <div className={`fc-event ${eventType}`}>
-                {event.extendedProps.icon && <span className="holiday-icon">{event.extendedProps.icon}</span>}
-                <div className="fc-event-title">{event.title}</div>
-            </div>
-        );
-    };
-
     return (
         <div className="flex flex-col bg-gray-100 dark:bg-gray-800 transition-colors">
             <Header toggleNavigationBar={toggleNavigationBar} isOpen={isOpen} />
@@ -127,9 +138,9 @@ const SharedCalendar = () => {
                                     {dashboardType === 'hr' && (
                                         <p>You are viewing all COVID-related absences across the company to monitor pandemic impact.</p>
                                     )}
-                                    </div>
+                                </div>
 
-                                    <div className="mb-4 grid grid-cols-4 gap-2">
+                                <div className="mb-4 grid grid-cols-4 gap-2">
                                     <div className="flex items-center">
                                         <div className="w-3 h-3 rounded-full bg-red-500 mr-2"></div>
                                         <span className="text-sm">COVID Absence</span>
@@ -146,50 +157,52 @@ const SharedCalendar = () => {
                                         <div className="w-3 h-3 rounded-full bg-purple-500 mr-2"></div>
                                         <span className="text-sm">Training</span>
                                     </div>
-                                    </div>
+                                </div>
 
-                                    <div>
+                                <div>
                                     <FullCalendar
+                                        key="calendar-instance"
                                         plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin]}
                                         initialView="dayGridMonth"
+                                        initialDate="2024-04-01"
                                         headerToolbar={{
-                                        left: 'prev,next today',
-                                        center: 'title',
-                                        right: 'dayGridMonth,timeGridWeek,timeGridDay'
+                                            left: 'prev,next today',
+                                            center: 'title',
+                                            right: 'dayGridMonth,timeGridWeek,timeGridDay'
                                         }}
                                         events={events}
                                         editable={true}
                                         selectable={true}
                                         selectMirror={true}
-                                        dayMaxEvents={true}
+                                        dayMaxEvents={3}
                                         weekends={true}
                                         dateClick={handleDateClick}
                                         eventClick={handleEventClick}
-                                        eventContent={renderEventContent}
-                                        height="auto"
-                                        aspectRatio={1.5}
+                                        height={700}
+                                        aspectRatio={1.8}
                                         eventClassNames={(arg) => {
-                                        return [ arg.event.extendedProps.type || 'default' ];
+                                            return [arg.event.extendedProps?.type || 'default'];
                                         }}
-                                        eventMouseEnter={(info) => {
-                                        // Safe event hover handling
-                                        if (info && info.el) {
-                                            info.el.style.cursor = 'pointer';
-                                        }
-                                        }}
-                                        eventMouseLeave={(info) => {
-                                        // Safe event hover handling
-                                        if (info && info.el) {
-                                            info.el.style.cursor = '';
-                                        }
+                                        eventDidMount={(info) => {
+                                            // Add custom class based on event type
+                                            const eventType = info.event.extendedProps?.type || 'default';
+                                            info.el.classList.add(eventType);
+                                            
+                                            // Add icon if available
+                                            if (info.event.extendedProps?.icon) {
+                                                const iconEl = document.createElement('span');
+                                                iconEl.className = 'holiday-icon';
+                                                iconEl.innerText = info.event.extendedProps.icon;
+                                                info.el.querySelector('.fc-event-title-container')?.prepend(iconEl);
+                                            }
                                         }}
                                     />
-                                    </div>
                                 </div>
                             </div>
-                         </div>
+                        </div>
                     </div>
                 </div>
+            </div>
             <AccessibilityWidget />
         </div>
     );
