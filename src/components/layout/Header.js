@@ -24,9 +24,29 @@ const Header = ({ toggleNavigationBar }) => {
       const newMode = !prevMode;
       localStorage.setItem("darkMode", newMode);
       document.documentElement.classList.toggle("dark", newMode);
+      document.body.classList.toggle("dark", newMode); // <-- important
       return newMode;
     });
   };
+
+  useEffect(() => {
+    document.documentElement.classList.toggle("dark", darkMode);
+    document.body.classList.toggle("dark", darkMode); // <-- add this
+  }, [darkMode]);
+
+  useEffect(() => {
+    const observer = new MutationObserver(() => {
+      const isDark = document.body.classList.contains('dark');
+      setDarkMode(isDark);
+    });
+  
+    observer.observe(document.body, {
+      attributes: true,
+      attributeFilter: ['class'],
+    });
+  
+    return () => observer.disconnect();
+  }, []);
 
   // Ensure dark mode persists on reload
   useEffect(() => {

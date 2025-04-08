@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Header from "../../../components/layout/Header";
 import NavigationBar from "../../../components/layout/NavigationBar";
+import AccessibilityWidget from "../../../components/accessibility/AccessibilityWidget";
 
 const faqs = [
     {
@@ -86,6 +87,7 @@ const Help = () => {
                     </div>
                 </div>
             </div>
+            <AccessibilityWidget />
         </div>
     );
 };

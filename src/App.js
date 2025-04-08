@@ -13,9 +13,12 @@ import ManagerPredictiveInsights from './pages/shared/ManagerPredictiveInsights/
 import Resources from "./pages/shared/Resources/Resources";
 import UploadDocument from "./pages/dashboard/AbsencePortal/UploadDocuments/UploadDocument";
 import HeatMap from './pages/dashboard/HRPortal/Heatmap/HeatMap.js';
+import { DarkModeProvider } from './components/accessibility/DarkModeContext.js';
+import SharedCalendar from './pages/shared/SharedCalendar/SharedCalendar.js';
 
 function App() {
   return (
+    <DarkModeProvider>
     <div className="min-h-screen bg-gray-100 dark:bg-gray-900 dark:text-white">
     <Router>
       <Routes>
@@ -39,7 +42,7 @@ function App() {
 
         {/* Manager Pages */}
         <Route path="/dashboard/:dashboardType/employee-absence-requests" element={<EmployeeAbsenceRequest />} />
-        <Route path="/dashboard/:dashboardType/shared-calendar" element={<Calendar />} />
+        <Route path="/dashboard/:dashboardType/shared-calendar" element={<SharedCalendar />} />
 
         {/* HR Pages */}
         <Route path="/dashboard/:dashboardType/heatmap" element={<HeatMap />} />
@@ -47,6 +50,7 @@ function App() {
       </Routes>
     </Router>
     </div>
+    </DarkModeProvider>
   );
 }
 

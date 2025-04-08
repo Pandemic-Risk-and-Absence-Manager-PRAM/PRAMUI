@@ -7,6 +7,7 @@ import ManagerOverview from '../../../components/overview/ManagerOverview';
 import { FaUser, FaCalendarAlt, FaUpload, FaEye } from "react-icons/fa";
 import { BsFillFileEarmarkPlusFill } from "react-icons/bs";
 import { IoBook } from "react-icons/io5";
+import AccessibilityWidget from '../../../components/accessibility/AccessibilityWidget';
 
 const ManagerPortal = () => {
   const { dashboardType } = useParams();
@@ -66,6 +67,7 @@ const ManagerPortal = () => {
           </div>
         </div>
       </div>
+      <AccessibilityWidget />
     </div>
   );
 };

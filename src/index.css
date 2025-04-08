@@ -19,3 +19,60 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+/* Seizure Safe: reduce flashing and saturation */
+body.seizure-safe {
+  animation: none !important;
+  transition: none !important;
+  filter: saturate(50%);
+  transform: scale(1);
+  height: 100vh;
+  overflow-x: hidden;
+}
+
+/* Vision Impaired: increase font and zoom slightly */
+body.vision-impaired {
+  font-size: 1.15rem;
+  zoom: 1.1;
+}
+
+/* Cognitive Disability: increase letter spacing and line height */
+body.cognitive-friendly {
+  letter-spacing: 0.05em;
+  line-height: 1.75;
+}
+
+/* Dyslexic Filters - Screen Tints */
+:root {
+  --screen-tint: transparent;
+}
+
+body::after {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: var(--screen-tint);
+  pointer-events: none;
+  z-index: 9999;
+}
+
+/* ADHD Overlay for focused visibility */
+.adhd-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 9999;
+  background: linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0.7) calc(var(--cursor-y) - 150px),
+      rgba(0, 0, 0, 0) calc(var(--cursor-y) - 150px),
+      rgba(0, 0, 0, 0) calc(var(--cursor-y) + 150px),
+      rgba(0, 0, 0, 0.7) calc(var(--cursor-y) + 150px)
+  );
+}

@@ -4,6 +4,7 @@ import { useParams } from 'react-router-dom';
 import NavigationBar from '../../../components/layout/NavigationBar';
 import Header from '../../../components/layout/Header';
 import DirectReports from './DirectReports';
+import AccessibilityWidget from '../../../components/accessibility/AccessibilityWidget';
 
 const Profile = () => {
   const { dashboardType } = useParams();
@@ -128,6 +129,7 @@ const Profile = () => {
           </div>
         </div>
       </div>
+      <AccessibilityWidget />
     </div>
   );
 };
