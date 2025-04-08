@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import "./Login.css";
+import "./SSO.css";
 import mockCredentials from "./MockCredentials.json";
 
-function SSO({ handleLogin }) {
+function SSO({ handleLogin, closeModal }) {
     const [id, setId] = useState('');
     const [password, setPassword] = useState('');
 
@@ -28,7 +28,7 @@ function SSO({ handleLogin }) {
     };
 
     return (
-        <div className="login-page">
+        <div className="login-page" style={{ fontFamily: "Kanit, sans-serif" }}>
             <h2>Login</h2>
             <form autoComplete="off" onSubmit={handleSubmit}>
                 <div className="sso-field">
@@ -53,6 +53,11 @@ function SSO({ handleLogin }) {
                     Submit
                 </button>
             </form>
+
+            {/* Close Button */}
+            <button onClick={closeModal} className="sso-button close-button">
+                Close
+            </button>
         </div>
     );
 }
