@@ -5,6 +5,7 @@ import { BsFillFileEarmarkPlusFill } from "react-icons/bs";
 import { MdOutlineReport } from "react-icons/md";
 import { IoBook } from "react-icons/io5";
 import { FaBookAtlas } from "react-icons/fa6";
+import { PiAirplaneTakeoffThin } from "react-icons/pi";
 
 const NavigationBar = ({ isOpen, toggleNavigationBar }) => {
   const { dashboardType } = useParams();
@@ -19,6 +20,7 @@ const NavigationBar = ({ isOpen, toggleNavigationBar }) => {
           { name: "My Requests", icon: <BsFillFileEarmarkPlusFill />, link: `/dashboard/${dashboardType}/my-requests` },
           { name: "Calendar", icon: <FaCalendarAlt />, link: `/dashboard/${dashboardType}/calendar` },
           { name: "Report Absence", icon: <MdOutlineReport />, link: `/dashboard/${dashboardType}/report-absence` },
+          { name: "Request Absence", icon: <PiAirplaneTakeoffThin />, link: `/dashboard/${dashboardType}/request-absence` },
           { name: "Upload Documents", icon: <FaUpload />, link: `/dashboard/${dashboardType}/upload-documents` },
           { name: "Resources", icon: <IoBook />, link: `/dashboard/${dashboardType}/resources` }
         ];

@@ -56,12 +56,11 @@ const MyRequests = () => {
                                                 REPORT ABSENCE
                                             </button>
                                         </Link>
-                                        <button 
-                                            onClick={addRequest} 
-                                            className="bg-gray-300 dark:bg-gray-700 text-black dark:text-white px-4 py-2 rounded transition-colors"
-                                        >
-                                            REQUEST TIME OFF
-                                        </button>
+                                        <Link to={`/dashboard/${dashboardType}/request-absence`}>
+                                            <button className="bg-gray-300 dark:bg-gray-700 text-black dark:text-white px-4 py-2 rounded transition-colors">
+                                                REQUEST TIME OFF
+                                            </button>
+                                        </Link>
                                     </div>
                                 </div>
                                 
