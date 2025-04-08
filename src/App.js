@@ -3,7 +3,6 @@ import Login from './pages/login/Login';
 import Dashboard from './pages/dashboard/Dashboard';
 import Profile from './pages/shared/Profile/Profile.js';
 import Help from './pages/shared/Help/Help.js';
-import Calendar from './components/calendar/Calendar.js';
 import MyRequests from './pages/dashboard/AbsencePortal/MyRequests/MyRequests.js';
 import EmployeeAbsenceRequest from "./pages/dashboard/ManagerPortal/EmployeeAbsenceRequests/EmployeeAbsenceRequest.js";
 import ReportAbsence from './pages/dashboard/AbsencePortal/ReportAbsence/ReportAbsence.js';
@@ -36,7 +35,7 @@ function App() {
 
         {/* Employee Pages  */}
         <Route path="/dashboard/:dashboardType/my-requests" element={<MyRequests />} />
-        <Route path="/dashboard/:dashboardType/calendar" element={<Calendar />} />
+        <Route path="/dashboard/:dashboardType/calendar" element={<SharedCalendar />} />
         <Route path="/dashboard/:dashboardType/report-absence" element={<ReportAbsence />} />
         <Route path="/dashboard/:dashboardType/upload-documents" element={<UploadDocument />} />
 
