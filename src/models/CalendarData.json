@@ -1,0 +1,426 @@
+{
+  "employees": [
+    { "id": 1, "name": "Alex Johnson", "teamId": 1 },
+    { "id": 2, "name": "Alfie Baker", "teamId": 1 },
+    { "id": 3, "name": "Michael Brown", "teamId": 1 },
+    { "id": 4, "name": "Emma Williams", "teamId": 1 },
+    { "id": 5, "name": "Robert Jones", "teamId": 2 },
+    { "id": 6, "name": "Jennifer Garcia", "teamId": 2 },
+    { "id": 7, "name": "David Miller", "teamId": 2 },
+    { "id": 8, "name": "Lisa Davis", "teamId": 2 },
+    { "id": 9, "name": "James Wilson", "teamId": 2 },
+    { "id": 10, "name": "Patricia Moore", "teamId": 2 },
+    { "id": 11, "name": "Daniel Taylor", "teamId": 3 },
+    { "id": 12, "name": "Nancy Anderson", "teamId": 3 },
+    { "id": 13, "name": "Paul Thomas", "teamId": 4 },
+    { "id": 14, "name": "Mary Jackson", "teamId": 4 }
+  ],
+  "publicHolidays": [
+    {
+      "id": "ph-1",
+      "title": "🎄 Christmas Day",
+      "start": "2024-12-25",
+      "allDay": true,
+      "extendedProps": { "type": "public-holiday", "icon": "🎄" }
+    },
+    {
+      "id": "ph-2",
+      "title": "🎆 New Year's Day",
+      "start": "2024-01-01",
+      "allDay": true,
+      "extendedProps": { "type": "public-holiday", "icon": "🎆" }
+    },
+    {
+      "id": "ph-3",
+      "title": "🇬🇧 Bank Holiday",
+      "start": "2024-05-27",
+      "allDay": true,
+      "extendedProps": { "type": "public-holiday", "icon": "🇬🇧" }
+    },
+    {
+      "id": "ph-4",
+      "title": "🌸 Spring Bank Holiday",
+      "start": "2024-05-06",
+      "allDay": true,
+      "extendedProps": { "type": "public-holiday", "icon": "🌸" }
+    },
+    {
+      "id": "ph-5",
+      "title": "👻 Halloween",
+      "start": "2024-10-31",
+      "allDay": true,
+      "extendedProps": { "type": "public-holiday", "icon": "👻" }
+    },
+    {
+      "id": "ph-6",
+      "title": "🦃 Thanksgiving",
+      "start": "2024-11-28",
+      "allDay": true,
+      "extendedProps": { "type": "public-holiday", "icon": "🦃" }
+    }
+  ],
+  "leaveEvents": [
+    {
+      "id": "101",
+      "title": "Alex Johnson - COVID-19 Isolation",
+      "start": "2024-01-15",
+      "end": "2024-01-22",
+      "allDay": true,
+      "extendedProps": { "type": "leave-event", "employeeId": 1, "teamId": 1, "leaveType": "COVID-19 Isolation" }
+    },
+    {
+      "id": "102",
+      "title": "Alex Johnson - COVID-19 Symptoms",
+      "start": "2024-10-05",
+      "end": "2024-10-12",
+      "allDay": true,
+      "extendedProps": { "type": "leave-event", "employeeId": 1, "teamId": 1, "leaveType": "COVID-19 Symptoms" }
+    },
+    {
+      "id": "201",
+      "title": "Alfie Baker - COVID-19 Isolation",
+      "start": "2024-01-08",
+      "end": "2024-01-15",
+      "allDay": true,
+      "extendedProps": { "type": "leave-event", "employeeId": 2, "teamId": 1, "leaveType": "COVID-19 Isolation" }
+    },
+    {
+      "id": "202",
+      "title": "Michael Brown - COVID-19 Contact",
+      "start": "2024-01-20",
+      "end": "2024-01-25",
+      "allDay": true,
+      "extendedProps": { "type": "leave-event", "employeeId": 3, "teamId": 1, "leaveType": "COVID-19 Contact" }
+    },
+    {
+      "id": "203",
+      "title": "Emma Williams - COVID-19 Symptoms",
+      "start": "2024-02-10",
+      "end": "2024-02-17",
+      "allDay": true,
+      "extendedProps": {
+          "type": "leave-event",
+          "employeeId": 4,
+          "teamId": 1,
+          "leaveType": "COVID-19 Symptoms"
+      }
+    },
+    {
+      "id": "204",
+      "title": "Robert Jones - COVID-19 Isolation",
+      "start": "2024-02-22",
+      "end": "2024-02-29",
+      "allDay": true,
+      "extendedProps": {
+          "type": "leave-event",
+          "employeeId": 5,
+          "teamId": 2,
+          "leaveType": "COVID-19 Isolation"
+      }
+    },
+    {
+      "id": "205",
+      "title": "Jennifer Garcia - COVID-19 Symptoms",
+      "start": "2024-03-05",
+      "end": "2024-03-12",
+      "allDay": true,
+      "extendedProps": {
+          "type": "leave-event",
+          "employeeId": 6,
+          "teamId": 2,
+          "leaveType": "COVID-19 Symptoms"
+      }
+    },
+    {
+      "id": "206",
+      "title": "David Miller - COVID-19 Contact",
+      "start": "2024-03-18",
+      "end": "2024-03-25",
+      "allDay": true,
+      "extendedProps": {
+          "type": "leave-event",
+          "employeeId": 7,
+          "teamId": 2,
+          "leaveType": "COVID-19 Contact"
+      }
+    },
+    {
+      "id": "207",
+      "title": "Lisa Davis - COVID-19 Isolation",
+      "start": "2024-04-08",
+      "end": "2024-04-15",
+      "allDay": true,
+      "extendedProps": {
+          "type": "leave-event",
+          "employeeId": 8,
+          "teamId": 2,
+          "leaveType": "COVID-19 Isolation"
+      }
+    },
+    {
+      "id": "208",
+      "title": "James Wilson - COVID-19 Symptoms",
+      "start": "2024-04-20",
+      "end": "2024-04-27",
+      "allDay": true,
+      "extendedProps": {
+          "type": "leave-event",
+          "employeeId": 9,
+          "teamId": 2,
+          "leaveType": "COVID-19 Symptoms"
+      }
+    },
+    {
+      "id": "209",
+      "title": "Patricia Moore - COVID-19 Contact",
+      "start": "2024-05-10",
+      "end": "2024-05-17",
+      "allDay": true,
+      "extendedProps": {
+          "type": "leave-event",
+          "employeeId": 10,
+          "teamId": 2,
+          "leaveType": "COVID-19 Contact"
+      }
+    },
+    {
+      "id": "210",
+      "title": "Daniel Taylor - COVID-19 Isolation",
+      "start": "2024-05-22",
+      "end": "2024-05-29",
+      "allDay": true,
+      "extendedProps": {
+          "type": "leave-event",
+          "employeeId": 11,
+          "teamId": 3,
+          "leaveType": "COVID-19 Isolation"
+      }
+    },
+    {
+      "id": "211",
+      "title": "Nancy Anderson - COVID-19 Symptoms",
+      "start": "2024-06-05",
+      "end": "2024-06-12",
+      "allDay": true,
+      "extendedProps": {
+          "type": "leave-event",
+          "employeeId": 12,
+          "teamId": 3,
+          "leaveType": "COVID-19 Symptoms"
+      }
+    },
+    {
+      "id": "212",
+      "title": "Paul Thomas - COVID-19 Contact",
+      "start": "2024-06-18",
+      "end": "2024-06-25",
+      "allDay": true,
+      "extendedProps": {
+          "type": "leave-event",
+          "employeeId": 13,
+          "teamId": 4,
+          "leaveType": "COVID-19 Contact"
+      }
+    },
+    {
+      "id": "213",
+      "title": "Mary Jackson - COVID-19 Isolation",
+      "start": "2024-07-08",
+      "end": "2024-07-15",
+      "allDay": true,
+      "extendedProps": {
+          "type": "leave-event",
+          "employeeId": 14,
+          "teamId": 4,
+          "leaveType": "COVID-19 Isolation"
+      }
+    },
+    {
+      "id": "214",
+      "title": "Alfie Baker - COVID-19 Symptoms",
+      "start": "2024-07-20",
+      "end": "2024-07-27",
+      "allDay": true,
+      "extendedProps": {
+          "type": "leave-event",
+          "employeeId": 2,
+          "teamId": 1,
+          "leaveType": "COVID-19 Symptoms"
+      }
+    },
+    {
+      "id": "215",
+      "title": "Michael Brown - COVID-19 Contact",
+      "start": "2024-08-10",
+      "end": "2024-08-17",
+      "allDay": true,
+      "extendedProps": {
+          "type": "leave-event",
+          "employeeId": 3,
+          "teamId": 1,
+          "leaveType": "COVID-19 Contact"
+      }
+    },
+    {
+      "id": "216",
+      "title": "Emma Williams - COVID-19 Isolation",
+      "start": "2024-08-22",
+      "end": "2024-08-29",
+      "allDay": true,
+      "extendedProps": {
+          "type": "leave-event",
+          "employeeId": 4,
+          "teamId": 1,
+          "leaveType": "COVID-19 Isolation"
+      }
+    },
+    {
+      "id": "217",
+      "title": "Robert Jones - COVID-19 Symptoms",
+      "start": "2024-09-05",
+      "end": "2024-09-12",
+      "allDay": true,
+      "extendedProps": {
+          "type": "leave-event",
+          "employeeId": 5,
+          "teamId": 2,
+          "leaveType": "COVID-19 Symptoms"
+      }
+    },
+    {
+      "id": "218",
+      "title": "Jennifer Garcia - COVID-19 Contact",
+      "start": "2024-09-18",
+      "end": "2024-09-25",
+      "allDay": true,
+      "extendedProps": {
+          "type": "leave-event",
+          "employeeId": 6,
+          "teamId": 2,
+          "leaveType": "COVID-19 Contact"
+      }
+    },
+    {
+      "id": "219",
+      "title": "David Miller - COVID-19 Isolation",
+      "start": "2024-10-08",
+      "end": "2024-10-15",
+      "allDay": true,
+      "extendedProps": {
+          "type": "leave-event",
+          "employeeId": 7,
+          "teamId": 2,
+          "leaveType": "COVID-19 Isolation"
+      }
+    },
+    {
+      "id": "220",
+      "title": "Lisa Davis - COVID-19 Symptoms",
+      "start": "2024-10-20",
+      "end": "2024-10-27",
+      "allDay": true,
+      "extendedProps": {
+          "type": "leave-event",
+          "employeeId": 8,
+          "teamId": 2,
+          "leaveType": "COVID-19 Symptoms"
+      }
+    },
+    {
+      "id": "221",
+      "title": "James Wilson - COVID-19 Contact",
+      "start": "2024-11-10",
+      "end": "2024-11-17",
+      "allDay": true,
+      "extendedProps": {
+          "type": "leave-event",
+          "employeeId": 9,
+          "teamId": 2,
+          "leaveType": "COVID-19 Contact"
+      }
+    },
+    {
+      "id": "222",
+      "title": "Patricia Moore - COVID-19 Isolation",
+      "start": "2024-11-22",
+      "end": "2024-11-29",
+      "allDay": true,
+      "extendedProps": {
+          "type": "leave-event",
+          "employeeId": 10,
+          "teamId": 2,
+          "leaveType": "COVID-19 Isolation"
+      }
+    },
+    {
+      "id": "223",
+      "title": "Daniel Taylor - COVID-19 Symptoms",
+      "start": "2024-12-05",
+      "end": "2024-12-12",
+      "allDay": true,
+      "extendedProps": {
+          "type": "leave-event",
+          "employeeId": 11,
+          "teamId": 3,
+          "leaveType": "COVID-19 Symptoms"
+      }
+    },
+    {
+      "id": "224",
+      "title": "Nancy Anderson - COVID-19 Contact",
+      "start": "2024-12-18",
+      "end": "2024-12-25",
+      "allDay": true,
+      "extendedProps": {
+          "type": "leave-event",
+          "employeeId": 12,
+          "teamId": 3,
+          "leaveType": "COVID-19 Contact"
+      }
+    },
+    {
+      "id": "301",
+      "title": "COVID Protocol Meeting",
+      "start": "2024-01-05T10:00:00",
+      "end": "2024-01-05T11:30:00",
+      "extendedProps": {
+          "type": "meeting-event",
+          "teamId": 1,
+          "details": "Review updated COVID protocols"
+      }
+    },
+    {
+      "id": "302",
+      "title": "Health & Safety Briefing",
+      "start": "2024-04-12T14:00:00",
+      "end": "2024-04-12T15:30:00",
+      "extendedProps": {
+          "type": "meeting-event",
+          "teamId": 1,
+          "details": "Quarterly health and safety update"
+      }
+    },
+    {
+      "id": "303",
+      "title": "COVID Response Team",
+      "start": "2024-07-20T11:00:00",
+      "end": "2024-07-20T12:30:00",
+      "extendedProps": {
+          "type": "meeting-event",
+          "teamId": 1,
+          "details": "Review and update response procedures"
+      }
+    },
+    {
+      "id": "304",
+      "title": "Annual Health Review",
+      "start": "2024-10-15T13:00:00",
+      "end": "2024-10-15T14:30:00",
+      "extendedProps": {
+          "type": "meeting-event",
+          "teamId": 1,
+          "details": "Annual health policy review"
+      }
+    }
+  ]
+}

@@ -2,8 +2,8 @@ import React from 'react';
 import Header from '../../../../components/layout/Header';
 import NavigationBar from "../../../../components/layout/NavigationBar";
 import './EmployeeAbsenceRequest.css';
-import Calendar from "../../../../components/calendar/Calendar";
 import AccessibilityWidget from '../../../../components/accessibility/AccessibilityWidget';
+import SharedCalendar from "../../../shared/SharedCalendar/SharedCalendar";
 
 const EmployeeAbsenceRequest = () => {
     const [isOpen, setIsOpen] = React.useState(true);
@@ -13,7 +13,7 @@ const EmployeeAbsenceRequest = () => {
     };
 
     return (
-        <div className="flex flex-col h-screen bg-gray-100 dark:bg-gray-800 transition-colors">
+        <div className="flex flex-col h-screen bg-gray-100 dark:bg-gray-800 transition-colors" style={{ fontFamily: 'Kanit, sans-serif' }}>
             <Header toggleNavigationBar={toggleNavigationBar} isOpen={isOpen} />
 
             <div className="flex flex-1">
@@ -51,8 +51,8 @@ const EmployeeAbsenceRequest = () => {
                                     </div>
                                 </div>
                                 {/*calendar*/}
-                                <div className="flex space-x-4 flex-col">
-                                    <Calendar />
+                                <div className="flex space-x-4 flex-col" style={{ maxHeight: '600px', overflowY: 'auto', margin: '0' }}>
+                                    <SharedCalendar />
                                 </div>
                                 {/*report absence requests*/}
                                 <div className="absence-table-container flex-col">

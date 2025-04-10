@@ -96,7 +96,7 @@ const ManagerPredictiveInsights = () => {
     ];
 
     return(
-        <div className="flex flex-col bg-gray-100 dark:bg-gray-800 transition-colors">
+        <div className="flex flex-col bg-gray-100 dark:bg-gray-800 transition-colors" style={{ fontFamily: 'Kanit, sans-serif' }}>
         <Header toggleNavigationBar={toggleNavigationBar} isOpen={isOpen} />
 
         <div className="flex flex-1">
@@ -113,7 +113,7 @@ const ManagerPredictiveInsights = () => {
                                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
                                     <div className="absences-by-team dark:bg-gray-800">
                                         {dashboardType === 'manager' && (<h2 className="text-xl font-semibold mb-4 dark:text-white">Absences by Team</h2>)}
-                                        {dashboardType === 'hr' && (<h2 className="text-xl font-semibold mb-4 dark:text-white">Absences by department</h2>)}
+                                        {dashboardType === 'hr' && (<h2 className="text-xl font-semibold mb-4 dark:text-white">Absences by Department</h2>)}
                                         <div className="date-navigator">
                                             <button className="nav-arrow dark:text-gray-300" onClick={goToPreviousMonth}>&lt;</button>
                                             <span className="date dark:text-white">{monthNames[currentMonth]} {currentDate}</span>
@@ -255,14 +255,14 @@ const ManagerPredictiveInsights = () => {
                                                 value={selectedLocation}
                                                 onChange={handleLocationChange}
                                             >
-                                                <option value="london">LONDON</option>
-                                                <option value="manchester">MANCHESTER</option>
-                                                <option value="birmingham">BIRMINGHAM</option>
-                                                <option value="leeds">LEEDS</option>
-                                                <option value="glasgow">GLASGOW</option>
-                                                <option value="edinburgh">EDINBURGH</option>
-                                                <option value="cardiff">CARDIFF</option>
-                                                <option value="belfast">BELFAST</option>
+                                                <option value="london">London</option>
+                                                <option value="manchester">Manchester</option>
+                                                <option value="birmingham">Birmingham</option>
+                                                <option value="leeds">Leeds</option>
+                                                <option value="glasgow">Glasgow</option>
+                                                <option value="edinburgh">Edinburgh</option>
+                                                <option value="cardiff">Cardiff</option>
+                                                <option value="belfast">Belfast</option>
                                             </select>
                                             <span className="dropdown-arrow dark:text-white">▼</span>
                                         </div>
