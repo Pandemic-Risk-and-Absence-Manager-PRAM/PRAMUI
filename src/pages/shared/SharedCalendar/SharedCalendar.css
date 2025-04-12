@@ -41,14 +41,14 @@
   }
   
   .fc .fc-button-primary {
-    background-color: #6366f1;
-    border-color: #4f46e5;
+    background-color: #1F3557;
+    border-color: #121f32;
     color: white;
   }
   
   .fc .fc-button-primary:hover {
-    background-color: #4f46e5;
-    border-color: #4338ca;
+    background-color: #2e4f81;
+    border-color: #3f6db3;
   }
   
   .dark .fc .fc-button {
@@ -63,13 +63,14 @@
   }
   
   .dark .fc .fc-button-primary {
-    background-color: #6366f1;
-    border-color: #4f46e5;
+    background-color: #1F3557;
+    border-color: #121f32;
+    color: white;
   }
   
   .dark .fc .fc-button-primary:hover {
-    background-color: #4f46e5;
-    border-color: #4338ca;
+    background-color: #2e4f81;
+    border-color: #3f6db3;
   }
   
   .fc .fc-button-active {
@@ -136,27 +137,27 @@
   .fc-event.leave-event {
     background-color: rgba(248, 113, 113, 0.15);
     border-left: 3px solid #ef4444;
-    color: #ef4444;
+    color: #ef4444 !important; 
   }
   
   .fc-event.public-holiday {
     background-color: rgba(251, 146, 60, 0.15);
     border-left: 3px solid #f97316;
-    color: #f97316;
+    color: #f97316 !important;
   }
   
   .fc-event.meeting-event {
-    background-color: rgba(59, 130, 246, 0.25); /* Darker blue background */
-    border-left: 3px solid #2563eb; /* Darker border */
-    color: #1e40af; /* Darker text color */
-    font-weight: 500; /* Make font slightly bolder */
+    background-color: rgba(59, 130, 246, 0.25);
+    border-left: 3px solid #2563eb; 
+    color: #1e40af; 
+    font-weight: 500; 
   }
   
   .dark .fc-event.meeting-event {
-    background-color: rgba(59, 130, 246, 0.25); /* Darker background in dark mode */
-    color: #dbeafe; /* Lighter text in dark mode for contrast */
-    border-left: 3px solid #3b82f6; /* Keep the border visible */
-    font-weight: 500; /* Make font slightly bolder */
+    background-color: rgba(59, 130, 246, 0.25); 
+    color: #dbeafe; 
+    border-left: 3px solid #3b82f6; 
+    font-weight: 500; 
   }
   
   .fc-event.training-event {
