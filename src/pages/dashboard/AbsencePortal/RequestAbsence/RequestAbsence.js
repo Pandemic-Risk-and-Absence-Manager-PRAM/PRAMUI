@@ -79,7 +79,7 @@ const RequestAbsence = () => {
             style={{ marginLeft: isOpen ? "280px" : "0px", transition: "margin-left 0.3s ease" }}>
             <div className="max-w-5xl mx-auto bg-white dark:bg-gray-800 rounded-lg shadow-md transition-all">
               <div className="p-6 w-full overflow-x-auto">
-                <h1 className="text-3xl font-bold mb-6 text-black dark:text-white" style={{ fontFamily: 'Kanit, sans-serif' }}>REQUEST ABSENCE</h1>
+                <h1 className="text-3xl font-bold mb-6 text-black dark:text-white" style={{ fontFamily: 'Kanit, sans-serif' }}>REQUEST TIME OFF</h1>
                 
                 {/* Error when submitting form if unfilled */}
                 {error && <p className="text-red-500 mb-4">{error}</p>}
