@@ -4,7 +4,7 @@
 # Getting Started
 git clone [url of your fork]
 
-npm install --legacy-peer-deps [in case of any react dependency conflicts]
+npm install
 
 npm start
 
