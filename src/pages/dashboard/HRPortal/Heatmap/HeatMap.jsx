@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import Header from '../../../../components/layout/Header.js';
 import NavigationBar from '../../../../components/layout/NavigationBar.js';
 import AccessibilityWidget from '../../../../components/accessibility/AccessibilityWidget.js';
-import { ReactComponent as UKMap } from '../../../../assets/images/counties.svg';
+import { ReactComponent as UKMap } from '../../../../assets/images/counties-cropped.svg';
 import mapdata from '../../../../assets/images/data/mapdata.js';
 
 const HeatMap = () => {
@@ -21,48 +21,75 @@ const HeatMap = () => {
     mediumHigh: '#f7c663',
     high: '#d84315',
     notReported: '#cccccc',
+    nonOperational: '#636363',
   };
+
+  const supportedRegions = [
+    'GBARD', 'GBARM', 'GBBDG', 'GBBEN', 'GBBEX', 'GBBIR', 'GBBLA', 'GBBLY', 'GBBNE', 'GBBNS',
+'GBBOL', 'GBBRC', 'GBBRD', 'GBBUR', 'GBCAY', 'GBCHW', 'GBCHE', 'GBCLK', 'GBCLD', 'GBCRF',
+'GBCRY', 'GBDNC', 'GBDOW', 'GBDUD', 'GBEDH', 'GBEDU', 'GBEAY', 'GBELN', 'GBENF', 'GBERW',
+'GBESS', 'GBFAL', 'GBFER', 'GBFIF', 'GBGLG', 'GBGRE', 'GBHCK', 'GBHIL', 'GBHMF', 'GBHNS',
+'GBHRT', 'GBHRW', 'GBHRY', 'GBISL', 'GBIVC', 'GBKEC', 'GBKEN', 'GBKIR', 'GBKTT', 'GBLAN',
+'GBLBH', 'GBLDS', 'GBLEW', 'GBLMV', 'GBLSB', 'GBMAN', 'GBMFT', 'GBMLN', 'GBMRT', 'GBNTA',
+'GBNTH', 'GBNLK', 'GBNYK', 'GBNYM', 'GBNWM', 'GBNWP', 'GBOLD', 'GBOMH', 'GBPOW', 'GBRCC',
+'GBRCH', 'GBRDB', 'GBRDG', 'GBRFW', 'GBRIC', 'GBROT', 'GBSAW', 'GBSHF', 'GBSKP', 'GBSLF',
+'GBSLK', 'GBSOL', 'GBSRY', 'GBSTB', 'GBSTG', 'GBSTN', 'GBSTS', 'GBSWK', 'GBTAM', 'GBTHR',
+'GBTOF', 'GBTRF', 'GBTWH', 'GBVGL', 'GBWAR', 'GBWBK', 'GBWDU', 'GBWFT', 'GBWGN', 'GBWLL',
+'GBWLN', 'GBWLV', 'GBWNM', 'GBWOK', 'GBWRT', 'GBYOR', 'GBSLG'
+
+  ];
 
   // Assign random risk levels to regions
   const regionColors = useRef({});
+
   useEffect(() => {
     if (mapdata && mapdata.state_specific) {
-      // Step 1: Generate random case numbers for each region
+      // Step 1: Filter supported regions
+      const filteredRegions = Object.keys(mapdata.state_specific).filter((regionId) =>
+        supportedRegions.includes(regionId)
+      );
+  
+      // Step 2: Generate random case numbers for each supported region
       const cases = Object.keys(mapdata.state_specific).map((regionId) => {
         let caseCount;
-      
-        // Simulate "not reported" for ~10% of regions
-        const isNotReported = Math.random() < 0.1;
-      
-        // Assign case count dynamically
-        caseCount = isNotReported ? 0 : Math.floor(Math.random() * 5000); // Random cases between 0 and 5000
-      
-        // If specific logic is needed for Slough, handle it here
-        if (regionId === 'GBSLG' && !isNotReported) {
-          caseCount = 809; // Ensure Slough has at least 100 cases if reported
+  
+        // Check if the region is not in supportedRegions
+        const isNonOperational = !supportedRegions.includes(regionId);
+  
+        if (isNonOperational) {
+          // Mark as non-operational
+          regionCases.current[regionId] = -1; // Use -1 to indicate non-operational
+          return { regionId, caseCount: -1 };
         }
-      
+  
+        // Simulate "not reported" for ~10% of supported regions
+        const isNotReported = Math.random() < 0.1;
+  
+        // Assign case count dynamically
+        caseCount = isNotReported ? 0 : Math.floor(Math.random() * 1000); // Random cases between 0 and 3000
+  
         regionCases.current[regionId] = caseCount;
-      
+  
         return { regionId, caseCount };
       });
-
-      // Step 2: Sort regions by case count in descending order
-      const sortedCases = cases.sort((a, b) => b.caseCount - a.caseCount);
-
-      // Step 3: Determine thresholds for risk levels
-      const totalRegions = sortedCases.length;
-      const highRiskThreshold = Math.floor(totalRegions * 0.25); // Top 25% for high risk
-      const mediumHighThreshold = Math.floor(totalRegions * 0.50); // Next 25% for medium-high risk
-      const mediumLowThreshold = Math.floor(totalRegions * 0.75); // Next 25% for medium-low risk
-
-      // Step 4: Assign risk levels and colors
+  
+      // Step 3: Filter out "non-operational" and "not reported" regions
+      const validCases = cases.filter((region) => region.caseCount > 0);
+  
+      // Step 4: Sort valid regions by case count in descending order
+      const sortedCases = validCases.sort((a, b) => b.caseCount - a.caseCount);
+  
+      // Step 5: Determine thresholds for risk levels
+      const totalValidRegions = sortedCases.length;
+      const highRiskThreshold = Math.floor(totalValidRegions * 0.25); // Top 25% for high risk
+      const mediumHighThreshold = Math.floor(totalValidRegions * 0.50); // Next 25% for medium-high risk
+      const mediumLowThreshold = Math.floor(totalValidRegions * 0.75); // Next 25% for medium-low risk
+  
+      // Step 6: Assign risk levels and colors
       sortedCases.forEach((region, index) => {
-        const { regionId, caseCount } = region;
-
-        if (caseCount === 0) {
-          regionColors.current[regionId] = riskColors.notReported; // Not reported
-        } else if (index < highRiskThreshold) {
+        const { regionId } = region;
+  
+        if (index < highRiskThreshold) {
           regionColors.current[regionId] = riskColors.high; // High risk
         } else if (index < mediumHighThreshold) {
           regionColors.current[regionId] = riskColors.mediumHigh; // Medium-high risk
@@ -70,6 +97,17 @@ const HeatMap = () => {
           regionColors.current[regionId] = riskColors.mediumLow; // Medium-low risk
         } else {
           regionColors.current[regionId] = riskColors.low; // Low risk
+        }
+      });
+  
+      // Step 7: Assign colors for "non-operational" and "not reported" regions
+      cases.forEach((region) => {
+        const { regionId, caseCount } = region;
+  
+        if (caseCount === -1) {
+          regionColors.current[regionId] = riskColors.nonOperational; // Non-operational
+        } else if (caseCount === 0) {
+          regionColors.current[regionId] = riskColors.notReported; // Not reported
         }
       });
     }
@@ -106,7 +144,12 @@ const handleRegionMouseEnter = (e) => {
   const regionId = extractRegionId(target);
 
   // Skip hover effect if the region is the currently clicked region
-  if (regionId && regionId !== clickedRegion) {
+  // or if the region is non-operational or not reported
+  if (
+    regionId &&
+    regionId !== clickedRegion &&
+    regionCases.current[regionId] >= 0 // Only apply hover effect for supported regions
+  ) {
     target.style.filter = 'drop-shadow(0px 0px 10px #7a7979)';
   }
 
@@ -125,14 +168,16 @@ const handleRegionMouseEnter = (e) => {
       ? regionCases.current['GBSLG'] // Explicitly fetch Slough's case count
       : regionCases.current[regionId] || 0; // Default to 0 if no case count is found
 
-  // Update the tooltip
-  setTooltip({
-    visible: true,
-    text: `${regionName} - Confirmed cases: ${confirmedCases}`,
-    x: e.clientX + 10, // Position slightly to the right of the cursor
-    y: e.clientY + 10,
-    persist: false,
-  });
+  // Update the tooltip only for supported regions
+  if (regionCases.current[regionId] >= 0 || regionName === 'Your location: Slough') {
+    setTooltip({
+      visible: true,
+      text: `${regionName} - Confirmed cases: ${confirmedCases}`,
+      x: e.clientX + 10, // Position slightly to the right of the cursor
+      y: e.clientY + 10,
+      persist: false,
+    });
+  }
 };
 
 const handleRegionMouseLeave = (e) => {
@@ -140,7 +185,8 @@ const handleRegionMouseLeave = (e) => {
   const regionId = extractRegionId(target);
 
   // Only reset styles if the region is not clicked
-  if (regionId !== clickedRegion) {
+  // and if the region is supported
+  if (regionId !== clickedRegion && regionCases.current[regionId] >= 0) {
     target.style.stroke = 'none'; // Remove the border
     target.style.strokeWidth = '0'; // Reset the border width
     target.style.opacity = '1'; // Reset the opacity
@@ -200,29 +246,42 @@ const handleRegionMouseLeave = (e) => {
 //   }
 // };
 
-  useEffect(() => {
-    const svgElement = mapRef.current;
-    if (!svgElement) return;
+useEffect(() => {
+  const svgElement = mapRef.current;
+  if (!svgElement) return;
 
-    const regionElements = svgElement.querySelectorAll('path');
-    regionElements.forEach((el) => {
-      const regionId = extractRegionId(el);
-      if (regionId && regionColors.current[regionId]) {
-        el.style.fill = regionColors.current[regionId]; // Assign color based on risk level
+  const regionElements = svgElement.querySelectorAll('path');
+  regionElements.forEach((el) => {
+    const regionId = extractRegionId(el);
+    if (regionId) {
+      // Assign color based on risk level
+      if (regionColors.current[regionId]) {
+        el.style.fill = regionColors.current[regionId];
       }
-      el.addEventListener('mouseenter', handleRegionMouseEnter);
-      el.addEventListener('mouseleave', handleRegionMouseLeave);
-     // el.addEventListener('click', handleRegionClick); // Ensure click event is added
-    });
 
-    return () => {
-      regionElements.forEach((el) => {
-        el.removeEventListener('mouseenter', handleRegionMouseEnter);
-        el.removeEventListener('mouseleave', handleRegionMouseLeave);
-     //   el.removeEventListener('click', handleRegionClick); // Clean up click event
-      });
-    };
-  }, []);
+      // Set cursor style based on operational status
+      if (regionCases.current[regionId] === -1) {
+        // Non-operational region
+        el.style.cursor = 'default';
+      } else {
+        // Operational region
+        el.style.cursor = 'pointer';
+      }
+    }
+
+    el.addEventListener('mouseenter', handleRegionMouseEnter);
+    el.addEventListener('mouseleave', handleRegionMouseLeave);
+    // el.addEventListener('click', handleRegionClick); // Ensure click event is added
+  });
+
+  return () => {
+    regionElements.forEach((el) => {
+      el.removeEventListener('mouseenter', handleRegionMouseEnter);
+      el.removeEventListener('mouseleave', handleRegionMouseLeave);
+      // el.removeEventListener('click', handleRegionClick); // Clean up click event
+    });
+  };
+}, []);
 
   return (
     <div className="flex flex-col min-h-screen bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-white transition-all">
@@ -247,13 +306,15 @@ const handleRegionMouseLeave = (e) => {
             >
               HEATMAP
             </h1>
+            
+           
 
             <div
               id="map"
-              className="border rounded-lg shadow-md overflow-hidden relative"
+              className="border border-gray-100 rounded-lg shadow-md overflow-hidden relative dark:border-gray-800"
               style={{
                 width: '100%',
-                height: '800px',
+                height: '700px',
                 display: 'flex',
                 marginLeft: '0%',
                 justifyContent: 'center',
@@ -261,13 +322,29 @@ const handleRegionMouseLeave = (e) => {
                 overflow: 'hidden',
               }}
             >
+               {/* Add Subheading Here */}
+            <h2
+              className="text-xl text-gray-700 dark:text-gray-300 font-medium mb-4"
+              style={{
+                fontFamily: 'Kanit, sans-serif',
+                position: 'absolute', // Position it inside the map container
+                top: '10px', // Adjust the position as needed
+                left: '10px', // Adjust the position as needed
+                zIndex: 10, // Ensure it appears above the map
+                margin: '10px',
+              }}
+            >
+              Risk Levels Across Operational Regions
+            </h2> 
+
               <UKMap
                 id="map-svg"
                 ref={mapRef}
                 style={{
-                  width: '150%', // Enlarged map width
-                  height: '100%', // Keep the height consistent
-                  marginLeft: '-25%', // Center the enlarged map within the container
+                  width: '110%', // Enlarged map width
+                  height: '85%', // Keep the height consistent // Center the enlarged map within the container
+                  marginLeft: '7%', // Adjust the left margin to center the map
+                  marginTop: '5%', // Adjust the top margin to center the map
                   objectFit: 'contain',
                 }}
               />
@@ -329,6 +406,7 @@ const handleRegionMouseLeave = (e) => {
               >
                 KEY
               </h3>
+               
               <div
                 style={{
                   display: 'flex',
@@ -363,6 +441,31 @@ const handleRegionMouseLeave = (e) => {
               <div style={{ flexGrow: 1, backgroundColor: '#f7c663' }}></div> {/* Yellow */}
               <div style={{ flexGrow: 1, backgroundColor: '#d3eaf2' }}></div> {/* Light Blue */}
               <div style={{ flexGrow: 1, backgroundColor: '#1e88e5' }}></div> {/* Blue */}
+              </div>
+
+              {/* Row 1: Non-operational region */}
+              <div
+                style={{
+                  display: 'flex',
+                  flexDirection: 'column', // Stack text above the color bar
+                  alignItems: 'left', // Center align the text and bar
+                  justifyContent: 'left', // Center align vertically
+                  width: '100%',
+                  marginTop: '20px',
+                  marginBottom: '20px', // Add spacing between rows
+                }}
+              >
+                <span style={{ fontSize: '12px', color: 'black', marginBottom: '5px' }}>
+                  non-operational region
+                </span>
+                <div
+                  style={{
+                    width: '125px',
+                    height: '10px',
+                    backgroundColor: '#636363', // Grey color for non-operational region
+                    borderRadius: '5px',
+                  }}
+                ></div>
               </div>
             </div>
           </div>

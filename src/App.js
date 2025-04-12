@@ -11,7 +11,7 @@ import PreviousReports from './pages/dashboard/HRPortal/Previous Reports/Previou
 import ManagerPredictiveInsights from './pages/shared/ManagerPredictiveInsights/ManagerPredictiveInsights.js';
 import Resources from "./pages/shared/Resources/Resources";
 import UploadDocument from "./pages/dashboard/AbsencePortal/UploadDocuments/UploadDocument";
-import HeatMap from './pages/dashboard/HRPortal/Heatmap/HeatMap.js';
+import HeatMap from './pages/dashboard/HRPortal/Heatmap/HeatMap.jsx';
 import { DarkModeProvider } from './components/accessibility/DarkModeContext.js';
 import SharedCalendar from './pages/shared/SharedCalendar/SharedCalendar.js';
 import RequestAbsence from "./pages/dashboard/AbsencePortal/RequestAbsence/RequestAbsence";
