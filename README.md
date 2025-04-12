@@ -3,9 +3,12 @@
 
 # Getting Started
 git clone [url of your fork]
-npm install
-npm start 
 
+npm install --legacy-peer-deps [in case of any react dependency conflicts]
+
+npm start
+
+# SSO/Logging In
 to log in use the following ids and passwords:
 Absence Portal: 
 id: "employee",
