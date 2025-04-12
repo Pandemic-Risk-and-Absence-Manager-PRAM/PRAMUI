@@ -20,7 +20,7 @@ const NavigationBar = ({ isOpen, toggleNavigationBar }) => {
           { name: "My Requests", icon: <BsFillFileEarmarkPlusFill />, link: `/dashboard/${dashboardType}/my-requests` },
           { name: "Calendar", icon: <FaCalendarAlt />, link: `/dashboard/${dashboardType}/calendar` },
           { name: "Report Absence", icon: <MdOutlineReport />, link: `/dashboard/${dashboardType}/report-absence` },
-          { name: "Request Absence", icon: <PiAirplaneTakeoffThin />, link: `/dashboard/${dashboardType}/request-absence` },
+          { name: "Request Time Off", icon: <PiAirplaneTakeoffThin />, link: `/dashboard/${dashboardType}/request-absence` },
           { name: "Upload Documents", icon: <FaUpload />, link: `/dashboard/${dashboardType}/upload-documents` },
           { name: "Resources", icon: <IoBook />, link: `/dashboard/${dashboardType}/resources` }
         ];
