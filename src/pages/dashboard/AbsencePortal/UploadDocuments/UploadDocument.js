@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import "react-datepicker/dist/react-datepicker.css";
-// import "./UploadDocument.css";
 import Header from "../../../../components/layout/Header";
 import NavigationBar from "../../../../components/layout/NavigationBar";
 import AccessibilityWidget from "../../../../components/accessibility/AccessibilityWidget";

@@ -58,8 +58,12 @@ const ViewDocuments = () => {
                                             <div className="test-result-container flex-grow dark:bg-gray-700 dark:text-white">
                                                 <div className="test-result-header dark:border-b dark:border-gray-700">
                                                     <h1 className="test-result-title dark:text-white ">COVID PCR Test Result</h1>
-                                                    <a href="./covid-19-test-result" download="covid-19-test-result" className="download-button dark:bg-gray-600 dark:border dark:border-gray-500 dark:text-white">
-                                                        Download
+                                                    <a
+                                                        href="/documents/view-documents/COVID_PCR_Test_Result.pdf"
+                                                        download="COVID_PCR_Test_Result.pdf"
+                                                        className="download-button dark:bg-gray-600 dark:border dark:border-gray-500 dark:text-white"
+                                                    >
+                                                        Download    
                                                     </a>
                                                 </div>
                                                 <div className="test-result-content">
@@ -104,8 +108,12 @@ const ViewDocuments = () => {
                                                 <div className="test-result-container dark:bg-gray-800 dark:text-white">
                                                     <div className="test-result-header dark:border-b dark:border-gray-700">
                                                         <h1 className="test-result-title">COVID At-Home Test</h1>
-                                                        <a href="./covid-19-test-result" download="covid-19-test-result" className="download-button dark:bg-gray-600 dark:border dark:border-gray-500 dark:text-white">
-                                                            Download
+                                                        <a
+                                                        href="/documents/view-documents/COVID_PCR_Test_Result.pdf"
+                                                        download="COVID_At-Home_Test_Result.pdf"
+                                                        className="download-button dark:bg-gray-600 dark:border dark:border-gray-500 dark:text-white"
+                                                        >
+                                                            Download    
                                                         </a>
                                                     </div>
                                                     <div className="test-result-content">

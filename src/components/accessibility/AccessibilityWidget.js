@@ -89,7 +89,7 @@ export default function AccessibilityWidget() {
       {/* Floating Accessibility Button */}
       <button
         ref={buttonRef}
-        className="fixed bottom-0 right-3 transform -translate-y-1/2 bg-[#cce3c7] dark:bg-custom-green-27 hover:bg-[#b2d1a8] dark:hover:bg-gray-600 text-white p-3 rounded-full shadow-lg z-50"
+        className="fixed bottom-0 right-3 transform -translate-y-1/2 bg-green-600 hover:bg-[#b2d1a8] dark:hover:bg-gray-600 text-white p-3 rounded-full shadow-lg z-50"
         onClick={() => setOpen(!open)}
       >
         <FaWheelchair />
