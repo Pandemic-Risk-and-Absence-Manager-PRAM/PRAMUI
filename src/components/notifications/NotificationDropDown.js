@@ -6,6 +6,7 @@ import { IoMdClose } from "react-icons/io";
 const notificationsMap = {
   employee: [
     "📢 Your leave request was approved.",
+    "📢 Your leave request was submitted.",
     "📅 Upcoming team meeting tomorrow at 10 AM.",
   ],
   manager: [
@@ -15,6 +16,7 @@ const notificationsMap = {
   hr: [
     "📝 New employee onboarding scheduled for next week.",
     "📢 Policy updates available in the HR portal.",
+    "📢 Department 1 has at 40% team absences! Check team capacity across departments.",
   ],
 };
 
