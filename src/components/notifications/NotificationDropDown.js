@@ -68,15 +68,22 @@ const NotificationDropDown = ({ user }) => {
         setLocalNotifications(contextNotifications);
     }, [contextNotifications]);
 
+    // Ensure notifications are initialized only once
     useEffect(() => {
-        if (user?.role && !hasInitializedNotifications.current) { // Check if not initialized
+        if (user?.role && !hasInitializedNotifications.current) {
             const persona = getPersonaFromRole(user.role);
             const initialNotifications = notificationsMap[persona] || [];
-            initialNotifications.forEach(note => addNotification(note));
+
+            // Add only new notifications that don't exist already
+            initialNotifications.forEach((note) => {
+                if (!contextNotifications.includes(note)) {
+                    addNotification(note);
+                }
+            });
 
             hasInitializedNotifications.current = true; // Mark as initialized
         }
-    }, [user?.role, contextNotifications, addNotification]);
+    }, [user?.role, contextNotifications, addNotification]); // Ensure this effect runs once for each role change
 
     useEffect(() => {
         document.addEventListener("mousedown", handleClickOutside);
