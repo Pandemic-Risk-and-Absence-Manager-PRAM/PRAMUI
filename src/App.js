@@ -15,10 +15,12 @@ import HeatMap from './pages/dashboard/HRPortal/Heatmap/HeatMap.jsx';
 import { DarkModeProvider } from './components/accessibility/DarkModeContext.js';
 import SharedCalendar from './pages/shared/SharedCalendar/SharedCalendar.js';
 import RequestTimeOff from "./pages/dashboard/AbsencePortal/RequestTimeOff/RequestTimeOff.js";
+import {NotificationProvider} from './components/notifications/NotificationDropDown.js';
 
 function App() {
   return (
     <DarkModeProvider>
+      <NotificationProvider>
     <div className="min-h-screen bg-gray-100 dark:bg-gray-900 dark:text-white">
     <Router>
       <Routes>
@@ -51,6 +53,7 @@ function App() {
       </Routes>
     </Router>
     </div>
+    </NotificationProvider>
     </DarkModeProvider>
   );
 }
