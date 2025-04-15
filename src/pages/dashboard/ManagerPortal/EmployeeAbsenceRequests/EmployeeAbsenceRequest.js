@@ -20,14 +20,15 @@ const EmployeeAbsenceRequest = () => {
                 <NavigationBar isOpen={isOpen} toggleNavigationBar={toggleNavigationBar} />
 
                 <div className="flex-1 min-h-screen transition-all" style={{ paddingLeft: isOpen ? "280px" : "100px" }}>
-                    <div className="p-6 h-screen bg-gray-100 dark:bg-gray-900 transition-colors">
+                    <div className="p-6 h-screen bg-gray-100 dark:bg-gray-900 transition-colors overflow-y-auto">
                         <div className="max-w-5xl mx-auto bg-white dark:bg-gray-800 rounded-lg shadow-md transition-colors">
                             <div className="p-6 w-full overflow-x-auto">
                                 <h1 className="text-3xl font-bold mb-6 text-gray-900 dark:text-white" style={{ fontFamily: 'Kanit, sans-serif' }}>
-                                    EMPLOYEE ABSENCE REQUESTS
+                                    MY REQUESTS
                                 </h1>
-                                <div className="flex space-x-4">
-                                {/*upper banner*/}
+                                
+                                {/* Fixed grid layout for the metrics cards */}
+                                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
                                     <div className="out-sick">
                                         <div className="out-sick-title">Employees Out Sick</div>
                                         <div className="out-sick-count">
@@ -50,12 +51,14 @@ const EmployeeAbsenceRequest = () => {
                                         <div className="remaining-title">No Incoming Absences Left to Approve</div>
                                     </div>
                                 </div>
-                                {/*calendar*/}
-                                <div className="flex space-x-4 flex-col" style={{ maxHeight: '600px', overflowY: 'auto', margin: '0' }}>
-                                    <SharedCalendar />
+                                
+                                {/* Calendar with embedMode */}
+                                <div className="calendar-wrapper">
+                                    <SharedCalendar embedMode={true} dashboardTypeOverride="manager" />
                                 </div>
-                                {/*report absence requests*/}
-                                <div className="absence-table-container flex-col">
+                                
+                                {/* Report absence requests */}
+                                <div className="absence-table-container">
                                     <h2 className="absence-table-title">Recent Absence Requests</h2>
                                     <div className="absence-table-wrapper">
                                         <table className="absence-table">
