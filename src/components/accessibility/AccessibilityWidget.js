@@ -12,7 +12,13 @@ const profiles = [
 ];
 
 const screenTints = [
-  "#3B82F680", "#8B5CF680", "#EF444480", "#F9731680", "#10B98180", "#F3F4F680", "#11182780"
+  "#3B82F64D", // ~30% opacity blue
+  "#8B5CF64D", // ~30% opacity purple
+  "#EF44444D", // ~30% opacity red
+  "#F973164D", // ~30% opacity orange
+  "#10B9814D", // ~30% opacity green
+  "#F3F4F64D", // ~30% opacity light gray
+  "#1118274D", // ~30% opacity dark gray
 ];
 
 export default function AccessibilityWidget() {
@@ -89,7 +95,7 @@ export default function AccessibilityWidget() {
       {/* Floating Accessibility Button */}
       <button
         ref={buttonRef}
-        className="fixed bottom-0 right-3 transform -translate-y-1/2 bg-green-600 hover:bg-[#b2d1a8] dark:hover:bg-gray-600 text-white p-3 rounded-full shadow-lg z-50"
+        className="fixed bottom-0 right-4 transform -translate-y-1/2 bg-[#167CB9] hover:bg-[#b2d1a8] dark:hover:bg-gray-600 text-white p-4 rounded-full shadow-lg z-50"
         onClick={() => setOpen(!open)}
       >
         <FaWheelchair />
