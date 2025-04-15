@@ -38,7 +38,7 @@ function App() {
         <Route path="/dashboard/:dashboardType/my-requests" element={<MyRequests />} />
         <Route path="/dashboard/:dashboardType/calendar" element={<SharedCalendar />} />
         <Route path="/dashboard/:dashboardType/report-absence" element={<ReportAbsence />} />
-        <Route path="/dashboard/:dashboardType/request-absence" element={<RequestTimeOff />} />
+        <Route path="/dashboard/:dashboardType/request-time-off" element={<RequestTimeOff />} />
         <Route path="/dashboard/:dashboardType/upload-documents" element={<UploadDocument />} />
 
         {/* Manager Pages */}

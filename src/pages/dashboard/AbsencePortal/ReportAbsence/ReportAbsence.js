@@ -6,6 +6,7 @@ import "./ReportAbsence.css";
 import Header from "../../../../components/layout/Header";
 import NavigationBar from "../../../../components/layout/NavigationBar";
 import AccessibilityWidget from "../../../../components/accessibility/AccessibilityWidget";
+import FileUpload from "../UploadDocuments/FileUpload";
 
 const ReportAbsence = () => {
   const { dashboardType } = useParams();
@@ -17,9 +18,14 @@ const ReportAbsence = () => {
   });
   const [comments, setComments] = useState("");
   const [error, setError] = useState(""); 
+  const [selectedPDF, setSelectedPDF] = useState(null);
 
   const toggleNavigationBar = () => {
     setIsOpen(!isOpen);
+  };
+
+  const handleFileSelected = (fileUrl) => {
+    setSelectedPDF(fileUrl ? { uri: fileUrl } : null);
   };
 
   const handleSubmit = () => {
@@ -94,6 +100,13 @@ const ReportAbsence = () => {
                       <option value="Acute Illness">Acute Illness e.g. a cold</option>
                       <option value="Workplace Injury">Workplace Injury</option>
                     </select>
+                     {/* File Upload */}
+                     <div className="w-full px-4 mb-4">
+                      <label className="block text-gray-700 dark:text-gray-300 font-medium text-sm mb-2">
+                        Upload Supporting Documents (Optional)
+                      </label>
+                      <FileUpload onFileSelected={handleFileSelected}/>
+                    </div>
                   </div>
 
                   {/* Absence Period Range */}
@@ -129,7 +142,7 @@ const ReportAbsence = () => {
                   {/* Additional Comments */}
                   <div className="mb-4">
                     <label className="block text-gray-700 dark:text-gray-300 font-bold mb-2">
-                      Additional Comments
+                      Additional Comments (Optional)
                     </label>
                     <textarea
                       className="w-full p-2 border rounded-lg bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-white"

@@ -6,46 +6,50 @@ import './Login.css';
 import SSO from "./SSO";
 
 const Login = () => {
-  const navigate = useNavigate();
-  const [showSSO, setShowSSO] = useState(false);
-  const [dashboardType, setDashboardType] = useState('');
+    const navigate = useNavigate();
+    const [showSSO, setShowSSO] = useState(false);
+    const [dashboardType, setDashboardType] = useState('');
 
-  const handleLogin = (dashboardType) => {
-    setDashboardType(dashboardType);
-    setShowSSO(true);
-  };
+    const handleLogin = (dashboardType) => {
+        setDashboardType(dashboardType);
+        setShowSSO(true);
+    };
 
-  const handleSSOLogin = () => {
-    setShowSSO(false);
-    navigate(`/dashboard/${dashboardType}`);
-  };
+    const handleSSOLogin = (role) => {
+        setShowSSO(false);
+        navigate(`/dashboard/${role}`);
+    };
 
-  return (
-    <div className="login-container">
-      <div className="logo">
-        <img src={logo} alt="Logo" className="logo-img" />
-        <img src={PRAM} alt="PRAM" className='PRAM-img'/>
-      </div>
+    return (
+        <div className="login-container">
+            <div className="logo">
+                <img src={logo} alt="Logo" className="logo-img" />
+                <img src={PRAM} alt="PRAM" className='PRAM-img'/>
+            </div>
 
-      <div className="buttons-container">
-        <button className="login-button" onClick={() => handleLogin('employee')}>
-          Absence Portal
-        </button>
-        <button className="login-button" onClick={() => handleLogin('manager')}>
-          Manager Portal
-        </button>
-        <button className="login-button" onClick={() => handleLogin('hr')}>
-          HR Portal
-        </button>
-      </div>
+            <div className="buttons-container">
+                <button className="login-button" onClick={() => handleLogin('employee')}>
+                    Absence Portal
+                </button>
+                <button className="login-button" onClick={() => handleLogin('manager')}>
+                    Manager Portal
+                </button>
+                <button className="login-button" onClick={() => handleLogin('hr')}>
+                    HR Portal
+                </button>
+            </div>
 
-      {showSSO && (
-        <div className="modal">
-          <SSO handleLogin={handleSSOLogin} closeModal={() => setShowSSO(false)} />
+            {showSSO && (
+                <div className="modal">
+                    <SSO
+                        handleLogin={handleSSOLogin}
+                        closeModal={() => setShowSSO(false)}
+                        targetRole={dashboardType}
+                    />
+                </div>
+            )}
         </div>
-      )}
-    </div>
-  );
+    );
 };
 
 export default Login;

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "./SSO.css";
 import mockCredentials from "../../models/MockCredentials.json";
 
-function SSO({ handleLogin, closeModal }) {
+function SSO({ handleLogin, closeModal, targetRole }) {
     const [id, setId] = useState('');
     const [password, setPassword] = useState('');
 
@@ -17,28 +17,24 @@ function SSO({ handleLogin, closeModal }) {
     // Handle form submission based on entered credentials
     const handleSubmit = (e) => {
         e.preventDefault();
-        const user = Object.entries(mockCredentials).find(([role, credentials]) =>
-            credentials.id === id && credentials.password === password
-        );
-        if (user) {
-            const [role] = user;
-            handleLogin(role);
+
+        if (mockCredentials[targetRole] && mockCredentials[targetRole].id === id && mockCredentials[targetRole].password === password) {
+            handleLogin(targetRole);
         } else {
-            alert('Wrong ID or password combination');
+            alert(`Wrong ID or password combination for the ${targetRole.charAt(0).toUpperCase() + targetRole.slice(1)} Portal`);
         }
     };
 
     return (
         <div className="login-page" style={{ fontFamily: "Kanit, sans-serif" }}>
-            <h2>Login</h2>
-            {/* Login Form */}
+            <h2>Login for {targetRole.charAt(0).toUpperCase() + targetRole.slice(1)} Portal</h2>
             <form autoComplete="off" onSubmit={handleSubmit}>
                 <div className="sso-field">
                     <input
                         type="text"
                         className="form-control"
                         id="employeeID"
-                        placeholder="Enter employee ID"
+                        placeholder={`Enter ${targetRole} ID`}
                         onChange={handleId}
                     />
                 </div>

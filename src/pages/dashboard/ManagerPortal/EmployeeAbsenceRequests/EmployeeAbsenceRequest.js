@@ -24,7 +24,7 @@ const EmployeeAbsenceRequest = () => {
                         <div className="max-w-5xl mx-auto bg-white dark:bg-gray-800 rounded-lg shadow-md transition-colors">
                             <div className="p-6 w-full overflow-x-auto">
                                 <h1 className="text-3xl font-bold mb-6 text-gray-900 dark:text-white" style={{ fontFamily: 'Kanit, sans-serif' }}>
-                                    MY REQUESTS
+                                    EMPLOYEE ABSENCE REQUESTS
                                 </h1>
                                 <div className="flex space-x-4">
                                 {/*upper banner*/}

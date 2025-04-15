@@ -118,7 +118,7 @@ const Header = ({ toggleNavigationBar }) => {
           </div>
 
           <div className="flex items-center border-r border-gray-300 dark:border-white-700 pr-4">
-            <NotificationDropDown />
+            <NotificationDropDown user={user}/>
           </div>
 
           {/* User Profile */}
