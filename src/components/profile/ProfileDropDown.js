@@ -1,5 +1,6 @@
 import React, { useState, useRef, useEffect } from "react";
 import { FaCaretUp, FaCaretDown, FaUser } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 const ProfileDropDown = ({ user }) => {
     const [isOpen, setIsOpen] = useState(false);
@@ -76,6 +77,11 @@ const ProfileDropDown = ({ user }) => {
                             <p className="text-sm text-gray-700 dark:text-gray-300"><strong>Role:</strong> {user.role}</p>
                         </div>
                     </div>
+                    <Link to={`/`}>
+                        <button className="w-full text-left px-4 py-2 text-sm text-red-600 dark:text-red-400 hover:bg-red-100 dark:hover:bg-red-700 rounded-md">
+                            LOG OUT
+                        </button>
+                    </Link>
                 </div>
             )}
         </div>
