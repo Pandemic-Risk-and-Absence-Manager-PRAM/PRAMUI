@@ -8,6 +8,7 @@ const PdfViewer = ({ pdfUrl }) => {
   const rendered = useRef(false); 
   const containerRef = useRef(null);
 
+  // Load the PDF document when the component mounts or when pdfUrl changes
   useEffect(() => {
     const loadPdf = async () => {
       rendered.current = false; 
