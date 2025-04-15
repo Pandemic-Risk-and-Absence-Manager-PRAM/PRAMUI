@@ -79,8 +79,8 @@ const EmployeeAbsenceRequest = () => {
                                     EMPLOYEE ABSENCE REQUESTS
                                 </h1>
 
-                                {/* Banner */}
-                                <div className="flex space-x-4">
+                                {/* Fixed grid layout for the metrics cards */}
+                                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
                                     <div className="out-sick">
                                         <div className="out-sick-title">Employees Out Sick</div>
                                         <div className="out-sick-count">2 <br /> Employees</div>
@@ -98,13 +98,12 @@ const EmployeeAbsenceRequest = () => {
                                     </div>
                                 </div>
 
-                                {/* Calendar */}
-                                <div className="flex space-x-4 flex-col" style={{ maxHeight: '600px', overflowY: 'auto', margin: '0' }}>
-                                    <SharedCalendar />
-                                </div>
+                                {/* Calendar with embedMode */}
+                                 <div className="calendar-wrapper">
+                                     <SharedCalendar embedMode={true} dashboardTypeOverride="manager" />
 
                                 {/* Absence Table */}
-                                <div className="absence-table-container flex-col">
+                                <div className="absence-table-container">
                                     <h2 className="absence-table-title">Recent Absence Requests</h2>
                                     <div className="absence-table-wrapper">
                                         <table className="absence-table">
@@ -147,7 +146,7 @@ const EmployeeAbsenceRequest = () => {
                                         </table>
                                     </div>
                                 </div>
-
+                                </div>
                             </div>
                         </div>
                     </div>

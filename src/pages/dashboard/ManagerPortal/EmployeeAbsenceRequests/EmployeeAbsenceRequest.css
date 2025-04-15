@@ -160,3 +160,10 @@
     margin-top: 1.5rem;
     margin-bottom: 1.5rem;
   }
+
+  .calendar-wrapper {
+    transform: translateX(-0%);
+    width: 100%;
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
