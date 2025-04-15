@@ -1,4 +1,4 @@
-# DeskDash Project Setup Guide
+# Pandemic Risk and Absence Manager (PRAM) Project Setup Guide
 
 This README will help you download and run PRAM locally.
 
