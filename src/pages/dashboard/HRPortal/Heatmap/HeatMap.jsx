@@ -129,22 +129,12 @@ const HeatMap = () => {
     return null;
   };
 
-//   // Generate random case numbers for each region
-// useEffect(() => {
-//   if (mapdata && mapdata.state_specific) {
-//     Object.keys(mapdata.state_specific).forEach((regionId) => {
-//       regionCases.current[regionId] = Math.floor(Math.random() * 10001); // Random number between 0 and 10,000
-//     });
-//   }
-// }, []);
-
 // Update the handleRegionMouseEnter function
 const handleRegionMouseEnter = (e) => {
   const target = e.target;
   const regionId = extractRegionId(target);
 
-  // Skip hover effect if the region is the currently clicked region
-  // or if the region is non-operational or not reported
+  // Skip hover effect if the region is the currently clicked region or if the region is non-operational or not reported
   if (
     regionId &&
     regionId !== clickedRegion &&
@@ -184,8 +174,7 @@ const handleRegionMouseLeave = (e) => {
   const target = e.target;
   const regionId = extractRegionId(target);
 
-  // Only reset styles if the region is not clicked
-  // and if the region is supported
+  // Only reset styles if the region is not clicked and if the region is supported
   if (regionId !== clickedRegion && regionCases.current[regionId] >= 0) {
     target.style.stroke = 'none'; // Remove the border
     target.style.strokeWidth = '0'; // Reset the border width
@@ -198,53 +187,6 @@ const handleRegionMouseLeave = (e) => {
     setTooltip({ visible: false, text: '', x: 0, y: 0, persist: false });
   }
 };
-
-// const handleRegionClick = (e) => {
-//   const target = e.target;
-//   const regionId = extractRegionId(target);
-
-//   if (regionId) {
-//     // Unhighlight the previously clicked region
-//     if (clickedRegion && clickedRegion !== regionId) {
-//       const svgElement = mapRef.current;
-//       const previousRegion = svgElement.querySelector(`#${clickedRegion}`);
-//       if (previousRegion) {
-//         previousRegion.style.stroke = 'none'; // Remove the border
-//         previousRegion.style.strokeWidth = '0'; // Reset the border width
-//         previousRegion.style.opacity = '1'; // Reset the opacity
-//         previousRegion.style.filter = 'none'; // Remove the shadow
-//       }
-//     }
-
-//     // Set the clicked region
-//     setClickedRegion(regionId);
-
-//     // Highlight the clicked region (apply hover styles)
-//     target.style.stroke = '#000'; // Add a black border
-//     target.style.strokeWidth = '2px'; // Make the border thicker
-//     target.style.opacity = '0.8'; // Slightly dim the region
-//     target.style.filter = 'drop-shadow(0px 0px 10px #7a7979)';
-
-//     // Update the tooltip with the clicked region's name and confirmed cases
-//     const regionName =
-//       (regionId &&
-//         mapdata &&
-//         mapdata.state_specific &&
-//         mapdata.state_specific[regionId] &&
-//         mapdata.state_specific[regionId].name) ||
-//       'Unknown Region';
-
-//     const confirmedCases = regionCases.current[regionId] || 0; // Get the random case number for the region
-
-//     setTooltip({
-//       visible: true,
-//       text: `${regionName} - Confirmed cases: ${confirmedCases}`, // Include confirmed cases
-//       x: tooltip.x, // Keep the current tooltip position
-//       y: tooltip.y,
-//       persist: true, // Make the tooltip persist
-//     });
-//   }
-// };
 
 useEffect(() => {
   const svgElement = mapRef.current;
@@ -375,7 +317,6 @@ useEffect(() => {
                     borderRadius: '4px',
                     cursor: 'pointer',
                   }}
-                 // onClick={() => setTooltip({ visible: true, text: '', x: 0, y: 0, persist: true })}
                 >
                 </button>
               </div>
