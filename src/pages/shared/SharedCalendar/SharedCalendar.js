@@ -10,11 +10,14 @@ import interactionPlugin from '@fullcalendar/interaction';
 import { useParams } from "react-router-dom";
 import calendarData from '../../../models/CalendarData.json';
 
-const SharedCalendar = () => {
+
+const SharedCalendar = ({ embedMode = false, dashboardTypeOverride = null }) => {
     const [isOpen, setIsOpen] = useState(true);
     const [events, setEvents] = useState([]);
     const [currentEmployeeId] = useState(1);
-    const { dashboardType } = useParams();
+    
+    let { dashboardType } = useParams();
+    dashboardType = dashboardTypeOverride || dashboardType || 'hr';
 
     useEffect(() => {
         // Start with empty event array
@@ -115,6 +118,76 @@ const SharedCalendar = () => {
         }
     };
 
+    if (embedMode) {
+        return (
+            <div className="calendar-content">
+                <div className="mb-4 p-4 bg-blue-50 dark:bg-blue-900/20 rounded-lg text-sm text-blue-800 dark:text-blue-200">
+                    <p>You are viewing all COVID-related absences across the team you manage.</p>
+                </div>
+
+                <div className="mb-4 grid grid-cols-4 gap-2">
+                    <div className="flex items-center">
+                        <div className="w-3 h-3 rounded-full bg-red-500 mr-2"></div>
+                        <span className="text-sm">COVID Absence</span>
+                    </div>
+                    <div className="flex items-center">
+                        <div className="w-3 h-3 rounded-full bg-orange-500 mr-2"></div>
+                        <span className="text-sm">Public Holiday</span>
+                    </div>
+                    <div className="flex items-center">
+                        <div className="w-3 h-3 rounded-full bg-blue-500 mr-2"></div>
+                        <span className="text-sm">Meeting</span>
+                    </div>
+                    <div className="flex items-center">
+                        <div className="w-3 h-3 rounded-full bg-purple-500 mr-2"></div>
+                        <span className="text-sm">Training</span>
+                    </div>
+                </div>
+
+                <div>
+                    <FullCalendar 
+                        key="calendar-instance"
+                        plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin]}
+                        initialView="dayGridMonth"
+                        initialDate="2024-04-01"
+                        headerToolbar={{
+                            left: 'prev,next today',
+                            center: 'title',
+                            right: 'dayGridMonth,timeGridWeek,timeGridDay'
+                        }}
+                        events={events}
+                        editable={true}
+                        selectable={true}
+                        selectMirror={true}
+                        dayMaxEvents={3}
+                        weekends={true}
+                        dateClick={handleDateClick}
+                        eventClick={handleEventClick}
+                        height="auto"
+                        aspectRatio={1.8}
+                        eventClassNames={(arg) => {
+                            return [arg.event.extendedProps?.type || 'default'];
+                        }}
+                        eventDidMount={(info) => {
+                            // Add custom class based on event type
+                            const eventType = info.event.extendedProps?.type || 'default';
+                            info.el.classList.add(eventType);
+                            
+                            // Add icon if available
+                            if (info.event.extendedProps?.icon) {
+                                const iconEl = document.createElement('span');
+                                iconEl.className = 'holiday-icon';
+                                iconEl.innerText = info.event.extendedProps.icon;
+                                info.el.querySelector('.fc-event-title-container')?.prepend(iconEl);
+                            }
+                        }}
+                    />
+                </div>
+            </div>
+        );
+    }
+
+    // Original full-page rendering
     return (
         <div className="flex flex-col bg-gray-100 dark:bg-gray-800 transition-colors">
             <Header toggleNavigationBar={toggleNavigationBar} isOpen={isOpen} />
