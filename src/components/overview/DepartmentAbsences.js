@@ -15,7 +15,7 @@ const DepartmentAbsences = () => {
             <div className="text-xl text-black dark:text-white" style={{ fontFamily: 'Kanit, sans-serif' }}>
                 Absences by Department
             </div>
-
+            {/* Displaying Absences by Department in circular diagram */}
             <div className="grid grid-cols-4 gap-4 p-5" style={{ fontFamily: 'Kanit, sans-serif' }}>
                 {[{
                     label: "Department 1",
@@ -56,6 +56,7 @@ const DepartmentAbsences = () => {
                                     fill="none"
                                     className="dark:stroke-[#123352]"
                                 />
+                                {/* Animated circle for percentage */}
                                 <motion.circle
                                     cx="50"
                                     cy="50"

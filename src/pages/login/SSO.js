@@ -14,6 +14,7 @@ function SSO({ handleLogin, closeModal }) {
         setPassword(e.target.value);
     };
 
+    // Handle form submission based on entered credentials
     const handleSubmit = (e) => {
         e.preventDefault();
         const user = Object.entries(mockCredentials).find(([role, credentials]) =>
@@ -30,6 +31,7 @@ function SSO({ handleLogin, closeModal }) {
     return (
         <div className="login-page" style={{ fontFamily: "Kanit, sans-serif" }}>
             <h2>Login</h2>
+            {/* Login Form */}
             <form autoComplete="off" onSubmit={handleSubmit}>
                 <div className="sso-field">
                     <input

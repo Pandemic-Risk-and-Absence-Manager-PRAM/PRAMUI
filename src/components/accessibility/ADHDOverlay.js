@@ -8,6 +8,7 @@ const ADHDOverlay = ({ isActive }) => {
             setCursorPosition({ x: event.clientX, y: event.clientY });
         };
 
+        //Moves the overlay to the cursor position
         if (isActive) {
             window.addEventListener('mousemove', handleMouseMove);
         } else {

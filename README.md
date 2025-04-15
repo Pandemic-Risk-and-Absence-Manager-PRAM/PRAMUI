@@ -2,22 +2,21 @@
 ## IOT522W - Graphical User Interfaces Coursework Module
 
 # Getting Started
-git clone [url of your fork]
-
 npm install
 
 npm start
 
 # SSO/Logging In
 to log in use the following ids and passwords:
-Absence Portal: 
+
+### Absence Portal: 
 id: "employee",
 password: "employeepassword"
 
-HR Screen:
+### HR Portal:
 id: "hr",
 password: "hrpassword"
 
-Manager Screen:
+### Manager Portal:
 id: "manager",
 password: "managerpassword"

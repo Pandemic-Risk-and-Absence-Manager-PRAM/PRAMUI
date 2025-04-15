@@ -19,7 +19,7 @@ const TimeBalances = () => {
             <div className="text-xl text-black dark:text-white" style={{ fontFamily: 'Kanit, sans-serif' }}>
                 Time Balances
             </div>
-
+            {/* Displaying Time Balances in circular diagram */}
             <div className="grid grid-cols-3 gap-4 p-5" style={{ fontFamily: 'Kanit, sans-serif' }}>
                 {[{
                     label: "Days Remaining",
@@ -57,6 +57,7 @@ const TimeBalances = () => {
                                     fill="none"
                                     className="dark:stroke-[#123352]"
                                 />
+                                {/* Animated circle for percentage */}
                                 <motion.circle
                                     cx="50"
                                     cy="50"
