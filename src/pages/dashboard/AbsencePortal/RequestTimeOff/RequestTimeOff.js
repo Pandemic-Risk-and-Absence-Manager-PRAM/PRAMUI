@@ -2,12 +2,12 @@ import React, { useState, useMemo } from "react";
 import { Link, useParams } from "react-router-dom";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import "./RequestAbsence.css";
+import "./RequestTimeOff.css";
 import Header from "../../../../components/layout/Header";
 import NavigationBar from "../../../../components/layout/NavigationBar";
 import AccessibilityWidget from "../../../../components/accessibility/AccessibilityWidget";
 
-const RequestAbsence = () => {
+const RequestTimeOff = () => {
   const { dashboardType } = useParams();
   const [isOpen, setIsOpen] = useState(true);
   const [absenceReason, setAbsenceReason] = useState("");
@@ -171,4 +171,4 @@ const RequestAbsence = () => {
   );
 };
 
-export default RequestAbsence;
+export default RequestTimeOff;

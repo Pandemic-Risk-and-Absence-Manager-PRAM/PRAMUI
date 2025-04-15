@@ -160,7 +160,7 @@ const SharedCalendar = () => {
                                 </div>
 
                                 <div>
-                                    <FullCalendar
+                                    <FullCalendar 
                                         key="calendar-instance"
                                         plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin]}
                                         initialView="dayGridMonth"
