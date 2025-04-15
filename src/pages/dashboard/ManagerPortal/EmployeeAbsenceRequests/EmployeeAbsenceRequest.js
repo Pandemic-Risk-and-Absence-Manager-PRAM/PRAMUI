@@ -9,35 +9,7 @@ import './EmployeeAbsenceRequest.css';
 const EmployeeAbsenceRequest = () => {
     const [isOpen, setIsOpen] = useState(true);
     const [selectedNotification, setSelectedNotification] = useState(null);
-
-    const toggleNavigationBar = () => {
-        setIsOpen(!isOpen);
-    };
-
-    const handleViewClick = (absenceRequest) => {
-        const fullRequest = {
-            ...absenceRequest,
-            employee: absenceRequest.employee || 'Alex Johnson',
-            department: absenceRequest.department || 'IT & Software Development',
-            absenceType: absenceRequest.type,
-            requestedDates: `${absenceRequest.startDate} to ${absenceRequest.endDate} (${absenceRequest.duration})`,
-            reason: absenceRequest.notes || 'No reason provided',
-            supportingDocuments: absenceRequest.supportingDocuments || 'path/to/document.pdf',
-        };
-        setSelectedNotification(fullRequest);
-    };
-
-    useEffect(() => {
-        if (selectedNotification) {
-            console.log("selectedNotification set to:", selectedNotification);
-        }
-    }, [selectedNotification]);
-
-    const handleCloseNotification = () => {
-        setSelectedNotification(null);
-    };
-
-    const absenceRequests = [
+    const [absenceRequests, setAbsenceRequests] = useState([
         {
             id: 1,
             employee: 'Alex Johnson',
@@ -49,7 +21,7 @@ const EmployeeAbsenceRequest = () => {
             status: 'Active',
             documentation: 'Submitted',
             notes: 'Tested positive for COVID-19',
-            supportingDocuments: 'path/to/covid.pdf',
+            supportingDocuments: '/documents/view-documents/COVID_PCR_Test_Result.pdf',
         },
         {
             id: 2,
@@ -62,104 +34,100 @@ const EmployeeAbsenceRequest = () => {
             status: 'Approved',
             documentation: 'Submitted',
             notes: 'Fever and cold',
-            supportingDocuments: 'path/to/sickleave.pdf',
+            supportingDocuments: '/documents/view-documents/COVID_PCR_Test_Result.pdf',
         },
-    ];
+    ]);
+
+    const toggleNavigationBar = () => {
+        setIsOpen(!isOpen);
+    };
+
+    const handleViewClick = (absenceRequest) => {
+        setSelectedNotification(absenceRequest);
+    };
+
+    const handleCloseNotification = () => {
+        setSelectedNotification(null);
+    };
+
+    const handleStatusUpdate = (id, newStatus) => {
+        setAbsenceRequests(prev =>
+            prev.map(request =>
+                request.id === id ? { ...request, status: newStatus } : request
+            )
+        );
+        setSelectedNotification(null);
+    };
 
     return (
-        <div className="flex flex-col h-screen bg-gray-100 dark:bg-gray-800 transition-colors" style={{ fontFamily: 'Kanit, sans-serif' }}>
+        <div className="flex flex-col min-h-screen bg-gray-100 dark:bg-gray-800 transition-colors" style={{ fontFamily: 'Kanit, sans-serif' }}>
             <Header toggleNavigationBar={toggleNavigationBar} isOpen={isOpen} />
             <div className="flex flex-1">
                 <NavigationBar isOpen={isOpen} toggleNavigationBar={toggleNavigationBar} />
                 <div className="flex-1 min-h-screen transition-all" style={{ paddingLeft: isOpen ? "280px" : "100px" }}>
-                    <div className="p-6 h-screen bg-gray-100 dark:bg-gray-900 transition-colors overflow-y-auto">
+                    <div className="p-6 min-h-screen bg-gray-100 dark:bg-gray-900 transition-colors">
                         <div className="max-w-5xl mx-auto bg-white dark:bg-gray-800 rounded-lg shadow-md transition-colors">
                             <div className="p-6 w-full overflow-x-auto">
-                                <h1 className="text-3xl font-bold mb-6 text-gray-900 dark:text-white">
-                                    EMPLOYEE ABSENCE REQUESTS
-                                </h1>
+                                <h1 className="text-3xl font-bold mb-6 text-gray-900 dark:text-white">EMPLOYEE ABSENCE REQUESTS</h1>
 
-                                {/* Fixed grid layout for the metrics cards */}
-                                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
-                                    <div className="out-sick">
-                                        <div className="out-sick-title">Employees Out Sick</div>
-                                        <div className="out-sick-count">2 <br /> Employees</div>
-                                    </div>
-                                    <div className="pandemic-leave">
-                                        <div className="pandemic-leave-title">Pandemic Leave</div>
-                                        <div className="pandemic-leave-count">14 <br /> Days</div>
-                                    </div>
-                                    <div className="last-completed">
-                                        <div className="last-completed-title">Last Completed Absence</div>
-                                        <div className="last-completed-count">15 Jan, 2022</div>
-                                    </div>
-                                    <div className="remaining">
-                                        <div className="remaining-title">No Incoming Absences Left to Approve</div>
-                                    </div>
-                                </div>
-
-                                {/* Calendar with embedMode */}
-                                 <div className="calendar-wrapper">
-                                     <SharedCalendar embedMode={true} dashboardTypeOverride="manager" />
-
-                                {/* Absence Table */}
-                                <div className="absence-table-container">
-                                    <h2 className="absence-table-title">Recent Absence Requests</h2>
-                                    <div className="absence-table-wrapper">
-                                        <table className="absence-table">
-                                            <thead>
-                                                <tr>
-                                                    <th>Type</th>
-                                                    <th>Start Date</th>
-                                                    <th>End Date</th>
-                                                    <th>Duration</th>
-                                                    <th>Status</th>
-                                                    <th>Documentation</th>
-                                                    <th>Notes</th>
-                                                    <th>Actions</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                {absenceRequests.map((request) => (
-                                                    <tr key={request.id}>
-                                                        <td>
-                                                            <span className={`badge ${request.type === 'COVID-19' ? 'badge-red' : 'badge-blue'}`}>
-                                                                {request.type}
-                                                            </span>
-                                                        </td>
-                                                        <td>{request.startDate}</td>
-                                                        <td>{request.endDate}</td>
-                                                        <td>{request.duration}</td>
-                                                        <td>
-                                                            <span className="link">{request.status}</span>
-                                                        </td>
-                                                        <td>
-                                                            <span className="badge badge-green">{request.documentation}</span>
-                                                        </td>
-                                                        <td>{request.notes}</td>
-                                                        <td>
-                                                            <button className="link" onClick={() => handleViewClick(request)}>View</button>
-                                                        </td>
+                                <div className="calendar-wrapper">
+                                    <SharedCalendar embedMode={true} dashboardTypeOverride="manager" />
+                                    <div className="absence-table-container mt-6">
+                                        <h2 className="absence-table-title">Recent Absence Requests</h2>
+                                        <div className="absence-table-wrapper">
+                                            <table className="absence-table">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Type</th>
+                                                        <th>Start Date</th>
+                                                        <th>End Date</th>
+                                                        <th>Duration</th>
+                                                        <th>Status</th>
+                                                        <th>Documentation</th>
+                                                        <th>Notes</th>
+                                                        <th>Actions</th>
                                                     </tr>
-                                                ))}
-                                            </tbody>
-                                        </table>
+                                                </thead>
+                                                <tbody>
+                                                    {absenceRequests.map((request) => (
+                                                        <tr key={request.id}>
+                                                            <td>
+                                                                <span className={`badge ${request.type === 'COVID-19' ? 'badge-red' : 'badge-blue'}`}>
+                                                                    {request.type}
+                                                                </span>
+                                                            </td>
+                                                            <td>{request.startDate}</td>
+                                                            <td>{request.endDate}</td>
+                                                            <td>{request.duration}</td>
+                                                            <td>
+                                                                <span className="link">{request.status}</span>
+                                                            </td>
+                                                            <td>
+                                                                <span className="badge badge-green">{request.documentation}</span>
+                                                            </td>
+                                                            <td>{request.notes}</td>
+                                                            <td>
+                                                                <button className="link" onClick={() => handleViewClick(request)}>View</button>
+                                                            </td>
+                                                        </tr>
+                                                    ))}
+                                                </tbody>
+                                            </table>
+                                        </div>
                                     </div>
-                                </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-
             {selectedNotification && (
                 <EmployeeAbsenceNotification
-                    notification={selectedNotification}
+                    absence={selectedNotification}
                     onClose={handleCloseNotification}
+                    onStatusChange={handleStatusUpdate}
                 />
             )}
-
             <AccessibilityWidget />
         </div>
     );
