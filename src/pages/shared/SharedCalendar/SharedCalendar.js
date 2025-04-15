@@ -237,7 +237,7 @@ const SharedCalendar = ({ embedMode = false, dashboardTypeOverride = null }) => 
                                         key="calendar-instance"
                                         plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin]}
                                         initialView="dayGridMonth"
-                                        initialDate="2024-04-01"
+                                        initialDate="2025-04-01"
                                         headerToolbar={{
                                             left: 'prev,next today',
                                             center: 'title',
