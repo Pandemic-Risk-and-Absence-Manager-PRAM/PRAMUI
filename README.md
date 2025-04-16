@@ -15,11 +15,7 @@ Before you begin, make sure you have the following installed:
 
 ### Step 1: Open the Project
 
-1. Go into the project folder:
-   ```
-   cd  PRAMUI
-   ```
-
+1. Go into the PRAMUI project folder. This README is in the root folder of the project.
 ---
 
 ### Step 2: Install Dependencies
